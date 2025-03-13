@@ -13,8 +13,10 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0"
   },
- 
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "dependencies": {
+    "ky": "^1.7.5"
+  }
 }

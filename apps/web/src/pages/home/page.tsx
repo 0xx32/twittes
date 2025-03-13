@@ -1,14 +1,12 @@
 import { ModeToggle } from '@/components'
 import { Button } from '@/components/ui'
 
-export const HomePage = () => {
-	return (
-		<div className="p-2">
-			<h3>Welcome Home!</h3>
+export const HomePage = () => (
+	<div className="p-2">
+		<h3>Welcome Home!</h3>
 
-			<ModeToggle />
+		<ModeToggle />
 
-			<Button>awdaw</Button>
-		</div>
-	)
-}
+		<Button>awdaw</Button>
+	</div>
+)

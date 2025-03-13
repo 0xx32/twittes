@@ -87,7 +87,7 @@ authRoute.post(
 			})
 
 			return ctx.json({
-				message: 'Аккаунт успешно авторизован',
+				msg: 'Аккаунт успешно авторизован',
 			})
 		} catch (error) {
 			console.error(error)
