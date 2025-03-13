@@ -1,0 +1,25 @@
+{
+  "name": "twittes",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "server:dev": "cd apps/server && bun run dev",
+    "web:dev": "cd apps/web && bun run dev",
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  },
+  "workspaces": [
+    "apps/*"
+  ]
+}
