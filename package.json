@@ -13,12 +13,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0"
   },
-  "lint-staged": {
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
-    ]
-  },
+ 
   "workspaces": [
     "apps/*"
   ]
