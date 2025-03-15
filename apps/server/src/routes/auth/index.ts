@@ -130,7 +130,7 @@ authRoute.post(
 
 			setCookie(ctx, 'session', newSession.id, {
 				httpOnly: true,
-				expires: new Date(Date.now() + 1000 * 60 * 15),
+				expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 7),
 			})
 
 			return ctx.json({

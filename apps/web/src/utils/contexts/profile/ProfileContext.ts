@@ -1,10 +1,8 @@
 import React from 'react'
 
-export type Profile = User
-
 interface ProfileContextProps {
 	profile: Profile
-	setProfile: (profile: User) => void
+	setProfile: (profile: Profile) => void
 }
 
 export const ProfileContext = React.createContext<ProfileContextProps>({

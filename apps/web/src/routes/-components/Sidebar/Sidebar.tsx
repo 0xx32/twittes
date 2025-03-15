@@ -3,8 +3,16 @@ import type { IconName } from 'lucide-react/dynamic'
 import { Link } from '@tanstack/react-router'
 import { DynamicIcon } from 'lucide-react/dynamic'
 
-import { ModeToggle } from '@/components'
+import {
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
+} from '@/components/ui'
 import { useProfile } from '@/utils/contexts/profile'
+import { useLogout } from '@/utils/hooks'
+
+import { UserWidget } from '../UserWidget'
 
 interface LinkItem {
 	name: string
@@ -20,6 +28,7 @@ const generateLinks = ({ username }: { username: string }): LinkItem[] => [
 
 export const Sidebar = () => {
 	const { profile } = useProfile()
+	const logout = useLogout()
 
 	return (
 		<aside className="sticky h-[calc(100vh-12rem)] flex flex-col pb-6">
@@ -37,7 +46,22 @@ export const Sidebar = () => {
 				))}
 			</ul>
 			<div className="mt-a">
-				<ModeToggle />
+				<DropdownMenu>
+					<DropdownMenuTrigger className="w-full focus-visible:outline-none">
+						<UserWidget user={profile} />
+					</DropdownMenuTrigger>
+					<DropdownMenuContent
+						align="start"
+						className="w-[240px] translate-y-2 rounded-full bg-board"
+					>
+						<DropdownMenuItem
+							className="w-full cursor-pointer rounded-full hover:bg-red-500 dark:hover:bg-red-500"
+							onClick={logout}
+						>
+							Выйти из @{profile?.username}
+						</DropdownMenuItem>
+					</DropdownMenuContent>
+				</DropdownMenu>
 			</div>
 		</aside>
 	)

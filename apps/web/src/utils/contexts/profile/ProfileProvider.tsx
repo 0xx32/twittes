@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react'
 
-import type { Profile } from './ProfileContext'
-
 import { ProfileContext } from './ProfileContext'
 
 export interface ProfileProviderProps {
