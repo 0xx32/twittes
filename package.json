@@ -26,5 +26,11 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0"
   },
-   "packageManager": "bun@1.2.4"
+  "packageManager": "bun@1.2.4",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "bun pretty",
+      "bun lint --fix"
+    ]
+  }
 }
