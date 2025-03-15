@@ -1,21 +1,30 @@
 {
   "name": "twittes",
   "module": "index.ts",
-  "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^15.5.0"
-  },
   "private": true,
   "scripts": {
     "web:dev": "cd apps/web && bun run dev",
     "server:dev": "cd apps/server && bun run dev",
-    "dev": "bun web:dev && bun server:dev",
     "prepare": "husky",
     "lint-staged": "lint-staged",
-    "generate-api": ""
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "preview": "turbo preview",
+    "lint": "turbo lint",
+    "format": "turbo format",
+    "pretty": "turbo pretty"
   },
   "type": "module",
   "workspaces": [
     "apps/*"
-  ]
+  ],
+  "dependencies": {
+    "turbo": "^2.4.4",
+    "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.5.0"
+  },
+   "packageManager": "bun@1.2.4"
 }
