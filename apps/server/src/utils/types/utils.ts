@@ -1,14 +1,10 @@
-import type { Session } from 'hono-sessions'
+import type { Session, User } from 'prisma/__generated/default'
+
+interface Variables {
+	user: User
+	session: Session
+}
 
 export interface AppType {
 	Variables: Variables
-}
-
-interface SessionDataTypes {
-	currentSession: import('@/../../prisma/__generated').Session
-}
-
-interface Variables {
-	session: Session<SessionDataTypes>
-	session_key_rotation: boolean
 }
