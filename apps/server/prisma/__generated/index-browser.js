@@ -132,6 +132,7 @@ exports.Prisma.UserScalarFieldEnum = {
   picture: 'picture',
   gender: 'gender',
   country: 'country',
+  city: 'city',
   age: 'age',
   isVerified: 'isVerified',
   createdAt: 'createdAt',
@@ -149,7 +150,7 @@ exports.Prisma.SessionScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.TwittScalarFieldEnum = {
+exports.Prisma.PostScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
@@ -163,7 +164,7 @@ exports.Prisma.TwittScalarFieldEnum = {
 exports.Prisma.CommentScalarFieldEnum = {
   id: 'id',
   text: 'text',
-  twittId: 'twittId',
+  postId: 'postId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -191,7 +192,7 @@ exports.Prisma.ModelName = {
   Account: 'Account',
   User: 'User',
   Session: 'Session',
-  Twitt: 'Twitt',
+  Post: 'Post',
   Comment: 'Comment'
 };
 

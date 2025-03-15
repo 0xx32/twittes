@@ -29,10 +29,10 @@ export type User = $Result.DefaultSelection<Prisma.$UserPayload>
  */
 export type Session = $Result.DefaultSelection<Prisma.$SessionPayload>
 /**
- * Model Twitt
+ * Model Post
  * 
  */
-export type Twitt = $Result.DefaultSelection<Prisma.$TwittPayload>
+export type Post = $Result.DefaultSelection<Prisma.$PostPayload>
 /**
  * Model Comment
  * 
@@ -212,14 +212,14 @@ export class PrismaClient<
   get session(): Prisma.SessionDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.twitt`: Exposes CRUD operations for the **Twitt** model.
+   * `prisma.post`: Exposes CRUD operations for the **Post** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Twitts
-    * const twitts = await prisma.twitt.findMany()
+    * // Fetch zero or more Posts
+    * const posts = await prisma.post.findMany()
     * ```
     */
-  get twitt(): Prisma.TwittDelegate<ExtArgs, ClientOptions>;
+  get post(): Prisma.PostDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.comment`: Exposes CRUD operations for the **Comment** model.
@@ -673,7 +673,7 @@ export namespace Prisma {
     Account: 'Account',
     User: 'User',
     Session: 'Session',
-    Twitt: 'Twitt',
+    Post: 'Post',
     Comment: 'Comment'
   };
 
@@ -693,7 +693,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "account" | "user" | "session" | "twitt" | "comment"
+      modelProps: "account" | "user" | "session" | "post" | "comment"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -919,77 +919,77 @@ export namespace Prisma {
           }
         }
       }
-      Twitt: {
-        payload: Prisma.$TwittPayload<ExtArgs>
-        fields: Prisma.TwittFieldRefs
+      Post: {
+        payload: Prisma.$PostPayload<ExtArgs>
+        fields: Prisma.PostFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.TwittFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload> | null
+            args: Prisma.PostFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.TwittFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>
+            args: Prisma.PostFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
           }
           findFirst: {
-            args: Prisma.TwittFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload> | null
+            args: Prisma.PostFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.TwittFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>
+            args: Prisma.PostFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
           }
           findMany: {
-            args: Prisma.TwittFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>[]
+            args: Prisma.PostFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
           }
           create: {
-            args: Prisma.TwittCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>
+            args: Prisma.PostCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
           }
           createMany: {
-            args: Prisma.TwittCreateManyArgs<ExtArgs>
+            args: Prisma.PostCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.TwittCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>[]
+            args: Prisma.PostCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
           }
           delete: {
-            args: Prisma.TwittDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>
+            args: Prisma.PostDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
           }
           update: {
-            args: Prisma.TwittUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>
+            args: Prisma.PostUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
           }
           deleteMany: {
-            args: Prisma.TwittDeleteManyArgs<ExtArgs>
+            args: Prisma.PostDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.TwittUpdateManyArgs<ExtArgs>
+            args: Prisma.PostUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.TwittUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>[]
+            args: Prisma.PostUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>[]
           }
           upsert: {
-            args: Prisma.TwittUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TwittPayload>
+            args: Prisma.PostUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PostPayload>
           }
           aggregate: {
-            args: Prisma.TwittAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTwitt>
+            args: Prisma.PostAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePost>
           }
           groupBy: {
-            args: Prisma.TwittGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TwittGroupByOutputType>[]
+            args: Prisma.PostGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PostGroupByOutputType>[]
           }
           count: {
-            args: Prisma.TwittCountArgs<ExtArgs>
-            result: $Utils.Optional<TwittCountAggregateOutputType> | number
+            args: Prisma.PostCountArgs<ExtArgs>
+            result: $Utils.Optional<PostCountAggregateOutputType> | number
           }
         }
       }
@@ -1154,7 +1154,7 @@ export namespace Prisma {
     account?: AccountOmit
     user?: UserOmit
     session?: SessionOmit
-    twitt?: TwittOmit
+    post?: PostOmit
     comment?: CommentOmit
   }
 
@@ -1250,12 +1250,12 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    twitts: number
+    posts: number
     sessions: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    twitts?: boolean | UserCountOutputTypeCountTwittsArgs
+    posts?: boolean | UserCountOutputTypeCountPostsArgs
     sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   }
 
@@ -1273,8 +1273,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountTwittsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TwittWhereInput
+  export type UserCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostWhereInput
   }
 
   /**
@@ -1286,32 +1286,32 @@ export namespace Prisma {
 
 
   /**
-   * Count Type TwittCountOutputType
+   * Count Type PostCountOutputType
    */
 
-  export type TwittCountOutputType = {
+  export type PostCountOutputType = {
     comments: number
   }
 
-  export type TwittCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    comments?: boolean | TwittCountOutputTypeCountCommentsArgs
+  export type PostCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    comments?: boolean | PostCountOutputTypeCountCommentsArgs
   }
 
   // Custom InputTypes
   /**
-   * TwittCountOutputType without action
+   * PostCountOutputType without action
    */
-  export type TwittCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the TwittCountOutputType
+     * Select specific fields to fetch from the PostCountOutputType
      */
-    select?: TwittCountOutputTypeSelect<ExtArgs> | null
+    select?: PostCountOutputTypeSelect<ExtArgs> | null
   }
 
   /**
-   * TwittCountOutputType without action
+   * PostCountOutputType without action
    */
-  export type TwittCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CommentWhereInput
   }
 
@@ -2318,6 +2318,7 @@ export namespace Prisma {
     picture: string | null
     gender: $Enums.Gender | null
     country: string | null
+    city: string | null
     age: number | null
     isVerified: boolean | null
     createdAt: Date | null
@@ -2333,6 +2334,7 @@ export namespace Prisma {
     picture: string | null
     gender: $Enums.Gender | null
     country: string | null
+    city: string | null
     age: number | null
     isVerified: boolean | null
     createdAt: Date | null
@@ -2348,6 +2350,7 @@ export namespace Prisma {
     picture: number
     gender: number
     country: number
+    city: number
     age: number
     isVerified: number
     createdAt: number
@@ -2373,6 +2376,7 @@ export namespace Prisma {
     picture?: true
     gender?: true
     country?: true
+    city?: true
     age?: true
     isVerified?: true
     createdAt?: true
@@ -2388,6 +2392,7 @@ export namespace Prisma {
     picture?: true
     gender?: true
     country?: true
+    city?: true
     age?: true
     isVerified?: true
     createdAt?: true
@@ -2403,6 +2408,7 @@ export namespace Prisma {
     picture?: true
     gender?: true
     country?: true
+    city?: true
     age?: true
     isVerified?: true
     createdAt?: true
@@ -2505,6 +2511,7 @@ export namespace Prisma {
     picture: string | null
     gender: $Enums.Gender | null
     country: string | null
+    city: string | null
     age: number | null
     isVerified: boolean
     createdAt: Date
@@ -2539,11 +2546,12 @@ export namespace Prisma {
     picture?: boolean
     gender?: boolean
     country?: boolean
+    city?: boolean
     age?: boolean
     isVerified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    twitts?: boolean | User$twittsArgs<ExtArgs>
+    posts?: boolean | User$postsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
@@ -2557,6 +2565,7 @@ export namespace Prisma {
     picture?: boolean
     gender?: boolean
     country?: boolean
+    city?: boolean
     age?: boolean
     isVerified?: boolean
     createdAt?: boolean
@@ -2572,6 +2581,7 @@ export namespace Prisma {
     picture?: boolean
     gender?: boolean
     country?: boolean
+    city?: boolean
     age?: boolean
     isVerified?: boolean
     createdAt?: boolean
@@ -2587,15 +2597,16 @@ export namespace Prisma {
     picture?: boolean
     gender?: boolean
     country?: boolean
+    city?: boolean
     age?: boolean
     isVerified?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "username" | "password" | "displayName" | "picture" | "gender" | "country" | "age" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "username" | "password" | "displayName" | "picture" | "gender" | "country" | "city" | "age" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    twitts?: boolean | User$twittsArgs<ExtArgs>
+    posts?: boolean | User$postsArgs<ExtArgs>
     sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2605,7 +2616,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
-      twitts: Prisma.$TwittPayload<ExtArgs>[]
+      posts: Prisma.$PostPayload<ExtArgs>[]
       sessions: Prisma.$SessionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2617,6 +2628,7 @@ export namespace Prisma {
       picture: string | null
       gender: $Enums.Gender | null
       country: string | null
+      city: string | null
       age: number | null
       isVerified: boolean
       createdAt: Date
@@ -3015,7 +3027,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    twitts<T extends User$twittsArgs<ExtArgs> = {}>(args?: Subset<T, User$twittsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -3054,6 +3066,7 @@ export namespace Prisma {
     readonly picture: FieldRef<"User", 'String'>
     readonly gender: FieldRef<"User", 'Gender'>
     readonly country: FieldRef<"User", 'String'>
+    readonly city: FieldRef<"User", 'String'>
     readonly age: FieldRef<"User", 'Int'>
     readonly isVerified: FieldRef<"User", 'Boolean'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
@@ -3446,27 +3459,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.twitts
+   * User.posts
    */
-  export type User$twittsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
-    where?: TwittWhereInput
-    orderBy?: TwittOrderByWithRelationInput | TwittOrderByWithRelationInput[]
-    cursor?: TwittWhereUniqueInput
+    include?: PostInclude<ExtArgs> | null
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    cursor?: PostWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: TwittScalarFieldEnum | TwittScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
   }
 
   /**
@@ -4610,16 +4623,16 @@ export namespace Prisma {
 
 
   /**
-   * Model Twitt
+   * Model Post
    */
 
-  export type AggregateTwitt = {
-    _count: TwittCountAggregateOutputType | null
-    _min: TwittMinAggregateOutputType | null
-    _max: TwittMaxAggregateOutputType | null
+  export type AggregatePost = {
+    _count: PostCountAggregateOutputType | null
+    _min: PostMinAggregateOutputType | null
+    _max: PostMaxAggregateOutputType | null
   }
 
-  export type TwittMinAggregateOutputType = {
+  export type PostMinAggregateOutputType = {
     id: string | null
     title: string | null
     content: string | null
@@ -4629,7 +4642,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type TwittMaxAggregateOutputType = {
+  export type PostMaxAggregateOutputType = {
     id: string | null
     title: string | null
     content: string | null
@@ -4639,7 +4652,7 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type TwittCountAggregateOutputType = {
+  export type PostCountAggregateOutputType = {
     id: number
     title: number
     content: number
@@ -4652,7 +4665,7 @@ export namespace Prisma {
   }
 
 
-  export type TwittMinAggregateInputType = {
+  export type PostMinAggregateInputType = {
     id?: true
     title?: true
     content?: true
@@ -4662,7 +4675,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type TwittMaxAggregateInputType = {
+  export type PostMaxAggregateInputType = {
     id?: true
     title?: true
     content?: true
@@ -4672,7 +4685,7 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type TwittCountAggregateInputType = {
+  export type PostCountAggregateInputType = {
     id?: true
     title?: true
     content?: true
@@ -4684,79 +4697,79 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type TwittAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Twitt to aggregate.
+     * Filter which Post to aggregate.
      */
-    where?: TwittWhereInput
+    where?: PostWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Twitts to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: TwittOrderByWithRelationInput | TwittOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: TwittWhereUniqueInput
+    cursor?: PostWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Twitts from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Twitts.
+     * Skip the first `n` Posts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Twitts
+     * Count returned Posts
     **/
-    _count?: true | TwittCountAggregateInputType
+    _count?: true | PostCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: TwittMinAggregateInputType
+    _min?: PostMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: TwittMaxAggregateInputType
+    _max?: PostMaxAggregateInputType
   }
 
-  export type GetTwittAggregateType<T extends TwittAggregateArgs> = {
-        [P in keyof T & keyof AggregateTwitt]: P extends '_count' | 'count'
+  export type GetPostAggregateType<T extends PostAggregateArgs> = {
+        [P in keyof T & keyof AggregatePost]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateTwitt[P]>
-      : GetScalarType<T[P], AggregateTwitt[P]>
+        : GetScalarType<T[P], AggregatePost[P]>
+      : GetScalarType<T[P], AggregatePost[P]>
   }
 
 
 
 
-  export type TwittGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TwittWhereInput
-    orderBy?: TwittOrderByWithAggregationInput | TwittOrderByWithAggregationInput[]
-    by: TwittScalarFieldEnum[] | TwittScalarFieldEnum
-    having?: TwittScalarWhereWithAggregatesInput
+  export type PostGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithAggregationInput | PostOrderByWithAggregationInput[]
+    by: PostScalarFieldEnum[] | PostScalarFieldEnum
+    having?: PostScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: TwittCountAggregateInputType | true
-    _min?: TwittMinAggregateInputType
-    _max?: TwittMaxAggregateInputType
+    _count?: PostCountAggregateInputType | true
+    _min?: PostMinAggregateInputType
+    _max?: PostMaxAggregateInputType
   }
 
-  export type TwittGroupByOutputType = {
+  export type PostGroupByOutputType = {
     id: string
     title: string
     content: string
@@ -4765,26 +4778,26 @@ export namespace Prisma {
     likes: string[]
     createdAt: Date
     updatedAt: Date
-    _count: TwittCountAggregateOutputType | null
-    _min: TwittMinAggregateOutputType | null
-    _max: TwittMaxAggregateOutputType | null
+    _count: PostCountAggregateOutputType | null
+    _min: PostMinAggregateOutputType | null
+    _max: PostMaxAggregateOutputType | null
   }
 
-  type GetTwittGroupByPayload<T extends TwittGroupByArgs> = Prisma.PrismaPromise<
+  type GetPostGroupByPayload<T extends PostGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<TwittGroupByOutputType, T['by']> &
+      PickEnumerable<PostGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof TwittGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof PostGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], TwittGroupByOutputType[P]>
-            : GetScalarType<T[P], TwittGroupByOutputType[P]>
+              : GetScalarType<T[P], PostGroupByOutputType[P]>
+            : GetScalarType<T[P], PostGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type TwittSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PostSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     content?: boolean
@@ -4794,11 +4807,11 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
-    comments?: boolean | Twitt$commentsArgs<ExtArgs>
-    _count?: boolean | TwittCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["twitt"]>
+    comments?: boolean | Post$commentsArgs<ExtArgs>
+    _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["post"]>
 
-  export type TwittSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PostSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     content?: boolean
@@ -4808,9 +4821,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["twitt"]>
+  }, ExtArgs["result"]["post"]>
 
-  export type TwittSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type PostSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     title?: boolean
     content?: boolean
@@ -4820,9 +4833,9 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     creator?: boolean | UserDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["twitt"]>
+  }, ExtArgs["result"]["post"]>
 
-  export type TwittSelectScalar = {
+  export type PostSelectScalar = {
     id?: boolean
     title?: boolean
     content?: boolean
@@ -4833,21 +4846,21 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type TwittOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "image" | "creatorId" | "likes" | "createdAt" | "updatedAt", ExtArgs["result"]["twitt"]>
-  export type TwittInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "image" | "creatorId" | "likes" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+  export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     creator?: boolean | UserDefaultArgs<ExtArgs>
-    comments?: boolean | Twitt$commentsArgs<ExtArgs>
-    _count?: boolean | TwittCountOutputTypeDefaultArgs<ExtArgs>
+    comments?: boolean | Post$commentsArgs<ExtArgs>
+    _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
   }
-  export type TwittIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }
-  export type TwittIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     creator?: boolean | UserDefaultArgs<ExtArgs>
   }
 
-  export type $TwittPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Twitt"
+  export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Post"
     objects: {
       creator: Prisma.$UserPayload<ExtArgs>
       comments: Prisma.$CommentPayload<ExtArgs>[]
@@ -4861,136 +4874,136 @@ export namespace Prisma {
       likes: string[]
       createdAt: Date
       updatedAt: Date
-    }, ExtArgs["result"]["twitt"]>
+    }, ExtArgs["result"]["post"]>
     composites: {}
   }
 
-  type TwittGetPayload<S extends boolean | null | undefined | TwittDefaultArgs> = $Result.GetResult<Prisma.$TwittPayload, S>
+  type PostGetPayload<S extends boolean | null | undefined | PostDefaultArgs> = $Result.GetResult<Prisma.$PostPayload, S>
 
-  type TwittCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TwittFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TwittCountAggregateInputType | true
+  type PostCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PostFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PostCountAggregateInputType | true
     }
 
-  export interface TwittDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Twitt'], meta: { name: 'Twitt' } }
+  export interface PostDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Post'], meta: { name: 'Post' } }
     /**
-     * Find zero or one Twitt that matches the filter.
-     * @param {TwittFindUniqueArgs} args - Arguments to find a Twitt
+     * Find zero or one Post that matches the filter.
+     * @param {PostFindUniqueArgs} args - Arguments to find a Post
      * @example
-     * // Get one Twitt
-     * const twitt = await prisma.twitt.findUnique({
+     * // Get one Post
+     * const post = await prisma.post.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends TwittFindUniqueArgs>(args: SelectSubset<T, TwittFindUniqueArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends PostFindUniqueArgs>(args: SelectSubset<T, PostFindUniqueArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Twitt that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Post that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {TwittFindUniqueOrThrowArgs} args - Arguments to find a Twitt
+     * @param {PostFindUniqueOrThrowArgs} args - Arguments to find a Post
      * @example
-     * // Get one Twitt
-     * const twitt = await prisma.twitt.findUniqueOrThrow({
+     * // Get one Post
+     * const post = await prisma.post.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends TwittFindUniqueOrThrowArgs>(args: SelectSubset<T, TwittFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends PostFindUniqueOrThrowArgs>(args: SelectSubset<T, PostFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Twitt that matches the filter.
+     * Find the first Post that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TwittFindFirstArgs} args - Arguments to find a Twitt
+     * @param {PostFindFirstArgs} args - Arguments to find a Post
      * @example
-     * // Get one Twitt
-     * const twitt = await prisma.twitt.findFirst({
+     * // Get one Post
+     * const post = await prisma.post.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends TwittFindFirstArgs>(args?: SelectSubset<T, TwittFindFirstArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends PostFindFirstArgs>(args?: SelectSubset<T, PostFindFirstArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Twitt that matches the filter or
+     * Find the first Post that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TwittFindFirstOrThrowArgs} args - Arguments to find a Twitt
+     * @param {PostFindFirstOrThrowArgs} args - Arguments to find a Post
      * @example
-     * // Get one Twitt
-     * const twitt = await prisma.twitt.findFirstOrThrow({
+     * // Get one Post
+     * const post = await prisma.post.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends TwittFindFirstOrThrowArgs>(args?: SelectSubset<T, TwittFindFirstOrThrowArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends PostFindFirstOrThrowArgs>(args?: SelectSubset<T, PostFindFirstOrThrowArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Twitts that matches the filter.
+     * Find zero or more Posts that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TwittFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {PostFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Twitts
-     * const twitts = await prisma.twitt.findMany()
+     * // Get all Posts
+     * const posts = await prisma.post.findMany()
      * 
-     * // Get first 10 Twitts
-     * const twitts = await prisma.twitt.findMany({ take: 10 })
+     * // Get first 10 Posts
+     * const posts = await prisma.post.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const twittWithIdOnly = await prisma.twitt.findMany({ select: { id: true } })
+     * const postWithIdOnly = await prisma.post.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends TwittFindManyArgs>(args?: SelectSubset<T, TwittFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends PostFindManyArgs>(args?: SelectSubset<T, PostFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Twitt.
-     * @param {TwittCreateArgs} args - Arguments to create a Twitt.
+     * Create a Post.
+     * @param {PostCreateArgs} args - Arguments to create a Post.
      * @example
-     * // Create one Twitt
-     * const Twitt = await prisma.twitt.create({
+     * // Create one Post
+     * const Post = await prisma.post.create({
      *   data: {
-     *     // ... data to create a Twitt
+     *     // ... data to create a Post
      *   }
      * })
      * 
      */
-    create<T extends TwittCreateArgs>(args: SelectSubset<T, TwittCreateArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends PostCreateArgs>(args: SelectSubset<T, PostCreateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Twitts.
-     * @param {TwittCreateManyArgs} args - Arguments to create many Twitts.
+     * Create many Posts.
+     * @param {PostCreateManyArgs} args - Arguments to create many Posts.
      * @example
-     * // Create many Twitts
-     * const twitt = await prisma.twitt.createMany({
+     * // Create many Posts
+     * const post = await prisma.post.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends TwittCreateManyArgs>(args?: SelectSubset<T, TwittCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends PostCreateManyArgs>(args?: SelectSubset<T, PostCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many Twitts and returns the data saved in the database.
-     * @param {TwittCreateManyAndReturnArgs} args - Arguments to create many Twitts.
+     * Create many Posts and returns the data saved in the database.
+     * @param {PostCreateManyAndReturnArgs} args - Arguments to create many Posts.
      * @example
-     * // Create many Twitts
-     * const twitt = await prisma.twitt.createManyAndReturn({
+     * // Create many Posts
+     * const post = await prisma.post.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many Twitts and only return the `id`
-     * const twittWithIdOnly = await prisma.twitt.createManyAndReturn({
+     * // Create many Posts and only return the `id`
+     * const postWithIdOnly = await prisma.post.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -5000,28 +5013,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends TwittCreateManyAndReturnArgs>(args?: SelectSubset<T, TwittCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends PostCreateManyAndReturnArgs>(args?: SelectSubset<T, PostCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a Twitt.
-     * @param {TwittDeleteArgs} args - Arguments to delete one Twitt.
+     * Delete a Post.
+     * @param {PostDeleteArgs} args - Arguments to delete one Post.
      * @example
-     * // Delete one Twitt
-     * const Twitt = await prisma.twitt.delete({
+     * // Delete one Post
+     * const Post = await prisma.post.delete({
      *   where: {
-     *     // ... filter to delete one Twitt
+     *     // ... filter to delete one Post
      *   }
      * })
      * 
      */
-    delete<T extends TwittDeleteArgs>(args: SelectSubset<T, TwittDeleteArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends PostDeleteArgs>(args: SelectSubset<T, PostDeleteArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Twitt.
-     * @param {TwittUpdateArgs} args - Arguments to update one Twitt.
+     * Update one Post.
+     * @param {PostUpdateArgs} args - Arguments to update one Post.
      * @example
-     * // Update one Twitt
-     * const twitt = await prisma.twitt.update({
+     * // Update one Post
+     * const post = await prisma.post.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5031,30 +5044,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends TwittUpdateArgs>(args: SelectSubset<T, TwittUpdateArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends PostUpdateArgs>(args: SelectSubset<T, PostUpdateArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Twitts.
-     * @param {TwittDeleteManyArgs} args - Arguments to filter Twitts to delete.
+     * Delete zero or more Posts.
+     * @param {PostDeleteManyArgs} args - Arguments to filter Posts to delete.
      * @example
-     * // Delete a few Twitts
-     * const { count } = await prisma.twitt.deleteMany({
+     * // Delete a few Posts
+     * const { count } = await prisma.post.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends TwittDeleteManyArgs>(args?: SelectSubset<T, TwittDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends PostDeleteManyArgs>(args?: SelectSubset<T, PostDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Twitts.
+     * Update zero or more Posts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TwittUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {PostUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Twitts
-     * const twitt = await prisma.twitt.updateMany({
+     * // Update many Posts
+     * const post = await prisma.post.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5064,14 +5077,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends TwittUpdateManyArgs>(args: SelectSubset<T, TwittUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends PostUpdateManyArgs>(args: SelectSubset<T, PostUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Twitts and returns the data updated in the database.
-     * @param {TwittUpdateManyAndReturnArgs} args - Arguments to update many Twitts.
+     * Update zero or more Posts and returns the data updated in the database.
+     * @param {PostUpdateManyAndReturnArgs} args - Arguments to update many Posts.
      * @example
-     * // Update many Twitts
-     * const twitt = await prisma.twitt.updateManyAndReturn({
+     * // Update many Posts
+     * const post = await prisma.post.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -5080,8 +5093,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more Twitts and only return the `id`
-     * const twittWithIdOnly = await prisma.twitt.updateManyAndReturn({
+     * // Update zero or more Posts and only return the `id`
+     * const postWithIdOnly = await prisma.post.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -5094,56 +5107,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends TwittUpdateManyAndReturnArgs>(args: SelectSubset<T, TwittUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends PostUpdateManyAndReturnArgs>(args: SelectSubset<T, PostUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one Twitt.
-     * @param {TwittUpsertArgs} args - Arguments to update or create a Twitt.
+     * Create or update one Post.
+     * @param {PostUpsertArgs} args - Arguments to update or create a Post.
      * @example
-     * // Update or create a Twitt
-     * const twitt = await prisma.twitt.upsert({
+     * // Update or create a Post
+     * const post = await prisma.post.upsert({
      *   create: {
-     *     // ... data to create a Twitt
+     *     // ... data to create a Post
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Twitt we want to update
+     *     // ... the filter for the Post we want to update
      *   }
      * })
      */
-    upsert<T extends TwittUpsertArgs>(args: SelectSubset<T, TwittUpsertArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends PostUpsertArgs>(args: SelectSubset<T, PostUpsertArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Twitts.
+     * Count the number of Posts.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TwittCountArgs} args - Arguments to filter Twitts to count.
+     * @param {PostCountArgs} args - Arguments to filter Posts to count.
      * @example
-     * // Count the number of Twitts
-     * const count = await prisma.twitt.count({
+     * // Count the number of Posts
+     * const count = await prisma.post.count({
      *   where: {
-     *     // ... the filter for the Twitts we want to count
+     *     // ... the filter for the Posts we want to count
      *   }
      * })
     **/
-    count<T extends TwittCountArgs>(
-      args?: Subset<T, TwittCountArgs>,
+    count<T extends PostCountArgs>(
+      args?: Subset<T, PostCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], TwittCountAggregateOutputType>
+          : GetScalarType<T['select'], PostCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Twitt.
+     * Allows you to perform aggregations operations on a Post.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TwittAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {PostAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -5163,13 +5176,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends TwittAggregateArgs>(args: Subset<T, TwittAggregateArgs>): Prisma.PrismaPromise<GetTwittAggregateType<T>>
+    aggregate<T extends PostAggregateArgs>(args: Subset<T, PostAggregateArgs>): Prisma.PrismaPromise<GetPostAggregateType<T>>
 
     /**
-     * Group by Twitt.
+     * Group by Post.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {TwittGroupByArgs} args - Group by arguments.
+     * @param {PostGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -5184,14 +5197,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends TwittGroupByArgs,
+      T extends PostGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TwittGroupByArgs['orderBy'] }
-        : { orderBy?: TwittGroupByArgs['orderBy'] },
+        ? { orderBy: PostGroupByArgs['orderBy'] }
+        : { orderBy?: PostGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -5240,23 +5253,23 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, TwittGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTwittGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, PostGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPostGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Twitt model
+   * Fields of the Post model
    */
-  readonly fields: TwittFieldRefs;
+  readonly fields: PostFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Twitt.
+   * The delegate class that acts as a "Promise-like" for Post.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__TwittClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     creator<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    comments<T extends Twitt$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Twitt$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comments<T extends Post$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5283,416 +5296,416 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Twitt model
+   * Fields of the Post model
    */ 
-  interface TwittFieldRefs {
-    readonly id: FieldRef<"Twitt", 'String'>
-    readonly title: FieldRef<"Twitt", 'String'>
-    readonly content: FieldRef<"Twitt", 'String'>
-    readonly image: FieldRef<"Twitt", 'String'>
-    readonly creatorId: FieldRef<"Twitt", 'String'>
-    readonly likes: FieldRef<"Twitt", 'String[]'>
-    readonly createdAt: FieldRef<"Twitt", 'DateTime'>
-    readonly updatedAt: FieldRef<"Twitt", 'DateTime'>
+  interface PostFieldRefs {
+    readonly id: FieldRef<"Post", 'String'>
+    readonly title: FieldRef<"Post", 'String'>
+    readonly content: FieldRef<"Post", 'String'>
+    readonly image: FieldRef<"Post", 'String'>
+    readonly creatorId: FieldRef<"Post", 'String'>
+    readonly likes: FieldRef<"Post", 'String[]'>
+    readonly createdAt: FieldRef<"Post", 'DateTime'>
+    readonly updatedAt: FieldRef<"Post", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Twitt findUnique
+   * Post findUnique
    */
-  export type TwittFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * Filter, which Twitt to fetch.
+     * Filter, which Post to fetch.
      */
-    where: TwittWhereUniqueInput
+    where: PostWhereUniqueInput
   }
 
   /**
-   * Twitt findUniqueOrThrow
+   * Post findUniqueOrThrow
    */
-  export type TwittFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * Filter, which Twitt to fetch.
+     * Filter, which Post to fetch.
      */
-    where: TwittWhereUniqueInput
+    where: PostWhereUniqueInput
   }
 
   /**
-   * Twitt findFirst
+   * Post findFirst
    */
-  export type TwittFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * Filter, which Twitt to fetch.
+     * Filter, which Post to fetch.
      */
-    where?: TwittWhereInput
+    where?: PostWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Twitts to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: TwittOrderByWithRelationInput | TwittOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Twitts.
+     * Sets the position for searching for Posts.
      */
-    cursor?: TwittWhereUniqueInput
+    cursor?: PostWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Twitts from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Twitts.
+     * Skip the first `n` Posts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Twitts.
+     * Filter by unique combinations of Posts.
      */
-    distinct?: TwittScalarFieldEnum | TwittScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
   }
 
   /**
-   * Twitt findFirstOrThrow
+   * Post findFirstOrThrow
    */
-  export type TwittFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * Filter, which Twitt to fetch.
+     * Filter, which Post to fetch.
      */
-    where?: TwittWhereInput
+    where?: PostWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Twitts to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: TwittOrderByWithRelationInput | TwittOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Twitts.
+     * Sets the position for searching for Posts.
      */
-    cursor?: TwittWhereUniqueInput
+    cursor?: PostWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Twitts from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Twitts.
+     * Skip the first `n` Posts.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Twitts.
+     * Filter by unique combinations of Posts.
      */
-    distinct?: TwittScalarFieldEnum | TwittScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
   }
 
   /**
-   * Twitt findMany
+   * Post findMany
    */
-  export type TwittFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * Filter, which Twitts to fetch.
+     * Filter, which Posts to fetch.
      */
-    where?: TwittWhereInput
+    where?: PostWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Twitts to fetch.
+     * Determine the order of Posts to fetch.
      */
-    orderBy?: TwittOrderByWithRelationInput | TwittOrderByWithRelationInput[]
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Twitts.
+     * Sets the position for listing Posts.
      */
-    cursor?: TwittWhereUniqueInput
+    cursor?: PostWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Twitts from the position of the cursor.
+     * Take `±n` Posts from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Twitts.
+     * Skip the first `n` Posts.
      */
     skip?: number
-    distinct?: TwittScalarFieldEnum | TwittScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
   }
 
   /**
-   * Twitt create
+   * Post create
    */
-  export type TwittCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * The data needed to create a Twitt.
+     * The data needed to create a Post.
      */
-    data: XOR<TwittCreateInput, TwittUncheckedCreateInput>
+    data: XOR<PostCreateInput, PostUncheckedCreateInput>
   }
 
   /**
-   * Twitt createMany
+   * Post createMany
    */
-  export type TwittCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Twitts.
+     * The data used to create many Posts.
      */
-    data: TwittCreateManyInput | TwittCreateManyInput[]
+    data: PostCreateManyInput | PostCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Twitt createManyAndReturn
+   * Post createManyAndReturn
    */
-  export type TwittCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelectCreateManyAndReturn<ExtArgs> | null
+    select?: PostSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
-     * The data used to create many Twitts.
+     * The data used to create many Posts.
      */
-    data: TwittCreateManyInput | TwittCreateManyInput[]
+    data: PostCreateManyInput | PostCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: PostIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Twitt update
+   * Post update
    */
-  export type TwittUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * The data needed to update a Twitt.
+     * The data needed to update a Post.
      */
-    data: XOR<TwittUpdateInput, TwittUncheckedUpdateInput>
+    data: XOR<PostUpdateInput, PostUncheckedUpdateInput>
     /**
-     * Choose, which Twitt to update.
+     * Choose, which Post to update.
      */
-    where: TwittWhereUniqueInput
+    where: PostWhereUniqueInput
   }
 
   /**
-   * Twitt updateMany
+   * Post updateMany
    */
-  export type TwittUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Twitts.
+     * The data used to update Posts.
      */
-    data: XOR<TwittUpdateManyMutationInput, TwittUncheckedUpdateManyInput>
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
     /**
-     * Filter which Twitts to update
+     * Filter which Posts to update
      */
-    where?: TwittWhereInput
+    where?: PostWhereInput
     /**
-     * Limit how many Twitts to update.
+     * Limit how many Posts to update.
      */
     limit?: number
   }
 
   /**
-   * Twitt updateManyAndReturn
+   * Post updateManyAndReturn
    */
-  export type TwittUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: PostSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
-     * The data used to update Twitts.
+     * The data used to update Posts.
      */
-    data: XOR<TwittUpdateManyMutationInput, TwittUncheckedUpdateManyInput>
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyInput>
     /**
-     * Filter which Twitts to update
+     * Filter which Posts to update
      */
-    where?: TwittWhereInput
+    where?: PostWhereInput
     /**
-     * Limit how many Twitts to update.
+     * Limit how many Posts to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: PostIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * Twitt upsert
+   * Post upsert
    */
-  export type TwittUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * The filter to search for the Twitt to update in case it exists.
+     * The filter to search for the Post to update in case it exists.
      */
-    where: TwittWhereUniqueInput
+    where: PostWhereUniqueInput
     /**
-     * In case the Twitt found by the `where` argument doesn't exist, create a new Twitt with this data.
+     * In case the Post found by the `where` argument doesn't exist, create a new Post with this data.
      */
-    create: XOR<TwittCreateInput, TwittUncheckedCreateInput>
+    create: XOR<PostCreateInput, PostUncheckedCreateInput>
     /**
-     * In case the Twitt was found with the provided `where` argument, update it with this data.
+     * In case the Post was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<TwittUpdateInput, TwittUncheckedUpdateInput>
+    update: XOR<PostUpdateInput, PostUncheckedUpdateInput>
   }
 
   /**
-   * Twitt delete
+   * Post delete
    */
-  export type TwittDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
     /**
-     * Filter which Twitt to delete.
+     * Filter which Post to delete.
      */
-    where: TwittWhereUniqueInput
+    where: PostWhereUniqueInput
   }
 
   /**
-   * Twitt deleteMany
+   * Post deleteMany
    */
-  export type TwittDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Twitts to delete
+     * Filter which Posts to delete
      */
-    where?: TwittWhereInput
+    where?: PostWhereInput
     /**
-     * Limit how many Twitts to delete.
+     * Limit how many Posts to delete.
      */
     limit?: number
   }
 
   /**
-   * Twitt.comments
+   * Post.comments
    */
-  export type Twitt$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Post$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Comment
      */
@@ -5714,21 +5727,21 @@ export namespace Prisma {
   }
 
   /**
-   * Twitt without action
+   * Post without action
    */
-  export type TwittDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type PostDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Twitt
+     * Select specific fields to fetch from the Post
      */
-    select?: TwittSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Twitt
+     * Omit specific fields from the Post
      */
-    omit?: TwittOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: TwittInclude<ExtArgs> | null
+    include?: PostInclude<ExtArgs> | null
   }
 
 
@@ -5745,7 +5758,7 @@ export namespace Prisma {
   export type CommentMinAggregateOutputType = {
     id: string | null
     text: string | null
-    twittId: string | null
+    postId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5753,7 +5766,7 @@ export namespace Prisma {
   export type CommentMaxAggregateOutputType = {
     id: string | null
     text: string | null
-    twittId: string | null
+    postId: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -5761,7 +5774,7 @@ export namespace Prisma {
   export type CommentCountAggregateOutputType = {
     id: number
     text: number
-    twittId: number
+    postId: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -5771,7 +5784,7 @@ export namespace Prisma {
   export type CommentMinAggregateInputType = {
     id?: true
     text?: true
-    twittId?: true
+    postId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5779,7 +5792,7 @@ export namespace Prisma {
   export type CommentMaxAggregateInputType = {
     id?: true
     text?: true
-    twittId?: true
+    postId?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -5787,7 +5800,7 @@ export namespace Prisma {
   export type CommentCountAggregateInputType = {
     id?: true
     text?: true
-    twittId?: true
+    postId?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -5868,7 +5881,7 @@ export namespace Prisma {
   export type CommentGroupByOutputType = {
     id: string
     text: string
-    twittId: string
+    postId: string
     createdAt: Date
     updatedAt: Date
     _count: CommentCountAggregateOutputType | null
@@ -5893,58 +5906,58 @@ export namespace Prisma {
   export type CommentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    twittId?: boolean
+    postId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    twitt?: boolean | TwittDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    twittId?: boolean
+    postId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    twitt?: boolean | TwittDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     text?: boolean
-    twittId?: boolean
+    postId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    twitt?: boolean | TwittDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
   export type CommentSelectScalar = {
     id?: boolean
     text?: boolean
-    twittId?: boolean
+    postId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "twittId" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
+  export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "text" | "postId" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    twitt?: boolean | TwittDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }
   export type CommentIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    twitt?: boolean | TwittDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }
   export type CommentIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    twitt?: boolean | TwittDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }
 
   export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Comment"
     objects: {
-      twitt: Prisma.$TwittPayload<ExtArgs>
+      post: Prisma.$PostPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       text: string
-      twittId: string
+      postId: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["comment"]>
@@ -6341,7 +6354,7 @@ export namespace Prisma {
    */
   export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    twitt<T extends TwittDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TwittDefaultArgs<ExtArgs>>): Prisma__TwittClient<$Result.GetResult<Prisma.$TwittPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6373,7 +6386,7 @@ export namespace Prisma {
   interface CommentFieldRefs {
     readonly id: FieldRef<"Comment", 'String'>
     readonly text: FieldRef<"Comment", 'String'>
-    readonly twittId: FieldRef<"Comment", 'String'>
+    readonly postId: FieldRef<"Comment", 'String'>
     readonly createdAt: FieldRef<"Comment", 'DateTime'>
     readonly updatedAt: FieldRef<"Comment", 'DateTime'>
   }
@@ -6822,6 +6835,7 @@ export namespace Prisma {
     picture: 'picture',
     gender: 'gender',
     country: 'country',
+    city: 'city',
     age: 'age',
     isVerified: 'isVerified',
     createdAt: 'createdAt',
@@ -6845,7 +6859,7 @@ export namespace Prisma {
   export type SessionScalarFieldEnum = (typeof SessionScalarFieldEnum)[keyof typeof SessionScalarFieldEnum]
 
 
-  export const TwittScalarFieldEnum: {
+  export const PostScalarFieldEnum: {
     id: 'id',
     title: 'title',
     content: 'content',
@@ -6856,13 +6870,13 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type TwittScalarFieldEnum = (typeof TwittScalarFieldEnum)[keyof typeof TwittScalarFieldEnum]
+  export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
 
 
   export const CommentScalarFieldEnum: {
     id: 'id',
     text: 'text',
-    twittId: 'twittId',
+    postId: 'postId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -7033,11 +7047,12 @@ export namespace Prisma {
     picture?: StringNullableFilter<"User"> | string | null
     gender?: EnumGenderNullableFilter<"User"> | $Enums.Gender | null
     country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
     age?: IntNullableFilter<"User"> | number | null
     isVerified?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    twitts?: TwittListRelationFilter
+    posts?: PostListRelationFilter
     sessions?: SessionListRelationFilter
   }
 
@@ -7050,11 +7065,12 @@ export namespace Prisma {
     picture?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    twitts?: TwittOrderByRelationAggregateInput
+    posts?: PostOrderByRelationAggregateInput
     sessions?: SessionOrderByRelationAggregateInput
   }
 
@@ -7070,11 +7086,12 @@ export namespace Prisma {
     picture?: StringNullableFilter<"User"> | string | null
     gender?: EnumGenderNullableFilter<"User"> | $Enums.Gender | null
     country?: StringNullableFilter<"User"> | string | null
+    city?: StringNullableFilter<"User"> | string | null
     age?: IntNullableFilter<"User"> | number | null
     isVerified?: BoolFilter<"User"> | boolean
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
-    twitts?: TwittListRelationFilter
+    posts?: PostListRelationFilter
     sessions?: SessionListRelationFilter
   }, "id" | "email" | "username">
 
@@ -7087,6 +7104,7 @@ export namespace Prisma {
     picture?: SortOrderInput | SortOrder
     gender?: SortOrderInput | SortOrder
     country?: SortOrderInput | SortOrder
+    city?: SortOrderInput | SortOrder
     age?: SortOrderInput | SortOrder
     isVerified?: SortOrder
     createdAt?: SortOrder
@@ -7110,6 +7128,7 @@ export namespace Prisma {
     picture?: StringNullableWithAggregatesFilter<"User"> | string | null
     gender?: EnumGenderNullableWithAggregatesFilter<"User"> | $Enums.Gender | null
     country?: StringNullableWithAggregatesFilter<"User"> | string | null
+    city?: StringNullableWithAggregatesFilter<"User"> | string | null
     age?: IntNullableWithAggregatesFilter<"User"> | number | null
     isVerified?: BoolWithAggregatesFilter<"User"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -7186,23 +7205,23 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Session"> | Date | string
   }
 
-  export type TwittWhereInput = {
-    AND?: TwittWhereInput | TwittWhereInput[]
-    OR?: TwittWhereInput[]
-    NOT?: TwittWhereInput | TwittWhereInput[]
-    id?: StringFilter<"Twitt"> | string
-    title?: StringFilter<"Twitt"> | string
-    content?: StringFilter<"Twitt"> | string
-    image?: StringNullableFilter<"Twitt"> | string | null
-    creatorId?: StringFilter<"Twitt"> | string
-    likes?: StringNullableListFilter<"Twitt">
-    createdAt?: DateTimeFilter<"Twitt"> | Date | string
-    updatedAt?: DateTimeFilter<"Twitt"> | Date | string
+  export type PostWhereInput = {
+    AND?: PostWhereInput | PostWhereInput[]
+    OR?: PostWhereInput[]
+    NOT?: PostWhereInput | PostWhereInput[]
+    id?: StringFilter<"Post"> | string
+    title?: StringFilter<"Post"> | string
+    content?: StringFilter<"Post"> | string
+    image?: StringNullableFilter<"Post"> | string | null
+    creatorId?: StringFilter<"Post"> | string
+    likes?: StringNullableListFilter<"Post">
+    createdAt?: DateTimeFilter<"Post"> | Date | string
+    updatedAt?: DateTimeFilter<"Post"> | Date | string
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     comments?: CommentListRelationFilter
   }
 
-  export type TwittOrderByWithRelationInput = {
+  export type PostOrderByWithRelationInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -7215,23 +7234,23 @@ export namespace Prisma {
     comments?: CommentOrderByRelationAggregateInput
   }
 
-  export type TwittWhereUniqueInput = Prisma.AtLeast<{
+  export type PostWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: TwittWhereInput | TwittWhereInput[]
-    OR?: TwittWhereInput[]
-    NOT?: TwittWhereInput | TwittWhereInput[]
-    title?: StringFilter<"Twitt"> | string
-    content?: StringFilter<"Twitt"> | string
-    image?: StringNullableFilter<"Twitt"> | string | null
-    creatorId?: StringFilter<"Twitt"> | string
-    likes?: StringNullableListFilter<"Twitt">
-    createdAt?: DateTimeFilter<"Twitt"> | Date | string
-    updatedAt?: DateTimeFilter<"Twitt"> | Date | string
+    AND?: PostWhereInput | PostWhereInput[]
+    OR?: PostWhereInput[]
+    NOT?: PostWhereInput | PostWhereInput[]
+    title?: StringFilter<"Post"> | string
+    content?: StringFilter<"Post"> | string
+    image?: StringNullableFilter<"Post"> | string | null
+    creatorId?: StringFilter<"Post"> | string
+    likes?: StringNullableListFilter<"Post">
+    createdAt?: DateTimeFilter<"Post"> | Date | string
+    updatedAt?: DateTimeFilter<"Post"> | Date | string
     creator?: XOR<UserScalarRelationFilter, UserWhereInput>
     comments?: CommentListRelationFilter
   }, "id">
 
-  export type TwittOrderByWithAggregationInput = {
+  export type PostOrderByWithAggregationInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -7240,23 +7259,23 @@ export namespace Prisma {
     likes?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    _count?: TwittCountOrderByAggregateInput
-    _max?: TwittMaxOrderByAggregateInput
-    _min?: TwittMinOrderByAggregateInput
+    _count?: PostCountOrderByAggregateInput
+    _max?: PostMaxOrderByAggregateInput
+    _min?: PostMinOrderByAggregateInput
   }
 
-  export type TwittScalarWhereWithAggregatesInput = {
-    AND?: TwittScalarWhereWithAggregatesInput | TwittScalarWhereWithAggregatesInput[]
-    OR?: TwittScalarWhereWithAggregatesInput[]
-    NOT?: TwittScalarWhereWithAggregatesInput | TwittScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Twitt"> | string
-    title?: StringWithAggregatesFilter<"Twitt"> | string
-    content?: StringWithAggregatesFilter<"Twitt"> | string
-    image?: StringNullableWithAggregatesFilter<"Twitt"> | string | null
-    creatorId?: StringWithAggregatesFilter<"Twitt"> | string
-    likes?: StringNullableListFilter<"Twitt">
-    createdAt?: DateTimeWithAggregatesFilter<"Twitt"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Twitt"> | Date | string
+  export type PostScalarWhereWithAggregatesInput = {
+    AND?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
+    OR?: PostScalarWhereWithAggregatesInput[]
+    NOT?: PostScalarWhereWithAggregatesInput | PostScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Post"> | string
+    title?: StringWithAggregatesFilter<"Post"> | string
+    content?: StringWithAggregatesFilter<"Post"> | string
+    image?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    creatorId?: StringWithAggregatesFilter<"Post"> | string
+    likes?: StringNullableListFilter<"Post">
+    createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
   }
 
   export type CommentWhereInput = {
@@ -7265,19 +7284,19 @@ export namespace Prisma {
     NOT?: CommentWhereInput | CommentWhereInput[]
     id?: StringFilter<"Comment"> | string
     text?: StringFilter<"Comment"> | string
-    twittId?: StringFilter<"Comment"> | string
+    postId?: StringFilter<"Comment"> | string
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
-    twitt?: XOR<TwittScalarRelationFilter, TwittWhereInput>
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
 
   export type CommentOrderByWithRelationInput = {
     id?: SortOrder
     text?: SortOrder
-    twittId?: SortOrder
+    postId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    twitt?: TwittOrderByWithRelationInput
+    post?: PostOrderByWithRelationInput
   }
 
   export type CommentWhereUniqueInput = Prisma.AtLeast<{
@@ -7286,16 +7305,16 @@ export namespace Prisma {
     OR?: CommentWhereInput[]
     NOT?: CommentWhereInput | CommentWhereInput[]
     text?: StringFilter<"Comment"> | string
-    twittId?: StringFilter<"Comment"> | string
+    postId?: StringFilter<"Comment"> | string
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
-    twitt?: XOR<TwittScalarRelationFilter, TwittWhereInput>
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "id">
 
   export type CommentOrderByWithAggregationInput = {
     id?: SortOrder
     text?: SortOrder
-    twittId?: SortOrder
+    postId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: CommentCountOrderByAggregateInput
@@ -7309,7 +7328,7 @@ export namespace Prisma {
     NOT?: CommentScalarWhereWithAggregatesInput | CommentScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Comment"> | string
     text?: StringWithAggregatesFilter<"Comment"> | string
-    twittId?: StringWithAggregatesFilter<"Comment"> | string
+    postId?: StringWithAggregatesFilter<"Comment"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Comment"> | Date | string
   }
@@ -7365,11 +7384,12 @@ export namespace Prisma {
     picture?: string | null
     gender?: $Enums.Gender | null
     country?: string | null
+    city?: string | null
     age?: number | null
     isVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    twitts?: TwittCreateNestedManyWithoutCreatorInput
+    posts?: PostCreateNestedManyWithoutCreatorInput
     sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
@@ -7382,11 +7402,12 @@ export namespace Prisma {
     picture?: string | null
     gender?: $Enums.Gender | null
     country?: string | null
+    city?: string | null
     age?: number | null
     isVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    twitts?: TwittUncheckedCreateNestedManyWithoutCreatorInput
+    posts?: PostUncheckedCreateNestedManyWithoutCreatorInput
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -7399,11 +7420,12 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    twitts?: TwittUpdateManyWithoutCreatorNestedInput
+    posts?: PostUpdateManyWithoutCreatorNestedInput
     sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
@@ -7416,11 +7438,12 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    twitts?: TwittUncheckedUpdateManyWithoutCreatorNestedInput
+    posts?: PostUncheckedUpdateManyWithoutCreatorNestedInput
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -7433,6 +7456,7 @@ export namespace Prisma {
     picture?: string | null
     gender?: $Enums.Gender | null
     country?: string | null
+    city?: string | null
     age?: number | null
     isVerified?: boolean
     createdAt?: Date | string
@@ -7448,6 +7472,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7463,6 +7488,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7545,82 +7571,82 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TwittCreateInput = {
+  export type PostCreateInput = {
     id?: string
     title: string
     content: string
     image?: string | null
-    likes?: TwittCreatelikesInput | string[]
+    likes?: PostCreatelikesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    creator: UserCreateNestedOneWithoutTwittsInput
-    comments?: CommentCreateNestedManyWithoutTwittInput
+    creator: UserCreateNestedOneWithoutPostsInput
+    comments?: CommentCreateNestedManyWithoutPostInput
   }
 
-  export type TwittUncheckedCreateInput = {
-    id?: string
-    title: string
-    content: string
-    image?: string | null
-    creatorId: string
-    likes?: TwittCreatelikesInput | string[]
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    comments?: CommentUncheckedCreateNestedManyWithoutTwittInput
-  }
-
-  export type TwittUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    likes?: TwittUpdatelikesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    creator?: UserUpdateOneRequiredWithoutTwittsNestedInput
-    comments?: CommentUpdateManyWithoutTwittNestedInput
-  }
-
-  export type TwittUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    creatorId?: StringFieldUpdateOperationsInput | string
-    likes?: TwittUpdatelikesInput | string[]
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    comments?: CommentUncheckedUpdateManyWithoutTwittNestedInput
-  }
-
-  export type TwittCreateManyInput = {
+  export type PostUncheckedCreateInput = {
     id?: string
     title: string
     content: string
     image?: string | null
     creatorId: string
-    likes?: TwittCreatelikesInput | string[]
+    likes?: PostCreatelikesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    comments?: CommentUncheckedCreateNestedManyWithoutPostInput
   }
 
-  export type TwittUpdateManyMutationInput = {
+  export type PostUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    likes?: TwittUpdatelikesInput | string[]
+    likes?: PostUpdatelikesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    creator?: UserUpdateOneRequiredWithoutPostsNestedInput
+    comments?: CommentUpdateManyWithoutPostNestedInput
   }
 
-  export type TwittUncheckedUpdateManyInput = {
+  export type PostUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     creatorId?: StringFieldUpdateOperationsInput | string
-    likes?: TwittUpdatelikesInput | string[]
+    likes?: PostUpdatelikesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
+  }
+
+  export type PostCreateManyInput = {
+    id?: string
+    title: string
+    content: string
+    image?: string | null
+    creatorId: string
+    likes?: PostCreatelikesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type PostUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    likes?: PostUpdatelikesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PostUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    creatorId?: StringFieldUpdateOperationsInput | string
+    likes?: PostUpdatelikesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7630,13 +7656,13 @@ export namespace Prisma {
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
-    twitt: TwittCreateNestedOneWithoutCommentsInput
+    post: PostCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateInput = {
     id?: string
     text: string
-    twittId: string
+    postId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7646,13 +7672,13 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    twitt?: TwittUpdateOneRequiredWithoutCommentsNestedInput
+    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    twittId?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7660,7 +7686,7 @@ export namespace Prisma {
   export type CommentCreateManyInput = {
     id?: string
     text: string
-    twittId: string
+    postId: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7675,7 +7701,7 @@ export namespace Prisma {
   export type CommentUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
-    twittId?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7794,10 +7820,10 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type TwittListRelationFilter = {
-    every?: TwittWhereInput
-    some?: TwittWhereInput
-    none?: TwittWhereInput
+  export type PostListRelationFilter = {
+    every?: PostWhereInput
+    some?: PostWhereInput
+    none?: PostWhereInput
   }
 
   export type SessionListRelationFilter = {
@@ -7811,7 +7837,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type TwittOrderByRelationAggregateInput = {
+  export type PostOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7828,6 +7854,7 @@ export namespace Prisma {
     picture?: SortOrder
     gender?: SortOrder
     country?: SortOrder
+    city?: SortOrder
     age?: SortOrder
     isVerified?: SortOrder
     createdAt?: SortOrder
@@ -7847,6 +7874,7 @@ export namespace Prisma {
     picture?: SortOrder
     gender?: SortOrder
     country?: SortOrder
+    city?: SortOrder
     age?: SortOrder
     isVerified?: SortOrder
     createdAt?: SortOrder
@@ -7862,6 +7890,7 @@ export namespace Prisma {
     picture?: SortOrder
     gender?: SortOrder
     country?: SortOrder
+    city?: SortOrder
     age?: SortOrder
     isVerified?: SortOrder
     createdAt?: SortOrder
@@ -7980,7 +8009,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type TwittCountOrderByAggregateInput = {
+  export type PostCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -7991,7 +8020,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type TwittMaxOrderByAggregateInput = {
+  export type PostMaxOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -8001,7 +8030,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type TwittMinOrderByAggregateInput = {
+  export type PostMinOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
@@ -8011,15 +8040,15 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type TwittScalarRelationFilter = {
-    is?: TwittWhereInput
-    isNot?: TwittWhereInput
+  export type PostScalarRelationFilter = {
+    is?: PostWhereInput
+    isNot?: PostWhereInput
   }
 
   export type CommentCountOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    twittId?: SortOrder
+    postId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8027,7 +8056,7 @@ export namespace Prisma {
   export type CommentMaxOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    twittId?: SortOrder
+    postId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8035,7 +8064,7 @@ export namespace Prisma {
   export type CommentMinOrderByAggregateInput = {
     id?: SortOrder
     text?: SortOrder
-    twittId?: SortOrder
+    postId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -8048,11 +8077,11 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type TwittCreateNestedManyWithoutCreatorInput = {
-    create?: XOR<TwittCreateWithoutCreatorInput, TwittUncheckedCreateWithoutCreatorInput> | TwittCreateWithoutCreatorInput[] | TwittUncheckedCreateWithoutCreatorInput[]
-    connectOrCreate?: TwittCreateOrConnectWithoutCreatorInput | TwittCreateOrConnectWithoutCreatorInput[]
-    createMany?: TwittCreateManyCreatorInputEnvelope
-    connect?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
+  export type PostCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<PostCreateWithoutCreatorInput, PostUncheckedCreateWithoutCreatorInput> | PostCreateWithoutCreatorInput[] | PostUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCreatorInput | PostCreateOrConnectWithoutCreatorInput[]
+    createMany?: PostCreateManyCreatorInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
   }
 
   export type SessionCreateNestedManyWithoutUserInput = {
@@ -8062,11 +8091,11 @@ export namespace Prisma {
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
-  export type TwittUncheckedCreateNestedManyWithoutCreatorInput = {
-    create?: XOR<TwittCreateWithoutCreatorInput, TwittUncheckedCreateWithoutCreatorInput> | TwittCreateWithoutCreatorInput[] | TwittUncheckedCreateWithoutCreatorInput[]
-    connectOrCreate?: TwittCreateOrConnectWithoutCreatorInput | TwittCreateOrConnectWithoutCreatorInput[]
-    createMany?: TwittCreateManyCreatorInputEnvelope
-    connect?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
+  export type PostUncheckedCreateNestedManyWithoutCreatorInput = {
+    create?: XOR<PostCreateWithoutCreatorInput, PostUncheckedCreateWithoutCreatorInput> | PostCreateWithoutCreatorInput[] | PostUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCreatorInput | PostCreateOrConnectWithoutCreatorInput[]
+    createMany?: PostCreateManyCreatorInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
   }
 
   export type SessionUncheckedCreateNestedManyWithoutUserInput = {
@@ -8096,18 +8125,18 @@ export namespace Prisma {
     set?: boolean
   }
 
-  export type TwittUpdateManyWithoutCreatorNestedInput = {
-    create?: XOR<TwittCreateWithoutCreatorInput, TwittUncheckedCreateWithoutCreatorInput> | TwittCreateWithoutCreatorInput[] | TwittUncheckedCreateWithoutCreatorInput[]
-    connectOrCreate?: TwittCreateOrConnectWithoutCreatorInput | TwittCreateOrConnectWithoutCreatorInput[]
-    upsert?: TwittUpsertWithWhereUniqueWithoutCreatorInput | TwittUpsertWithWhereUniqueWithoutCreatorInput[]
-    createMany?: TwittCreateManyCreatorInputEnvelope
-    set?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    disconnect?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    delete?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    connect?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    update?: TwittUpdateWithWhereUniqueWithoutCreatorInput | TwittUpdateWithWhereUniqueWithoutCreatorInput[]
-    updateMany?: TwittUpdateManyWithWhereWithoutCreatorInput | TwittUpdateManyWithWhereWithoutCreatorInput[]
-    deleteMany?: TwittScalarWhereInput | TwittScalarWhereInput[]
+  export type PostUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<PostCreateWithoutCreatorInput, PostUncheckedCreateWithoutCreatorInput> | PostCreateWithoutCreatorInput[] | PostUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCreatorInput | PostCreateOrConnectWithoutCreatorInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutCreatorInput | PostUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: PostCreateManyCreatorInputEnvelope
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutCreatorInput | PostUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutCreatorInput | PostUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
   export type SessionUpdateManyWithoutUserNestedInput = {
@@ -8124,18 +8153,18 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
-  export type TwittUncheckedUpdateManyWithoutCreatorNestedInput = {
-    create?: XOR<TwittCreateWithoutCreatorInput, TwittUncheckedCreateWithoutCreatorInput> | TwittCreateWithoutCreatorInput[] | TwittUncheckedCreateWithoutCreatorInput[]
-    connectOrCreate?: TwittCreateOrConnectWithoutCreatorInput | TwittCreateOrConnectWithoutCreatorInput[]
-    upsert?: TwittUpsertWithWhereUniqueWithoutCreatorInput | TwittUpsertWithWhereUniqueWithoutCreatorInput[]
-    createMany?: TwittCreateManyCreatorInputEnvelope
-    set?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    disconnect?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    delete?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    connect?: TwittWhereUniqueInput | TwittWhereUniqueInput[]
-    update?: TwittUpdateWithWhereUniqueWithoutCreatorInput | TwittUpdateWithWhereUniqueWithoutCreatorInput[]
-    updateMany?: TwittUpdateManyWithWhereWithoutCreatorInput | TwittUpdateManyWithWhereWithoutCreatorInput[]
-    deleteMany?: TwittScalarWhereInput | TwittScalarWhereInput[]
+  export type PostUncheckedUpdateManyWithoutCreatorNestedInput = {
+    create?: XOR<PostCreateWithoutCreatorInput, PostUncheckedCreateWithoutCreatorInput> | PostCreateWithoutCreatorInput[] | PostUncheckedCreateWithoutCreatorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutCreatorInput | PostCreateOrConnectWithoutCreatorInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutCreatorInput | PostUpsertWithWhereUniqueWithoutCreatorInput[]
+    createMany?: PostCreateManyCreatorInputEnvelope
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutCreatorInput | PostUpdateWithWhereUniqueWithoutCreatorInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutCreatorInput | PostUpdateManyWithWhereWithoutCreatorInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
   export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
@@ -8166,83 +8195,83 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutSessionsInput, UserUpdateWithoutSessionsInput>, UserUncheckedUpdateWithoutSessionsInput>
   }
 
-  export type TwittCreatelikesInput = {
+  export type PostCreatelikesInput = {
     set: string[]
   }
 
-  export type UserCreateNestedOneWithoutTwittsInput = {
-    create?: XOR<UserCreateWithoutTwittsInput, UserUncheckedCreateWithoutTwittsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTwittsInput
+  export type UserCreateNestedOneWithoutPostsInput = {
+    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type CommentCreateNestedManyWithoutTwittInput = {
-    create?: XOR<CommentCreateWithoutTwittInput, CommentUncheckedCreateWithoutTwittInput> | CommentCreateWithoutTwittInput[] | CommentUncheckedCreateWithoutTwittInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutTwittInput | CommentCreateOrConnectWithoutTwittInput[]
-    createMany?: CommentCreateManyTwittInputEnvelope
+  export type CommentCreateNestedManyWithoutPostInput = {
+    create?: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput> | CommentCreateWithoutPostInput[] | CommentUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPostInput | CommentCreateOrConnectWithoutPostInput[]
+    createMany?: CommentCreateManyPostInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type CommentUncheckedCreateNestedManyWithoutTwittInput = {
-    create?: XOR<CommentCreateWithoutTwittInput, CommentUncheckedCreateWithoutTwittInput> | CommentCreateWithoutTwittInput[] | CommentUncheckedCreateWithoutTwittInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutTwittInput | CommentCreateOrConnectWithoutTwittInput[]
-    createMany?: CommentCreateManyTwittInputEnvelope
+  export type CommentUncheckedCreateNestedManyWithoutPostInput = {
+    create?: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput> | CommentCreateWithoutPostInput[] | CommentUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPostInput | CommentCreateOrConnectWithoutPostInput[]
+    createMany?: CommentCreateManyPostInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type TwittUpdatelikesInput = {
+  export type PostUpdatelikesInput = {
     set?: string[]
     push?: string | string[]
   }
 
-  export type UserUpdateOneRequiredWithoutTwittsNestedInput = {
-    create?: XOR<UserCreateWithoutTwittsInput, UserUncheckedCreateWithoutTwittsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTwittsInput
-    upsert?: UserUpsertWithoutTwittsInput
+  export type UserUpdateOneRequiredWithoutPostsNestedInput = {
+    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
+    upsert?: UserUpsertWithoutPostsInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTwittsInput, UserUpdateWithoutTwittsInput>, UserUncheckedUpdateWithoutTwittsInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
   }
 
-  export type CommentUpdateManyWithoutTwittNestedInput = {
-    create?: XOR<CommentCreateWithoutTwittInput, CommentUncheckedCreateWithoutTwittInput> | CommentCreateWithoutTwittInput[] | CommentUncheckedCreateWithoutTwittInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutTwittInput | CommentCreateOrConnectWithoutTwittInput[]
-    upsert?: CommentUpsertWithWhereUniqueWithoutTwittInput | CommentUpsertWithWhereUniqueWithoutTwittInput[]
-    createMany?: CommentCreateManyTwittInputEnvelope
+  export type CommentUpdateManyWithoutPostNestedInput = {
+    create?: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput> | CommentCreateWithoutPostInput[] | CommentUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPostInput | CommentCreateOrConnectWithoutPostInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutPostInput | CommentUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: CommentCreateManyPostInputEnvelope
     set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
     disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
     delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    update?: CommentUpdateWithWhereUniqueWithoutTwittInput | CommentUpdateWithWhereUniqueWithoutTwittInput[]
-    updateMany?: CommentUpdateManyWithWhereWithoutTwittInput | CommentUpdateManyWithWhereWithoutTwittInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutPostInput | CommentUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutPostInput | CommentUpdateManyWithWhereWithoutPostInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type CommentUncheckedUpdateManyWithoutTwittNestedInput = {
-    create?: XOR<CommentCreateWithoutTwittInput, CommentUncheckedCreateWithoutTwittInput> | CommentCreateWithoutTwittInput[] | CommentUncheckedCreateWithoutTwittInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutTwittInput | CommentCreateOrConnectWithoutTwittInput[]
-    upsert?: CommentUpsertWithWhereUniqueWithoutTwittInput | CommentUpsertWithWhereUniqueWithoutTwittInput[]
-    createMany?: CommentCreateManyTwittInputEnvelope
+  export type CommentUncheckedUpdateManyWithoutPostNestedInput = {
+    create?: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput> | CommentCreateWithoutPostInput[] | CommentUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPostInput | CommentCreateOrConnectWithoutPostInput[]
+    upsert?: CommentUpsertWithWhereUniqueWithoutPostInput | CommentUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: CommentCreateManyPostInputEnvelope
     set?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
     disconnect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
     delete?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-    update?: CommentUpdateWithWhereUniqueWithoutTwittInput | CommentUpdateWithWhereUniqueWithoutTwittInput[]
-    updateMany?: CommentUpdateManyWithWhereWithoutTwittInput | CommentUpdateManyWithWhereWithoutTwittInput[]
+    update?: CommentUpdateWithWhereUniqueWithoutPostInput | CommentUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: CommentUpdateManyWithWhereWithoutPostInput | CommentUpdateManyWithWhereWithoutPostInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type TwittCreateNestedOneWithoutCommentsInput = {
-    create?: XOR<TwittCreateWithoutCommentsInput, TwittUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: TwittCreateOrConnectWithoutCommentsInput
-    connect?: TwittWhereUniqueInput
+  export type PostCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: PostCreateOrConnectWithoutCommentsInput
+    connect?: PostWhereUniqueInput
   }
 
-  export type TwittUpdateOneRequiredWithoutCommentsNestedInput = {
-    create?: XOR<TwittCreateWithoutCommentsInput, TwittUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: TwittCreateOrConnectWithoutCommentsInput
-    upsert?: TwittUpsertWithoutCommentsInput
-    connect?: TwittWhereUniqueInput
-    update?: XOR<XOR<TwittUpdateToOneWithWhereWithoutCommentsInput, TwittUpdateWithoutCommentsInput>, TwittUncheckedUpdateWithoutCommentsInput>
+  export type PostUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: PostCreateOrConnectWithoutCommentsInput
+    upsert?: PostUpsertWithoutCommentsInput
+    connect?: PostWhereUniqueInput
+    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutCommentsInput, PostUpdateWithoutCommentsInput>, PostUncheckedUpdateWithoutCommentsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -8411,35 +8440,35 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type TwittCreateWithoutCreatorInput = {
+  export type PostCreateWithoutCreatorInput = {
     id?: string
     title: string
     content: string
     image?: string | null
-    likes?: TwittCreatelikesInput | string[]
+    likes?: PostCreatelikesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    comments?: CommentCreateNestedManyWithoutTwittInput
+    comments?: CommentCreateNestedManyWithoutPostInput
   }
 
-  export type TwittUncheckedCreateWithoutCreatorInput = {
+  export type PostUncheckedCreateWithoutCreatorInput = {
     id?: string
     title: string
     content: string
     image?: string | null
-    likes?: TwittCreatelikesInput | string[]
+    likes?: PostCreatelikesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    comments?: CommentUncheckedCreateNestedManyWithoutTwittInput
+    comments?: CommentUncheckedCreateNestedManyWithoutPostInput
   }
 
-  export type TwittCreateOrConnectWithoutCreatorInput = {
-    where: TwittWhereUniqueInput
-    create: XOR<TwittCreateWithoutCreatorInput, TwittUncheckedCreateWithoutCreatorInput>
+  export type PostCreateOrConnectWithoutCreatorInput = {
+    where: PostWhereUniqueInput
+    create: XOR<PostCreateWithoutCreatorInput, PostUncheckedCreateWithoutCreatorInput>
   }
 
-  export type TwittCreateManyCreatorInputEnvelope = {
-    data: TwittCreateManyCreatorInput | TwittCreateManyCreatorInput[]
+  export type PostCreateManyCreatorInputEnvelope = {
+    data: PostCreateManyCreatorInput | PostCreateManyCreatorInput[]
     skipDuplicates?: boolean
   }
 
@@ -8473,34 +8502,34 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type TwittUpsertWithWhereUniqueWithoutCreatorInput = {
-    where: TwittWhereUniqueInput
-    update: XOR<TwittUpdateWithoutCreatorInput, TwittUncheckedUpdateWithoutCreatorInput>
-    create: XOR<TwittCreateWithoutCreatorInput, TwittUncheckedCreateWithoutCreatorInput>
+  export type PostUpsertWithWhereUniqueWithoutCreatorInput = {
+    where: PostWhereUniqueInput
+    update: XOR<PostUpdateWithoutCreatorInput, PostUncheckedUpdateWithoutCreatorInput>
+    create: XOR<PostCreateWithoutCreatorInput, PostUncheckedCreateWithoutCreatorInput>
   }
 
-  export type TwittUpdateWithWhereUniqueWithoutCreatorInput = {
-    where: TwittWhereUniqueInput
-    data: XOR<TwittUpdateWithoutCreatorInput, TwittUncheckedUpdateWithoutCreatorInput>
+  export type PostUpdateWithWhereUniqueWithoutCreatorInput = {
+    where: PostWhereUniqueInput
+    data: XOR<PostUpdateWithoutCreatorInput, PostUncheckedUpdateWithoutCreatorInput>
   }
 
-  export type TwittUpdateManyWithWhereWithoutCreatorInput = {
-    where: TwittScalarWhereInput
-    data: XOR<TwittUpdateManyMutationInput, TwittUncheckedUpdateManyWithoutCreatorInput>
+  export type PostUpdateManyWithWhereWithoutCreatorInput = {
+    where: PostScalarWhereInput
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutCreatorInput>
   }
 
-  export type TwittScalarWhereInput = {
-    AND?: TwittScalarWhereInput | TwittScalarWhereInput[]
-    OR?: TwittScalarWhereInput[]
-    NOT?: TwittScalarWhereInput | TwittScalarWhereInput[]
-    id?: StringFilter<"Twitt"> | string
-    title?: StringFilter<"Twitt"> | string
-    content?: StringFilter<"Twitt"> | string
-    image?: StringNullableFilter<"Twitt"> | string | null
-    creatorId?: StringFilter<"Twitt"> | string
-    likes?: StringNullableListFilter<"Twitt">
-    createdAt?: DateTimeFilter<"Twitt"> | Date | string
-    updatedAt?: DateTimeFilter<"Twitt"> | Date | string
+  export type PostScalarWhereInput = {
+    AND?: PostScalarWhereInput | PostScalarWhereInput[]
+    OR?: PostScalarWhereInput[]
+    NOT?: PostScalarWhereInput | PostScalarWhereInput[]
+    id?: StringFilter<"Post"> | string
+    title?: StringFilter<"Post"> | string
+    content?: StringFilter<"Post"> | string
+    image?: StringNullableFilter<"Post"> | string | null
+    creatorId?: StringFilter<"Post"> | string
+    likes?: StringNullableListFilter<"Post">
+    createdAt?: DateTimeFilter<"Post"> | Date | string
+    updatedAt?: DateTimeFilter<"Post"> | Date | string
   }
 
   export type SessionUpsertWithWhereUniqueWithoutUserInput = {
@@ -8542,11 +8571,12 @@ export namespace Prisma {
     picture?: string | null
     gender?: $Enums.Gender | null
     country?: string | null
+    city?: string | null
     age?: number | null
     isVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    twitts?: TwittCreateNestedManyWithoutCreatorInput
+    posts?: PostCreateNestedManyWithoutCreatorInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
@@ -8558,11 +8588,12 @@ export namespace Prisma {
     picture?: string | null
     gender?: $Enums.Gender | null
     country?: string | null
+    city?: string | null
     age?: number | null
     isVerified?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
-    twitts?: TwittUncheckedCreateNestedManyWithoutCreatorInput
+    posts?: PostUncheckedCreateNestedManyWithoutCreatorInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -8590,11 +8621,12 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    twitts?: TwittUpdateManyWithoutCreatorNestedInput
+    posts?: PostUpdateManyWithoutCreatorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
@@ -8606,14 +8638,15 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    twitts?: TwittUncheckedUpdateManyWithoutCreatorNestedInput
+    posts?: PostUncheckedUpdateManyWithoutCreatorNestedInput
   }
 
-  export type UserCreateWithoutTwittsInput = {
+  export type UserCreateWithoutPostsInput = {
     id?: string
     email?: string | null
     username: string
@@ -8622,6 +8655,7 @@ export namespace Prisma {
     picture?: string | null
     gender?: $Enums.Gender | null
     country?: string | null
+    city?: string | null
     age?: number | null
     isVerified?: boolean
     createdAt?: Date | string
@@ -8629,7 +8663,7 @@ export namespace Prisma {
     sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutTwittsInput = {
+  export type UserUncheckedCreateWithoutPostsInput = {
     id?: string
     email?: string | null
     username: string
@@ -8638,6 +8672,7 @@ export namespace Prisma {
     picture?: string | null
     gender?: $Enums.Gender | null
     country?: string | null
+    city?: string | null
     age?: number | null
     isVerified?: boolean
     createdAt?: Date | string
@@ -8645,47 +8680,47 @@ export namespace Prisma {
     sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutTwittsInput = {
+  export type UserCreateOrConnectWithoutPostsInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTwittsInput, UserUncheckedCreateWithoutTwittsInput>
+    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
   }
 
-  export type CommentCreateWithoutTwittInput = {
+  export type CommentCreateWithoutPostInput = {
     id?: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CommentUncheckedCreateWithoutTwittInput = {
+  export type CommentUncheckedCreateWithoutPostInput = {
     id?: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CommentCreateOrConnectWithoutTwittInput = {
+  export type CommentCreateOrConnectWithoutPostInput = {
     where: CommentWhereUniqueInput
-    create: XOR<CommentCreateWithoutTwittInput, CommentUncheckedCreateWithoutTwittInput>
+    create: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput>
   }
 
-  export type CommentCreateManyTwittInputEnvelope = {
-    data: CommentCreateManyTwittInput | CommentCreateManyTwittInput[]
+  export type CommentCreateManyPostInputEnvelope = {
+    data: CommentCreateManyPostInput | CommentCreateManyPostInput[]
     skipDuplicates?: boolean
   }
 
-  export type UserUpsertWithoutTwittsInput = {
-    update: XOR<UserUpdateWithoutTwittsInput, UserUncheckedUpdateWithoutTwittsInput>
-    create: XOR<UserCreateWithoutTwittsInput, UserUncheckedCreateWithoutTwittsInput>
+  export type UserUpsertWithoutPostsInput = {
+    update: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
+    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutTwittsInput = {
+  export type UserUpdateToOneWithWhereWithoutPostsInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTwittsInput, UserUncheckedUpdateWithoutTwittsInput>
+    data: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
   }
 
-  export type UserUpdateWithoutTwittsInput = {
+  export type UserUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
@@ -8694,6 +8729,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8701,7 +8737,7 @@ export namespace Prisma {
     sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutTwittsInput = {
+  export type UserUncheckedUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     email?: NullableStringFieldUpdateOperationsInput | string | null
     username?: StringFieldUpdateOperationsInput | string
@@ -8710,6 +8746,7 @@ export namespace Prisma {
     picture?: NullableStringFieldUpdateOperationsInput | string | null
     gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
     country?: NullableStringFieldUpdateOperationsInput | string | null
+    city?: NullableStringFieldUpdateOperationsInput | string | null
     age?: NullableIntFieldUpdateOperationsInput | number | null
     isVerified?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -8717,20 +8754,20 @@ export namespace Prisma {
     sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type CommentUpsertWithWhereUniqueWithoutTwittInput = {
+  export type CommentUpsertWithWhereUniqueWithoutPostInput = {
     where: CommentWhereUniqueInput
-    update: XOR<CommentUpdateWithoutTwittInput, CommentUncheckedUpdateWithoutTwittInput>
-    create: XOR<CommentCreateWithoutTwittInput, CommentUncheckedCreateWithoutTwittInput>
+    update: XOR<CommentUpdateWithoutPostInput, CommentUncheckedUpdateWithoutPostInput>
+    create: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput>
   }
 
-  export type CommentUpdateWithWhereUniqueWithoutTwittInput = {
+  export type CommentUpdateWithWhereUniqueWithoutPostInput = {
     where: CommentWhereUniqueInput
-    data: XOR<CommentUpdateWithoutTwittInput, CommentUncheckedUpdateWithoutTwittInput>
+    data: XOR<CommentUpdateWithoutPostInput, CommentUncheckedUpdateWithoutPostInput>
   }
 
-  export type CommentUpdateManyWithWhereWithoutTwittInput = {
+  export type CommentUpdateManyWithWhereWithoutPostInput = {
     where: CommentScalarWhereInput
-    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutTwittInput>
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutPostInput>
   }
 
   export type CommentScalarWhereInput = {
@@ -8739,77 +8776,77 @@ export namespace Prisma {
     NOT?: CommentScalarWhereInput | CommentScalarWhereInput[]
     id?: StringFilter<"Comment"> | string
     text?: StringFilter<"Comment"> | string
-    twittId?: StringFilter<"Comment"> | string
+    postId?: StringFilter<"Comment"> | string
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
   }
 
-  export type TwittCreateWithoutCommentsInput = {
+  export type PostCreateWithoutCommentsInput = {
     id?: string
     title: string
     content: string
     image?: string | null
-    likes?: TwittCreatelikesInput | string[]
+    likes?: PostCreatelikesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
-    creator: UserCreateNestedOneWithoutTwittsInput
+    creator: UserCreateNestedOneWithoutPostsInput
   }
 
-  export type TwittUncheckedCreateWithoutCommentsInput = {
+  export type PostUncheckedCreateWithoutCommentsInput = {
     id?: string
     title: string
     content: string
     image?: string | null
     creatorId: string
-    likes?: TwittCreatelikesInput | string[]
+    likes?: PostCreatelikesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type TwittCreateOrConnectWithoutCommentsInput = {
-    where: TwittWhereUniqueInput
-    create: XOR<TwittCreateWithoutCommentsInput, TwittUncheckedCreateWithoutCommentsInput>
+  export type PostCreateOrConnectWithoutCommentsInput = {
+    where: PostWhereUniqueInput
+    create: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
   }
 
-  export type TwittUpsertWithoutCommentsInput = {
-    update: XOR<TwittUpdateWithoutCommentsInput, TwittUncheckedUpdateWithoutCommentsInput>
-    create: XOR<TwittCreateWithoutCommentsInput, TwittUncheckedCreateWithoutCommentsInput>
-    where?: TwittWhereInput
+  export type PostUpsertWithoutCommentsInput = {
+    update: XOR<PostUpdateWithoutCommentsInput, PostUncheckedUpdateWithoutCommentsInput>
+    create: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
+    where?: PostWhereInput
   }
 
-  export type TwittUpdateToOneWithWhereWithoutCommentsInput = {
-    where?: TwittWhereInput
-    data: XOR<TwittUpdateWithoutCommentsInput, TwittUncheckedUpdateWithoutCommentsInput>
+  export type PostUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: PostWhereInput
+    data: XOR<PostUpdateWithoutCommentsInput, PostUncheckedUpdateWithoutCommentsInput>
   }
 
-  export type TwittUpdateWithoutCommentsInput = {
+  export type PostUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    likes?: TwittUpdatelikesInput | string[]
+    likes?: PostUpdatelikesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    creator?: UserUpdateOneRequiredWithoutTwittsNestedInput
+    creator?: UserUpdateOneRequiredWithoutPostsNestedInput
   }
 
-  export type TwittUncheckedUpdateWithoutCommentsInput = {
+  export type PostUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     creatorId?: StringFieldUpdateOperationsInput | string
-    likes?: TwittUpdatelikesInput | string[]
+    likes?: PostUpdatelikesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type TwittCreateManyCreatorInput = {
+  export type PostCreateManyCreatorInput = {
     id?: string
     title: string
     content: string
     image?: string | null
-    likes?: TwittCreatelikesInput | string[]
+    likes?: PostCreatelikesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -8824,34 +8861,34 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type TwittUpdateWithoutCreatorInput = {
+  export type PostUpdateWithoutCreatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    likes?: TwittUpdatelikesInput | string[]
+    likes?: PostUpdatelikesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    comments?: CommentUpdateManyWithoutTwittNestedInput
+    comments?: CommentUpdateManyWithoutPostNestedInput
   }
 
-  export type TwittUncheckedUpdateWithoutCreatorInput = {
+  export type PostUncheckedUpdateWithoutCreatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    likes?: TwittUpdatelikesInput | string[]
+    likes?: PostUpdatelikesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    comments?: CommentUncheckedUpdateManyWithoutTwittNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
   }
 
-  export type TwittUncheckedUpdateManyWithoutCreatorInput = {
+  export type PostUncheckedUpdateManyWithoutCreatorInput = {
     id?: StringFieldUpdateOperationsInput | string
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
-    likes?: TwittUpdatelikesInput | string[]
+    likes?: PostUpdatelikesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -8886,28 +8923,28 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CommentCreateManyTwittInput = {
+  export type CommentCreateManyPostInput = {
     id?: string
     text: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
 
-  export type CommentUpdateWithoutTwittInput = {
+  export type CommentUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CommentUncheckedUpdateWithoutTwittInput = {
+  export type CommentUncheckedUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type CommentUncheckedUpdateManyWithoutTwittInput = {
+  export type CommentUncheckedUpdateManyWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
