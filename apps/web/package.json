@@ -9,9 +9,9 @@
 		"build": "tsc -b && vite build",
 		"preview": "vite preview",
 		"lint": "eslint .",
-		"lint:fix": "eslint . --fix",
+		"lint:fix": "eslint --fix",
 		"format": "prettier --write .",
-		"pretty": "bun format && bun lint --fix"
+		"pretty": "bun format && bun lint"
 	},
 	"dependencies": {
 		"@hookform/resolvers": "^4.1.3",
