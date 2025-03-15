@@ -1,6 +1,6 @@
 import React from 'react'
 
-import type { Theme} from './ThemeContext';
+import type { Theme } from './ThemeContext'
 
 import { ThemeContext } from './ThemeContext'
 
