@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react'
 
-import type { Profile} from './ProfileContext';
+import type { Profile } from './ProfileContext'
 
 import { ProfileContext } from './ProfileContext'
 

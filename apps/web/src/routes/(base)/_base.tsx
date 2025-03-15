@@ -1,4 +1,5 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
+import { Loader2 } from 'lucide-react'
 
 import { Header, Sidebar } from '../-components'
 
@@ -14,6 +15,9 @@ export const Route = createFileRoute('/(base)/_base')({
 			})
 		}
 	},
+	pendingComponent: () => <div className='h-screen flex items-center justify-center'>
+		<Loader2 className="animate-spin" size={64} />
+	</div>,
 })
 
 function LayoutComponent() {

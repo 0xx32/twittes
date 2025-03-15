@@ -1,10 +1,11 @@
+import { useSuspenseQuery } from '@tanstack/react-query'
 import { useParams } from '@tanstack/react-router'
 
-import { useGetUserQuery } from '@/utils/api/hooks'
+import { getUserQueryOptions } from '@/utils/api/options'
 
 export const useUser = () => {
 	const { username } = useParams({ strict: false })
-	const userQuery = useGetUserQuery({ username: username ?? '' })
+	const userQuery = useSuspenseQuery(getUserQueryOptions({ params: { username: username ?? '' } }))
 
 	return {
 		userQuery,

@@ -1,14 +1,12 @@
-import { RouterProvider } from '@tanstack/react-router'
 import { createRoot } from 'react-dom/client'
 
 import type { ProvidersProps } from './providers'
 
+import { App } from './app'
 import { Providers } from './providers'
 import { getProfile } from './utils/api/requests'
 import { AUTH_LOCAL_KEY } from './utils/constants/global'
-import { useSession } from './utils/contexts/session'
 import { queryClient } from './utils/globals/queryClient'
-import { router } from './utils/globals/router'
 
 import 'virtual:uno.css'
 import '@unocss/reset/tailwind.css'
@@ -32,17 +30,12 @@ async function init() {
 
 		providersProps.profile.defaultProfile = getProfileQuery.profile
 		providersProps.session.defaultSession = !!getProfileQuery
+
+		createRoot(document.getElementById('root')!).render(
+			<Providers {...providersProps}>
+				<App queryClient={queryClient} />
+			</Providers>
+		)
 	}
 }
 init()
-
-function InnerApp() {
-	const { session } = useSession()
-	return <RouterProvider router={router} context={{ isAuthenticated: session, queryClient }} />
-}
-
-createRoot(document.getElementById('root')!).render(
-	<Providers {...providersProps}>
-		<InnerApp />
-	</Providers>
-)
