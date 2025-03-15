@@ -28,5 +28,6 @@ export default defineConfig({
 		borderRadius: {
 			board: 'var(--board-radius)',
 		},
+		
 	},
 })

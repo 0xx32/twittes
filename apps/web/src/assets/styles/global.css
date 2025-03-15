@@ -28,6 +28,7 @@
 		--board: 0 0% 100%;
 		--dashboard: 0 0% 96%;
 		--board-radius: calc(var(--radius) * 2);
+		--un-default-border-color : #4d514e
 	}
 
 	.dark {
@@ -49,7 +50,7 @@
 		--destructive-foreground: 0 0% 98%;
 		--border: 0 0% 14.9%;
 		--input: 0 0% 14.9%;
-		--ring: 0 0% 83.1%;
+				--ring: 136 2% 31%;
 		--chart-1: 220 70% 50%;
 		--chart-2: 160 60% 45%;
 		--chart-3: 30 80% 55%;
@@ -58,12 +59,14 @@
 		--board: 0 0% 11%;
 		--dashboard: 0 0% 6%;
 		--board-radius: calc(var(--radius) * 2);
+		
 	}
 }
 
 @layer base {
+
 	* {
-		border-color: hsl(var(--border));
+		border-color: #000;
 	}
 
 	body {
