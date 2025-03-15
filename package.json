@@ -10,8 +10,6 @@
     "build": "turbo build",
     "dev": "turbo dev",
     "preview": "turbo preview",
-    "lint": "turbo lint",
-    "format": "turbo format",
     "pretty": "cd apps/web && bun run pretty && cd ../server && bun run pretty"
   },
   "type": "module",
