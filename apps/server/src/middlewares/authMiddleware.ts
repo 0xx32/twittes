@@ -5,9 +5,16 @@ import { createMiddleware } from 'hono/factory'
 
 import type { AppType } from '@/utils/types/utils'
 
+import { PUBLIC_ROUTES } from '@/utils/constants/global'
 import { prisma } from '@/utils/prisma'
 
 export const authMiddleware = createMiddleware(async (ctx: Context<AppType>, next: Next) => {
+	for (const route of PUBLIC_ROUTES) {
+		if (ctx.req.path.replace('/api', '').startsWith(route)) {
+			await next()
+		}
+	}
+
 	const sessionCookie = getCookie(ctx, 'session')
 
 	if (!sessionCookie) {

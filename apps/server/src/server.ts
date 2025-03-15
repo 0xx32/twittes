@@ -20,12 +20,12 @@ app.use(
 		credentials: true,
 	})
 )
-app.use('private/*', authMiddleware)
+app.use('*', authMiddleware)
 
 app.route('auth', routes.authRoute)
-app.route('private/profile', routes.profileRoute)
-app.route('private/user', routes.userRoute)
-app.route('private/posts', routes.postRoute)
+app.route('profile', routes.profileRoute)
+app.route('user', routes.userRoute)
+app.route('posts', routes.postRoute)
 
 app.get('/openapi', openAPISpecs(app, OPENAPI_SPECS))
 app.get(
