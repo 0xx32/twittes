@@ -37,12 +37,12 @@ async function init() {
 
 			router.history.push(window.location.search)
 		}
-
-		createRoot(document.getElementById('root')!).render(
-			<Providers {...providersProps}>
-				<App queryClient={queryClient} />
-			</Providers>
-		)
 	}
+
+	createRoot(document.getElementById('root')!).render(
+		<Providers {...providersProps}>
+			<App queryClient={queryClient} />
+		</Providers>
+	)
 }
 init()

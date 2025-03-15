@@ -15,6 +15,7 @@ export const Route = createFileRoute('/(base)/_base')({
 			})
 		}
 	},
+
 	pendingComponent: () => (
 		<div className="h-screen flex items-center justify-center">
 			<Loader2 className="animate-spin" size={64} />

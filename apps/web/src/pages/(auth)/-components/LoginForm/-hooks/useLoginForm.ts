@@ -1,6 +1,6 @@
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { useLocalStorage } from '@siberiacancode/reactuse'
-import { useNavigate } from '@tanstack/react-router'
+import { useLocation, useNavigate } from '@tanstack/react-router'
 import { HTTPError } from 'ky'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -18,6 +18,8 @@ export const useLoginForm = () => {
 	const { setSession } = useSession()
 	const { setProfile } = useProfile()
 	const navigate = useNavigate()
+	const location = useLocation()
+
 	const authLocalStorage = useLocalStorage(AUTH_LOCAL_KEY)
 	const form = useForm({
 		resolver: valibotResolver(loginFormSchema),
@@ -39,7 +41,7 @@ export const useLoginForm = () => {
 			setProfile(response.user)
 
 			navigate({
-				to: '/',
+				to: location.search.redirect || '/',
 				replace: true,
 			})
 		} catch (error) {
