@@ -6,9 +6,12 @@ import { showRoutes } from 'hono/dev'
 
 import * as routes from '@/routes'
 
+import type { AppType } from './utils/types/utils'
+
+import { authMiddleware } from './middlewares'
 import { OPENAPI_SPECS } from './utils/constants/openapi'
 
-const app = new Hono().basePath('/api')
+const app = new Hono<AppType>().basePath('/api')
 
 app.use(
 	'*',
@@ -17,11 +20,12 @@ app.use(
 		credentials: true,
 	})
 )
+app.use('private/*', authMiddleware)
 
 app.route('auth', routes.authRoute)
-app.route('profile', routes.profileRoute)
-app.route('user', routes.userRoute)
-app.route('twitt', routes.twittRoute)
+app.route('private/profile', routes.profileRoute)
+app.route('private/user', routes.userRoute)
+app.route('private/posts', routes.postRoute)
 
 app.get('/openapi', openAPISpecs(app, OPENAPI_SPECS))
 app.get(
