@@ -2,7 +2,6 @@ import antfu from '@antfu/eslint-config'
 import perfectionist from 'eslint-plugin-perfectionist'
 
 export default antfu(
-
 	{
 		react: false,
 		typescript: true,
@@ -45,5 +44,5 @@ export default antfu(
 	},
 	{
 		ignores: ['**/__generated/'],
-	},
+	}
 )

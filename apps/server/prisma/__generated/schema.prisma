@@ -17,6 +17,11 @@ model Account {
   @@map("accounts")
 }
 
+enum Gender {
+  men
+  women
+}
+
 model User {
   id String @id @default(cuid())
 
@@ -26,6 +31,9 @@ model User {
 
   displayName String  @map("display_name")
   picture     String?
+  gender      Gender?
+  country     String?
+  age         Int?
 
   isVerified Boolean @default(false) @map("is_verified")
 
@@ -62,11 +70,28 @@ model Twitt {
   content String
   image   String?
 
-  userId String @map("user_id")
-  user   User   @relation(fields: [userId], references: [id])
+  creatorId String @map("creator_id")
+  creator   User   @relation(fields: [creatorId], references: [id])
+
+  comments Comment[]
+  likes    String[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   @@map("twitts")
+}
+
+model Comment {
+  id String @id @default(cuid())
+
+  text String
+
+  twittId String @map("twitt_id")
+  twitt   Twitt  @relation(fields: [twittId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("comments")
 }

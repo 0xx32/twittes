@@ -23,7 +23,7 @@ twittRoute.post(
 	async (ctx) => {
 		const accountId = ctx.get('accountId')
 
-		const account = await prisma.account.findUnique({
+		const account = await prisma.user.findUnique({
 			where: {
 				id: accountId,
 			},
@@ -37,7 +37,7 @@ twittRoute.post(
 
 		const twitt = await prisma.twitt.create({
 			data: {
-				userId: account.userId,
+				creatorId: account.userId,
 				...twittDto,
 			},
 		})

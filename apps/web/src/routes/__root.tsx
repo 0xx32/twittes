@@ -1,18 +1,16 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
 
-import { ThemeProvider } from '@/components/providers'
+import type { RouterContext } from '@/utils/globals/router'
+
 import { Toaster } from '@/components/ui'
 
-const queryClient = new QueryClient()
+const Root = () => (
+	<>
+		<Outlet />
+		<Toaster richColors />
+	</>
+)
 
-export const Route = createRootRoute({
-	component: () => (
-		<QueryClientProvider client={queryClient}>
-			<ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-				<Outlet />
-				<Toaster richColors />
-			</ThemeProvider>
-		</QueryClientProvider>
-	),
+export const Route = createRootRouteWithContext<RouterContext>()({
+	component: Root,
 })

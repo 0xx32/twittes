@@ -1,18 +1,48 @@
-import { createRouter, RouterProvider } from '@tanstack/react-router'
+import { RouterProvider } from '@tanstack/react-router'
 import { createRoot } from 'react-dom/client'
 
-import { routeTree } from '../generated/router'
+import type { ProvidersProps } from './providers'
+
+import { Providers } from './providers'
+import { getProfile } from './utils/api/requests'
+import { AUTH_LOCAL_KEY } from './utils/constants/global'
+import { useSession } from './utils/contexts/session'
+import { queryClient } from './utils/globals/queryClient'
+import { router } from './utils/globals/router'
 
 import 'virtual:uno.css'
 import '@unocss/reset/tailwind.css'
 import '@/assets/styles/global.css'
 
-const router = createRouter({ routeTree })
-
-declare module '@tanstack/react-router' {
-	interface Register {
-		router: typeof router
-	}
+const providersProps: Omit<ProvidersProps, 'children'> = {
+	theme: { defaultTheme: 'dark', storageKey: 'vite-ui-theme' },
+	profile: { defaultProfile: undefined },
+	session: { defaultSession: false },
+	queryClient,
 }
 
-createRoot(document.getElementById('root')!).render(<RouterProvider router={router} />)
+async function init() {
+	const token = localStorage.getItem(AUTH_LOCAL_KEY)
+
+	if (token) {
+		const getProfileQuery = await queryClient.fetchQuery({
+			queryKey: ['getProfile'],
+			queryFn: () => getProfile({}),
+		})
+
+		providersProps.profile.defaultProfile = getProfileQuery.profile
+		providersProps.session.defaultSession = !!getProfileQuery
+	}
+}
+init()
+
+function InnerApp() {
+	const { session } = useSession()
+	return <RouterProvider router={router} context={{ isAuthenticated: session, queryClient }} />
+}
+
+createRoot(document.getElementById('root')!).render(
+	<Providers {...providersProps}>
+		<InnerApp />
+	</Providers>
+)

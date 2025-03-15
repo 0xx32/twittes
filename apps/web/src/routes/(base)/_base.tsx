@@ -1,13 +1,35 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
+
+import { Header, Sidebar } from '../-components'
 
 export const Route = createFileRoute('/(base)/_base')({
 	component: LayoutComponent,
+	beforeLoad: async ({ context, location }) => {
+		if (!context.isAuthenticated) {
+			throw redirect({
+				to: '/login',
+				search: {
+					redirect: location.href,
+				},
+			})
+		}
+	},
 })
 
 function LayoutComponent() {
 	return (
-		<div className="min-h-full flex items-center justify-center bg-blue-200 py-3">
-			<Outlet />
+		<div className="container py-10">
+			<div className="rounded-board bg-card bg-dashboard pl-12 pr-18 pt-6 shadow-xl">
+				<div className="mb-5">
+					<Header />
+				</div>
+				<div className="grid grid-cols-[240px_1fr] mx-auto max-w-[1400px]">
+					<Sidebar />
+					<main>
+						<Outlet />
+					</main>
+				</div>
+			</div>
 		</div>
 	)
 }

@@ -56,7 +56,7 @@ export const LoginForm = () => {
 					/>
 
 					<Button className="mt-4 w-full" disabled={state.loading}>
-						Зарегистрироваться
+						Войти
 					</Button>
 				</form>
 				<p>

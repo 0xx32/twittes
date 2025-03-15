@@ -10,7 +10,6 @@ export default defineConfig({
 		TanStackRouterVite({
 			target: 'react',
 			autoCodeSplitting: true,
-			generatedRouteTree: './generated/router/index.ts',
 		}),
 		react(),
 		UnoCSS(),

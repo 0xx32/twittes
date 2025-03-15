@@ -12,7 +12,7 @@
 		"moduleResolution": "bundler",
 		"paths": {
 			"@/*": ["./src/*"],
-			"@/generated/*": ["./generated/*"]
+			"@/generated/*": ["generated/*"]
 		},
 		"allowImportingTsExtensions": true,
 		/* Linting */

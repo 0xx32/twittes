@@ -4,21 +4,42 @@ import { prisma } from '@/utils/prisma'
 
 export const userRoute = new Hono()
 
-//Получение списка твитов пользователя
-userRoute.get('/:userId/twitts', async (ctx) => {
-	const userId = ctx.req.param('userId')
+userRoute.get('/:username', async (ctx) => {
+	const username = ctx.req.param('username')
 
-	const twitts = await prisma.twitt.findMany({
-		where: {
-			userId,
-		},
+	const user = await prisma.user.findUnique({
+		where: { username },
+		omit: { password: true },
 	})
 
-	if (!twitts) {
+	if (!user) {
+		return ctx.json({ msg: 'Пользователь не найден' }, 404)
+	}
+
+	return ctx.json(user)
+})
+
+//Получение списка твитов пользователя
+userRoute.get('/:username/twittes', async (ctx) => {
+	const username = ctx.req.param('username')
+
+	const user = await prisma.user.findUnique({
+		where: { username },
+	})
+
+	if (!user) {
+		return ctx.json({ msg: 'Пользователь не найден' }, 404)
+	}
+
+	const twittes = await prisma.twitt.findMany({
+		where: { creatorId: user.id },
+	})
+
+	if (!twittes) {
 		return ctx.json({ msg: 'Твиты не найден' }, 404)
 	}
 
-	return ctx.json(twitts)
+	return ctx.json(twittes)
 })
 
 //Получение твита по id
@@ -28,7 +49,7 @@ userRoute.get('/:userId/twitt/:twittId', async (ctx) => {
 	const twitt = await prisma.twitt.findUnique({
 		where: {
 			id: twittId,
-			userId,
+			creatorId: userId,
 		},
 	})
 

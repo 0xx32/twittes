@@ -13,4 +13,4 @@ export const postLogin = ({ params, config }: PostLoginRequestConfig) =>
 			json: params,
 			...config,
 		})
-		.json<SuccessResponse>()
+		.json<{ token: string; msg: string }>()

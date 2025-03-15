@@ -69,7 +69,7 @@ export default antfu(
 		ignores: ['generated/routeTree.gen.ts'],
 	},
 	{
-		name: 'steam-panel/router',
-		ignores: ['generated/router/*'],
+		name: 'twittes/router',
+		ignores: ['generated/router/*', 'src/routeTree.gen.ts'],
 	}
 )

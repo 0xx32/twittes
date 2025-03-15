@@ -1,6 +1,7 @@
-import { zValidator } from '@hono/zod-validator'
 import * as argon2 from 'argon2'
 import { Hono } from 'hono'
+import { describeRoute } from 'hono-openapi'
+import { resolver, validator as vValidator } from 'hono-openapi/valibot'
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie'
 
 import type { AppType } from '@/utils/types/utils'
@@ -8,15 +9,38 @@ import type { AppType } from '@/utils/types/utils'
 import { generateSecureToken } from '@/utils/helpers'
 import { prisma } from '@/utils/prisma'
 
-import { authSchema } from './auth.constants'
+import { loginSchema, registerSchema, responseSchema } from './auth.constants'
 
 export const authRoute = new Hono<AppType>()
 
 authRoute.post(
 	'/register',
-	zValidator('json', authSchema, (result, ctx) => {
+	describeRoute({
+		description: 'Регистраци пользователя',
+		responses: {
+			200: {
+				description: 'Успешно создан аккаунт',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
+			404: {
+				description: 'Неверный логин или пароль',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
+			500: {
+				description: 'Ошибка сервера',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
+		},
+	}),
+	vValidator('json', registerSchema, (result, ctx) => {
 		if (!result.success) {
-			return ctx.json({ msg: 'Неверный логин или пароль', error: result.error.errors }, 400)
+			return ctx.json({ msg: 'Неверный логин или пароль', error: result.issues }, 404)
 		}
 	}),
 	async (ctx) => {
@@ -27,7 +51,7 @@ authRoute.post(
 		})
 
 		if (accountIsExist) {
-			return ctx.json({ msg: 'Аккаунт с таким логином уже существует' }, 400)
+			return ctx.json({ msg: 'Аккаунт с таким логином уже существует' }, 404)
 		}
 
 		try {
@@ -39,20 +63,43 @@ authRoute.post(
 
 			return ctx.json({
 				message: 'Аккаунт успешно создан',
-				accountId: user.id,
+				userId: user.id,
 			})
 		} catch (error) {
 			console.error(error)
-			return ctx.json({ msg: 'Ошибка создания аккаунта' }, 400)
+			return ctx.json({ msg: 'Ошибка создания аккаунта' }, 500)
 		}
 	}
 )
 
 authRoute.post(
 	'/login',
-	zValidator('json', authSchema, (result, ctx) => {
+	describeRoute({
+		description: 'Аутентификация пользователя',
+		responses: {
+			200: {
+				description: 'Успешно авторизован',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
+			404: {
+				description: 'Пользовтель не найден',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
+			401: {
+				description: 'Неверный логин или пароль',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
+		},
+	}),
+	vValidator('json', loginSchema, (result, ctx) => {
 		if (!result.success) {
-			return ctx.json({ msg: 'Неверный логин или пароль', error: result.error.errors }, 400)
+			return ctx.json({ msg: 'Неверный логин или пароль', error: result.issues }, 401)
 		}
 	}),
 	async (ctx) => {
@@ -63,14 +110,14 @@ authRoute.post(
 		})
 
 		if (!user) {
-			return ctx.json({ msg: 'Аккаунт с таким username не найден' }, 400)
+			return ctx.json({ msg: 'Аккаунт с таким username не найден' }, 404)
 		}
 
 		try {
 			const passwordVerify = await argon2.verify(user.password, password)
 
 			if (!passwordVerify) {
-				return ctx.json({ msg: 'Неверный логин или пароль' }, 400)
+				return ctx.json({ msg: 'Неверный логин или пароль' }, 401)
 			}
 
 			const newSession = await prisma.session.create({
@@ -87,29 +134,50 @@ authRoute.post(
 			})
 
 			return ctx.json({
+				token: newSession.token,
 				msg: 'Аккаунт успешно авторизован',
 			})
 		} catch (error) {
 			console.error(error)
-			return ctx.json({ msg: 'Ошибка авторизации' }, 400)
+			return ctx.json({ msg: 'Ошибка авторизации' }, 401)
 		}
 	}
 )
 
-authRoute.get('/logout', async (ctx) => {
-	const sessionId = getCookie(ctx, 'session')
-
-	if (!sessionId) {
-		return ctx.json({ message: 'Вы не авторизованы' }, 400)
-	}
-
-	await prisma.session.delete({
-		where: {
-			id: sessionId,
+authRoute.get(
+	'/logout',
+	describeRoute({
+		description: 'Выход из системы',
+		responses: {
+			200: {
+				description: 'Вы вышли из системы',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
+			401: {
+				description: 'Вы не авторизованы',
+				content: {
+					'aplication/json': { schema: resolver(responseSchema) },
+				},
+			},
 		},
-	})
+	}),
+	async (ctx) => {
+		const sessionId = getCookie(ctx, 'session')
 
-	deleteCookie(ctx, 'session-id')
+		if (!sessionId) {
+			return ctx.json({ message: 'Вы не авторизованы' }, 401)
+		}
 
-	return ctx.json({ message: 'Вы вышли из системы' })
-})
+		await prisma.session.delete({
+			where: {
+				id: sessionId,
+			},
+		})
+
+		deleteCookie(ctx, 'session')
+
+		return ctx.json({ message: 'Вы вышли из системы' })
+	}
+)
