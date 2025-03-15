@@ -33,3 +33,6 @@ type LoginResponse = {
 	token: string
 	user: User
 } & SuccessResponse
+
+
+type Profile = User

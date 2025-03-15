@@ -29,7 +29,7 @@ function LayoutComponent() {
 				<div className="mb-5">
 					<Header />
 				</div>
-				<div className="grid grid-cols-[240px_1fr] mx-auto max-w-[1400px]">
+				<div className="grid grid-cols-[240px_1fr] mx-auto max-w-[1400px] gap-5">
 					<Sidebar />
 					<main>
 						<Outlet />

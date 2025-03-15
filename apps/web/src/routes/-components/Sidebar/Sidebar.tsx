@@ -6,6 +6,8 @@ import { DynamicIcon } from 'lucide-react/dynamic'
 import { ModeToggle } from '@/components'
 import { useProfile } from '@/utils/contexts/profile'
 
+import { UserWidget } from '../UserWidget'
+
 interface LinkItem {
 	name: string
 	href: string
@@ -37,7 +39,8 @@ export const Sidebar = () => {
 				))}
 			</ul>
 			<div className="mt-a">
-				<ModeToggle />
+				<UserWidget user={profile} />
+				
 			</div>
 		</aside>
 	)
