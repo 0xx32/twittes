@@ -16,15 +16,16 @@
   },
   "type": "module",
   "workspaces": [
-    "apps/*"
+    "apps/web",
+    "apps/server"
   ],
   "dependencies": {
+    "lint-staged": "^15.5.0",
     "turbo": "^2.4.4",
     "typescript": "^5.8.2"
   },
   "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^15.5.0"
+    "husky": "^9.1.7"
   },
   "packageManager": "bun@1.2.4",
   "lint-staged": {

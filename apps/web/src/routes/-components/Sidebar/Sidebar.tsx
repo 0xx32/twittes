@@ -24,7 +24,7 @@ export const Sidebar = () => {
 	return (
 		<aside className="sticky h-[calc(100vh-12rem)] flex flex-col pb-6">
 			<ul className="mt-5 flex flex-col gap-4">
-				{generateLinks({ username: profile?.username ?? 'boblove' }).map((link) => (
+				{generateLinks({ username: profile?.username }).map((link) => (
 					<li key={link.href}>
 						<Link
 							to={link.href}

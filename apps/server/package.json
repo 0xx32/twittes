@@ -1,5 +1,6 @@
 {
 	"name": "server",
+	"packageManager": "bun@1.2.4",
 	"scripts": {
 		"dev": "bun run --hot src/server.ts",
 		"preview": "bun run src/server.ts",

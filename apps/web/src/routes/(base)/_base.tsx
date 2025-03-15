@@ -25,7 +25,7 @@ export const Route = createFileRoute('/(base)/_base')({
 function LayoutComponent() {
 	return (
 		<div className="container py-10">
-			<div className="rounded-board bg-card bg-dashboard pl-12 pr-18 pt-6 shadow-xl">
+			<div className="border border-gray-200 rounded-board bg-dashboard pl-12 pr-18 pt-6 shadow-xl dark:border-gray-900 dark:shadow-md dark:shadow-white/20">
 				<div className="mb-5">
 					<Header />
 				</div>
