@@ -11,6 +11,9 @@ interface User {
 	username: string
 	displayName: string
 	picture: string | null
+	gender: $Enums.Gender | null
+	country: string | null
+	age: number | null
 	isVerified: boolean
 	twitts: Twitt[]
 	createdAt: Date
@@ -25,3 +28,8 @@ interface Twitt {
 	createdAt: Date
 	updatedAt: Date
 }
+
+type LoginResponse = {
+	token: string
+	user: User
+} & SuccessResponse

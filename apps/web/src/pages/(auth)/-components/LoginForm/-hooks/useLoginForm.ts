@@ -7,6 +7,7 @@ import { toast } from 'sonner'
 
 import { usePostLoginMutation } from '@/utils/api/hooks'
 import { AUTH_LOCAL_KEY } from '@/utils/constants/global'
+import { useProfile } from '@/utils/contexts/profile'
 import { useSession } from '@/utils/contexts/session'
 
 import type { LoginFormSchema } from '../-constants'
@@ -15,8 +16,9 @@ import { loginFormSchema } from '../-constants'
 
 export const useLoginForm = () => {
 	const { setSession } = useSession()
+	const { setProfile } = useProfile()
 	const navigate = useNavigate()
-	const authCookie = useLocalStorage(AUTH_LOCAL_KEY)
+	const authLocalStorage = useLocalStorage(AUTH_LOCAL_KEY)
 	const form = useForm({
 		resolver: valibotResolver(loginFormSchema),
 		mode: 'onChange',
@@ -32,8 +34,10 @@ export const useLoginForm = () => {
 
 			toast.success(response.msg)
 
-			authCookie.set(response.token)
+			authLocalStorage.set(response.token)
 			setSession(true)
+			setProfile(response.user)
+
 			navigate({
 				to: '/',
 				replace: true,

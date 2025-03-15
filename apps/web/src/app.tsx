@@ -4,6 +4,7 @@ import { RouterProvider } from '@tanstack/react-router'
 
 import { useSession } from './utils/contexts/session'
 import { router } from './utils/globals/router'
+
 interface AppProps {
 	queryClient: QueryClient
 }
