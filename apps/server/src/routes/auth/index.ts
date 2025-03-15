@@ -135,6 +135,7 @@ authRoute.post(
 
 			return ctx.json({
 				token: newSession.token,
+				user,
 				msg: 'Аккаунт успешно авторизован',
 			})
 		} catch (error) {
