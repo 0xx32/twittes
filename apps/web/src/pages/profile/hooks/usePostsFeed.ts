@@ -22,7 +22,7 @@ export const usePostsFeed = ({ username }: UsePostFeedParams) => {
 
 	const intersectionObserver = useIntersectionObserver<HTMLDivElement>({
 		rootMargin: '200px 0px 0px 0px',
-		threshold: 0,
+		threshold: 1,
 	})
 
 	useDidUpdate(() => {

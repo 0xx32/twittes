@@ -6,7 +6,14 @@ interface TwittProps extends React.ComponentProps<'div'> {
 
 export const Twitt = ({ twitt, className, ref, ...props }: TwittProps) => {
 	return (
-		<div ref={ref} className={clsx('rounded-board bg-board p-5', className)} {...props}>
+		<div
+			ref={ref}
+			className={clsx(
+				'rounded-board bg-board p-5 hover:bg-board/80 transition-colors cursor-pointer',
+				className
+			)}
+			{...props}
+		>
 			<div>Creator</div>
 			<p>{twitt.content}</p>
 		</div>
