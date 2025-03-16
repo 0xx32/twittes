@@ -16,8 +16,8 @@
       "name": "server",
       "dependencies": {
         "@hono/valibot-validator": "^0.5.2",
-        "@prisma/client": "^6.5.0",
         "@prisma/extension-accelerate": "^1.2.2",
+        "@repo/db": "workspace:*",
         "@scalar/hono-api-reference": "^0.7.0",
         "@valibot/to-json-schema": "^1.0.0-rc.0",
         "argon2": "^0.41.1",
@@ -84,7 +84,7 @@
     },
     "packages/database": {
       "name": "@repo/db",
-      "version": "0.0.0",
+      "version": "0.0.1",
       "dependencies": {
         "@prisma/client": "^6.5.0",
         "prisma": "^6.5.0",

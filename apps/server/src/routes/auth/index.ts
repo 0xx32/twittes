@@ -46,7 +46,7 @@ authRoute.post(
 	async (ctx) => {
 		const { username, password } = ctx.req.valid('json')
 
-		const accountIsExist = await prisma.user.findFirst({
+		const accountIsExist = await prisma.user.findUnique({
 			where: { username },
 		})
 

@@ -32,7 +32,7 @@ app.get(
 	'/docs',
 	apiReference({
 		theme: 'saturn',
-		spec: { url: '/api/openapi' },
+		url: '/api/openapi',
 	})
 )
 

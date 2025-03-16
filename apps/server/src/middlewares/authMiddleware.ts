@@ -11,7 +11,7 @@ import { prisma } from '@/utils/prisma'
 export const authMiddleware = createMiddleware(async (ctx: Context<AppType>, next: Next) => {
 	for (const route of PUBLIC_ROUTES) {
 		if (ctx.req.path.replace('/api', '').startsWith(route)) {
-			await next()
+			return await next()
 		}
 	}
 
