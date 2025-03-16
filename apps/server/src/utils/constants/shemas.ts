@@ -7,8 +7,13 @@ export const paginationSearchQuerySchema = v.object({
 
 export const errorResponseSchema = v.object({
 	message: v.string(),
+	errors: v.array(v.string()),
 })
 
 export const errorServerResponseSchema = v.object({
+	message: v.string(),
+})
+
+export const baseResponseSchema = v.object({
 	message: v.string(),
 })

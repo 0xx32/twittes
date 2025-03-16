@@ -11,6 +11,21 @@ export const registerSchema = v.object({
 	displayName: v.optional(v.string()),
 })
 
-export const responseSchema = v.object({
-	msg: v.string(),
+export const registerResponseSchema = v.object({
+	userId: v.string(),
+	message: v.string(),
+})
+export const loginResponseSchema = v.object({
+	token: v.string(),
+	user: v.object({
+		id: v.string(),
+		username: v.string(),
+		displayName: v.string(),
+	}),
+	message: v.string(),
+})
+
+export const authErrorResponseSchema = v.object({
+	message: v.string(),
+	errors: v.array(v.string()),
 })

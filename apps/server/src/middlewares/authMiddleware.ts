@@ -18,7 +18,7 @@ export const authMiddleware = createMiddleware(async (ctx: Context<AppType>, nex
 	const sessionCookie = getCookie(ctx, 'session')
 
 	if (!sessionCookie) {
-		return ctx.json({ msg: 'Не авторизован' }, 401)
+		return ctx.json({ message: 'Не авторизован' }, 401)
 	}
 
 	const session = await prisma.session.findUnique({
@@ -26,7 +26,7 @@ export const authMiddleware = createMiddleware(async (ctx: Context<AppType>, nex
 	})
 
 	if (!session) {
-		return ctx.json({ msg: 'Не авторизован' }, 401)
+		return ctx.json({ message: 'Не авторизован' }, 401)
 	}
 
 	const user = await prisma.user.findUnique({
@@ -34,7 +34,7 @@ export const authMiddleware = createMiddleware(async (ctx: Context<AppType>, nex
 	})
 
 	if (!user) {
-		return ctx.json({ msg: 'Не верная сессия' }, 401)
+		return ctx.json({ message: 'Не верная сессия' }, 401)
 	}
 
 	ctx.set('session', session)

@@ -11,7 +11,7 @@ export const postSelectSchema = {
 } as const
 
 export const createPostSchema = v.object({
-	content: v.string(),
+	content: v.pipe(v.string(), v.minLength(3), v.maxLength(1000)),
 	image: v.optional(v.string()),
 })
 

@@ -1,6 +1,6 @@
 import * as v from 'valibot'
 
-export const successResponseSchema = v.object({
+export const getProfileResponseSchema = v.object({
 	profile: v.object({
 		id: v.string(),
 		email: v.string(),
@@ -11,7 +11,4 @@ export const successResponseSchema = v.object({
 		createdAt: v.string(),
 		updatedAt: v.string(),
 	}),
-})
-export const errorResponseSchema = v.object({
-	msg: v.string(),
 })

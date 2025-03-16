@@ -27,13 +27,19 @@ export const postRouteSpecs = describeRoute({
 				'aplication/json': { schema: resolver(postResponseSchema) },
 			},
 		},
+		404: {
+			description: 'Пост не найден',
+			content: {
+				'aplication/json': { schema: resolver(errorResponseSchema) },
+			},
+		},
 		500: errorServerConfig,
 	},
 })
 export const createPostRouteSpecs = describeRoute({
 	description: 'Создание поста',
 	responses: {
-		200: {
+		201: {
 			description: 'Успешно',
 			content: {
 				'aplication/json': { schema: resolver(postResponseSchema) },

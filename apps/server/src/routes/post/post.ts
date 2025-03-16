@@ -51,7 +51,7 @@ postRoute.get('/:postId', postRouteSpecs, async (ctx) => {
 	})
 
 	if (!post) {
-		return ctx.json({ msg: 'Пост не найден' }, 404)
+		return ctx.json({ message: 'Пост не найден' }, 404)
 	}
 
 	return ctx.json(post)
@@ -70,7 +70,7 @@ postRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) =
 		},
 	})
 
-	return ctx.json(post)
+	return ctx.json(post, 201)
 })
 
 postRoute.get('/user/:userId', userPostsRouteSpecs, async (ctx) => {

@@ -1,9 +1,12 @@
-import { vValidator } from '@hono/valibot-validator'
+import { validator as vValidator } from 'hono-openapi/valibot'
 
 import { createPostSchema } from './post.constants'
 
 export const createPostJsonValidator = vValidator('json', createPostSchema, (result, ctx) => {
 	if (!result.success) {
-		return ctx.json({ message: 'Не верное поля', error: result.issues }, 400)
+		return ctx.json(
+			{ message: 'Ошибка создания поста', errors: result.issues.map((issue) => issue.message) },
+			400
+		)
 	}
 })
