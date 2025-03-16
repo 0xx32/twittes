@@ -3,19 +3,16 @@
   "module": "index.ts",
   "private": true,
   "scripts": {
-    "web:dev": "cd apps/web && bun run dev",
-    "server:dev": "cd apps/server && bun run dev",
-    "prepare": "husky",
     "lint-staged": "lint-staged",
     "build": "turbo build",
     "dev": "turbo dev",
-    "preview": "turbo preview",
     "pretty": "cd apps/web && bun run pretty && cd ../server && bun run pretty"
   },
   "type": "module",
   "workspaces": [
     "apps/web",
-    "apps/server"
+    "apps/server",
+    "packages/*"
   ],
   "dependencies": {
     "lint-staged": "^15.5.0",

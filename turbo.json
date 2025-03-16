@@ -3,15 +3,11 @@
 	"ui": "tui",
 	"tasks": {
 		"build": {
-			"dependsOn": [
-				"^build"
-			]
+			"dependsOn": ["^build"]
 		},
 		"format": {},
 		"lint": {
-			"dependsOn": [
-				"^lint"
-			]
+			"dependsOn": ["^lint"]
 		},
 		"pretty": {
 			"dependsOn": [
@@ -29,6 +25,16 @@
 			"persistent": true
 		},
 		"preview": {
+			"cache": false
+		},
+		"db:generate": {
+			"cache": false
+		},
+		"db:migrate": {
+			"cache": false,
+			"persistent": true 
+		},
+		"db:deploy": {
 			"cache": false
 		}
 	}
