@@ -22,24 +22,17 @@ postRoute.get(
 	vValidator('query', paginationSearchQuerySchema),
 	postsRouteSpecs,
 	async (ctx) => {
-		const { size, page } = ctx.req.valid('query')
+		const search = ctx.req.valid('query')
 
-		const currentPage = page ?? 1
-		const currentSize = size ?? 10
-		const totalPost = await prisma.post.count()
-		const skip = currentPage === 1 ? 0 : (currentPage - 1) * currentSize
+		const offset = search.offset ? Number(search.offset) : 0
+		const limit = search.limit ? Number(search.limit) : undefined
 
 		const posts = await prisma.post.findMany({
 			include: { ...postSelectSchema },
-			skip,
-			take: currentSize,
+			skip: limit ? offset * limit : 0,
+			take: limit,
 		})
-		return ctx.json({
-			posts,
-			total: totalPost,
-			page: currentPage,
-			size,
-		})
+		return ctx.json({ posts, offset, limit })
 	}
 )
 
@@ -73,12 +66,24 @@ postRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) =
 	return ctx.json(post, 201)
 })
 
-postRoute.get('/user/:username', userPostsRouteSpecs, async (ctx) => {
-	const username = ctx.req.param('username')
-	const user = await prisma.user.findUnique({
-		where: { username },
-		include: { posts: true },
-	})
+postRoute.get(
+	'/user/:username',
+	vValidator('query', paginationSearchQuerySchema),
+	userPostsRouteSpecs,
+	async (ctx) => {
+		const username = ctx.req.param('username')
+		const search = ctx.req.valid('query')
 
-	return ctx.json(user?.posts)
-})
+		const offset = search.offset ? +search.offset : 0
+		const limit = search.limit ? +search.limit : undefined
+
+		const posts = await prisma.post.findMany({
+			where: { creator: { username } },
+			include: { ...postSelectSchema },
+			skip: limit ? offset * limit : 0,
+			take: limit,
+		})
+
+		return ctx.json({ posts, offset, limit })
+	}
+)
