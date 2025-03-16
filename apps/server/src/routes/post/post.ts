@@ -29,7 +29,7 @@ postRoute.get(
 
 		const posts = await prisma.post.findMany({
 			include: { ...postSelectSchema },
-			skip: limit ? offset * limit : 0,
+			skip: offset,
 			take: limit,
 		})
 		return ctx.json({ posts, offset, limit })
@@ -80,7 +80,7 @@ postRoute.get(
 		const posts = await prisma.post.findMany({
 			where: { creator: { username } },
 			include: { ...postSelectSchema },
-			skip: limit ? offset * limit : 0,
+			skip: offset,
 			take: limit,
 		})
 
