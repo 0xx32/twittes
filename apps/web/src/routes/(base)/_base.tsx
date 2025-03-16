@@ -5,13 +5,10 @@ import { Header, Sidebar } from '../-components'
 
 export const Route = createFileRoute('/(base)/_base')({
 	component: LayoutComponent,
-	beforeLoad: async ({ context, location }) => {
+	beforeLoad: async ({ context }) => {
 		if (!context.isAuthenticated) {
 			throw redirect({
 				to: '/login',
-				search: {
-					redirect: location.href,
-				},
 			})
 		}
 	},

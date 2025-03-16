@@ -1,6 +1,6 @@
 import { valibotResolver } from '@hookform/resolvers/valibot'
 import { useLocalStorage } from '@siberiacancode/reactuse'
-import { useLocation, useNavigate } from '@tanstack/react-router'
+import { useNavigate } from '@tanstack/react-router'
 import { HTTPError } from 'ky'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
@@ -18,7 +18,6 @@ export const useLoginForm = () => {
 	const { setSession } = useSession()
 	const { setProfile } = useProfile()
 	const navigate = useNavigate()
-	const location = useLocation()
 
 	const authLocalStorage = useLocalStorage(AUTH_LOCAL_KEY)
 	const form = useForm({
@@ -34,20 +33,20 @@ export const useLoginForm = () => {
 				params: values,
 			})
 
-			toast.success(response.msg)
+			toast.success(response.message)
 
 			authLocalStorage.set(response.token)
 			setSession(true)
 			setProfile(response.user)
 
 			navigate({
-				to: location.search.redirect || '/',
+				to: '/',
 				replace: true,
 			})
 		} catch (error) {
 			if (error instanceof HTTPError) {
-				const { msg } = await error.response.json<ErrorResponse>()
-				toast.error(msg)
+				const { message } = await error.response.json<ErrorResponse>()
+				toast.error(message)
 			}
 		}
 	}

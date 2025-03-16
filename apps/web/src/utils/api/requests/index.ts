@@ -1,6 +1,6 @@
 export * from './auth/login'
 export * from './auth/logout'
 export * from './auth/register'
+export * from './posts/user/{username}'
 export * from './profile'
 export * from './user/{username}'
-export * from './user/{username}/twittes'

@@ -14,4 +14,4 @@ export const postRegister = ({ params, config }: PostRegisterRequestConfig) =>
 			json: params,
 			...config,
 		})
-		.json<SuccessResponse>()
+		.json<RegisterResponse>()

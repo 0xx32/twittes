@@ -25,12 +25,12 @@ export const useRegisterForm = () => {
 				params: values,
 			})
 
-			toast.success(response.msg)
+			toast.success(response.message)
 			navigate({ to: '/', from: '/register' })
 		} catch (error) {
 			if (error instanceof HTTPError) {
-				const { msg } = await error.response.json<ErrorResponse>()
-				toast.error(msg)
+				const { message } = await error.response.json<ErrorResponse>()
+				toast.error(message)
 			}
 		}
 	}

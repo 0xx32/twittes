@@ -1,5 +1,5 @@
 export * from './useGetProfileQuery'
+export * from './useGetUserPostsQuery'
 export * from './useGetUserQuery'
-export * from './useGetUserTwittesQuery'
 export * from './usePostLoginMutation'
 export * from './usePostRegisterMutation'

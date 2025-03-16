@@ -1,3 +1,5 @@
+import type { User } from '@repo/db'
+
 import { api } from '@/utils/api'
 
 export interface GetUserParams {
