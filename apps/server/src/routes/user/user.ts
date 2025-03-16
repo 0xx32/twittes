@@ -2,9 +2,11 @@ import { Hono } from 'hono'
 
 import { prisma } from '@/utils/prisma'
 
+import { getUserSpecs } from './user.openapi'
+
 export const userRoute = new Hono()
 
-userRoute.get('/:username', async (ctx) => {
+userRoute.get('/:username', getUserSpecs, async (ctx) => {
 	const username = ctx.req.param('username')
 
 	const user = await prisma.user.findUnique({
