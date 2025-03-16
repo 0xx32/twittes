@@ -7,7 +7,7 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
-    "check-types": "tsc -b",
+		"check-types": "tsc -b",
 		"preview": "vite preview",
 		"lint": "eslint .",
 		"format": "prettier --write .",

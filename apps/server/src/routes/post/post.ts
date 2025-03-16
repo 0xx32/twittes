@@ -73,12 +73,12 @@ postRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) =
 	return ctx.json(post, 201)
 })
 
-postRoute.get('/user/:userId', userPostsRouteSpecs, async (ctx) => {
-	const userId = ctx.req.param('userId')
-	const posts = await prisma.post.findMany({
-		where: { creatorId: userId },
-		include: { ...postSelectSchema },
+postRoute.get('/user/:username', userPostsRouteSpecs, async (ctx) => {
+	const username = ctx.req.param('username')
+	const user = await prisma.user.findUnique({
+		where: { username },
+		include: { posts: true },
 	})
 
-	return ctx.json(posts)
+	return ctx.json(user?.posts)
 })
