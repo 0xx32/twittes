@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "lint-staged": "lint-staged",
-    "build": "turbo build",
     "dev": "turbo dev",
     "pretty": "cd apps/web && bun run pretty && cd ../server && bun run pretty"
   },
