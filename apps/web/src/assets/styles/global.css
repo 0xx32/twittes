@@ -55,7 +55,7 @@
 	--chart-3: 30 80% 55%;
 	--chart-4: 280 65% 60%;
 	--chart-5: 340 75% 55%;
-	--board: 0 0% 11%;
+	--board: 0 0% 3%;
 	--dashboard: 0 0% 1%;
 	--board-radius: calc(var(--radius) * 2);
 	--black: 0 0% 0%;
@@ -70,4 +70,18 @@
 		color: hsl(var(--foreground));
 		background: hsl(var(--background));
 	}
+}
+
+.scrollbar::-webkit-scrollbar {
+	width: 6px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+	background: #131313;
+	border-radius: 34px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+	background: #292828;
+	border-radius: 34px;
 }

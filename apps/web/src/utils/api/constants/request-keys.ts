@@ -6,4 +6,5 @@ export const MUTATION_KEYS = {
 export const QUERY_KEYS = {
 	GET_USER: 'GET_USER',
 	GET_USER_POSTS: 'GET_USER_POSTS',
+	GET_PROFILE: 'GET_PROFILE',
 }

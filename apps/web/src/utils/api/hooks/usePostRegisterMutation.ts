@@ -1,9 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
 
-import { MUTATION_KEYS } from '@/utils/constants'
-
 import type { PostRegisterRequestConfig } from '../requests'
 
+import { MUTATION_KEYS } from '../constants'
 import { postRegister } from '../requests'
 
 export const usePostRegisterMutation = (

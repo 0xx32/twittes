@@ -14,7 +14,7 @@ interface UsePostFeedParams {
 export const usePostsFeed = ({ username }: UsePostFeedParams) => {
 	const userPostsInfinityQuery = useGetUserPostsInfinityQuery({
 		username,
-		size: PAGINATION.LIMIT,
+		limit: PAGINATION.LIMIT,
 		offset: PAGINATION.OFFSET,
 	})
 

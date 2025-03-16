@@ -2,27 +2,35 @@ import { useInfiniteQuery } from '@tanstack/react-query'
 
 import type { GetUserPostsParams } from '../requests'
 
+import { QUERY_KEYS } from '../constants'
 import { getUserPosts } from '../requests'
 
+interface Params extends GetUserPostsParams {
+	offset: number
+	limit: number
+}
+
 export const useGetUserPostsInfinityQuery = (
-	params: GetUserPostsParams,
+	params: Params,
 	settings?: InfinityQuerySettings<typeof getUserPosts>
 ) =>
 	useInfiniteQuery({
 		initialPageParam: 0,
-		queryKey: ['getUserPost', ...Object.values(params)],
+		queryKey: [QUERY_KEYS.GET_USER_POSTS, ...Object.values(params)],
 		queryFn: ({ pageParam }) =>
 			getUserPosts({
-				params: {
-					...params,
-					offset: params.offset + (pageParam as number) * params.size,
-					size: params.size,
+				params,
+				config: {
+					...settings?.config,
+					searchParams: {
+						limit: params.limit,
+						offset: params.offset + pageParam * params.limit,
+					},
 				},
-				config: settings?.config,
 			}),
 
 		getNextPageParam: (lastPage, allPages) => {
-			if (lastPage && lastPage.posts.length < params.size) return undefined
+			if (lastPage && lastPage.posts.length < params.limit) return undefined
 			return allPages.length
 		},
 	})

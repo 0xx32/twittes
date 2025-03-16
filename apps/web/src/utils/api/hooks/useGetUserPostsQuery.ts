@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { QUERY_KEYS } from '@/utils/constants'
-
 import type { GetUserPostsParams } from '../requests'
 
+import { QUERY_KEYS } from '../constants'
 import { getUserPosts } from '../requests'
 
 export const useGetUserTwittesQuery = (

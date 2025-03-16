@@ -1,9 +1,8 @@
 import { useMutation } from '@tanstack/react-query'
 
-import { MUTATION_KEYS } from '@/utils/constants'
-
 import type { PostLoginRequestConfig } from '../requests'
 
+import { MUTATION_KEYS } from '../constants'
 import { postLogin } from '../requests'
 
 export const usePostLoginMutation = (

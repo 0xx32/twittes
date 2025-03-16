@@ -1,4 +1,5 @@
 export * from './useGetProfileQuery'
+export * from './useGetUserPostsInfinityQuery'
 export * from './useGetUserPostsQuery'
 export * from './useGetUserQuery'
 export * from './usePostLoginMutation'

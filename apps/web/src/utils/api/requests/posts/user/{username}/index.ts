@@ -1,5 +1,3 @@
-import type { Post } from '@repo/db'
-
 import { api } from '@/utils/api'
 
 export interface GetUserPostsParams {
@@ -9,4 +7,4 @@ export interface GetUserPostsParams {
 export type GetUserPostsRequestConfig = KyRequestConfig<GetUserPostsParams>
 
 export const getUserPosts = ({ params, config }: GetUserPostsRequestConfig) =>
-	api.get(`posts/user/${params.username}`, { ...config }).json<Post[]>()
+	api.get(`posts/user/${params.username}`, config).json<PostsResponse>()

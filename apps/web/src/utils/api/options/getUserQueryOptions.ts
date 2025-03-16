@@ -1,9 +1,8 @@
 import { queryOptions } from '@tanstack/react-query'
 
-import { QUERY_KEYS } from '@/utils/constants'
-
 import type { GetUserRequestConfig } from '../requests'
 
+import { QUERY_KEYS } from '../constants'
 import { getUser } from '../requests'
 
 export const getUserQueryOptions = ({ params, config }: GetUserRequestConfig) =>
