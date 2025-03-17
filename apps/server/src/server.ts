@@ -10,6 +10,7 @@ import type { AppType } from './utils/types/utils'
 
 import { authMiddleware } from './middlewares'
 import { OPENAPI_SPECS } from './utils/constants/openapi'
+import { generateStreamResponseString } from './utils/helpers'
 
 const app = new Hono<AppType>().basePath('/api')
 
@@ -26,6 +27,14 @@ app.route('auth', routes.authRoute)
 app.route('profile', routes.profileRoute)
 app.route('user', routes.userRoute)
 app.route('posts', routes.postRoute)
+
+app.get('/event/notification', (ctx) => {
+	ctx.header('Content-Type', 'text/event-stream')
+	ctx.header('Cache-Control', 'no-cache')
+	ctx.header('Connection', 'keep-alive')
+
+	return ctx.body(generateStreamResponseString('notice', 'my-id', 'Hello World'))
+})
 
 app.get('/openapi', openAPISpecs(app, OPENAPI_SPECS))
 app.get(
