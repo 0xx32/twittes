@@ -85,3 +85,10 @@
 	background: #292828;
 	border-radius: 34px;
 }
+
+textarea::-webkit-resizer {
+	display: none;
+}
+textarea::-webkit-scrollbar {
+	display: none;
+}

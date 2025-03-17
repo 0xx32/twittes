@@ -3,6 +3,7 @@ import type { IconName } from 'lucide-react/dynamic'
 import { Link } from '@tanstack/react-router'
 import { DynamicIcon } from 'lucide-react/dynamic'
 
+import { ModeToggle } from '@/components'
 import {
 	DropdownMenu,
 	DropdownMenuContent,
@@ -32,6 +33,11 @@ export const Sidebar = () => {
 
 	return (
 		<aside className="sticky h-[calc(100vh-12rem)] flex flex-col pb-6">
+			<div className="mb-10 flex items-center justify-between pr-4">
+				<img src="/images/logo.svg" alt="logo" width={30} />
+				<ModeToggle />
+			</div>
+
 			<ul className="mt-5 flex flex-col gap-4">
 				{generateLinks({ username: profile?.username }).map((link) => (
 					<li key={link.href}>

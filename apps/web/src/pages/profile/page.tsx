@@ -15,7 +15,7 @@ export const ProfilePage = () => {
 			<UserDetails />
 
 			<div>
-				<div className="scrollbar max-h-[400px] overflow-auto pr-2">
+				<div className=" ">
 					{!postsFeed.state.isLoading &&
 						postsFeed.state.posts.map((post) => (
 							<Twitt key={post.id} twitt={post} className="mb-5 h-60 [&:last-child]:mb-0" />

@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet, redirect } from '@tanstack/react-router'
 import { Loader2 } from 'lucide-react'
 
-import { Header, Sidebar } from '../-components'
+import { Sidebar } from '../-components'
 
 export const Route = createFileRoute('/(base)/_base')({
 	component: LayoutComponent,
@@ -23,11 +23,8 @@ export const Route = createFileRoute('/(base)/_base')({
 function LayoutComponent() {
 	return (
 		<div className="container py-10">
-			<div className="border border-gray-200 rounded-board bg-dashboard pl-12 pr-18 pt-6 shadow-xl dark:border-gray-900 dark:shadow-md dark:shadow-white/20">
-				<div className="mb-5">
-					<Header />
-				</div>
-				<div className="grid grid-cols-[240px_1fr] mx-auto max-w-[1400px] gap-5">
+			<div className="border border-gray-200 rounded-board bg-dashboard px-12 pt-6 shadow-xl dark:border-gray-900 dark:shadow-md dark:shadow-white/20">
+				<div className="grid grid-cols-[240px_1fr_270px] mx-auto max-w-[1400px] gap-5">
 					<Sidebar />
 					<main>
 						<Outlet />
