@@ -10,7 +10,7 @@ interface Params extends GetPostsUserParams {
 	limit: number
 }
 
-export const useGetPostsUserInfinityQuery = (
+export const useGetPostsUserInfiniteQuery = (
 	params: Params,
 	settings?: InfinityQuerySettings<typeof getPostsUser>
 ) =>

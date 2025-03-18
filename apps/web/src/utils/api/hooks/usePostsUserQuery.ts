@@ -5,7 +5,7 @@ import type { GetPostsUserParams } from '../requests'
 import { QUERY_KEYS } from '../constants'
 import { getPostsUser } from '../requests'
 
-export const usePostsUserQuery = (
+export const useGetPostsUserQuery = (
 	params: GetPostsUserParams,
 	settings?: QuerySettings<typeof getPostsUser>
 ) =>
