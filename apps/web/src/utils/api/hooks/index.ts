@@ -1,3 +1,4 @@
+export * from './useGetPostsQuery'
 export * from './useGetProfileQuery'
 export * from './useGetUserPostsInfinityQuery'
 export * from './useGetUserQuery'
