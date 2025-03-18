@@ -12,7 +12,7 @@
 		"lint": "eslint .",
 		"format": "prettier --write .",
 		"pretty": "bun format && bun lint",
-		"api": "bunx openapi-typescript http://localhost:4040/api/openapi -o ./gen/schema.d.ts"
+		"generate-api": "bunx openapi-typescript http://localhost:4040/api/openapi -o ./generated/api/schema.d.ts"
 	},
 	"dependencies": {
 		"@bbob/parser": "^4.2.0",

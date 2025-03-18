@@ -1,3 +1,5 @@
+type paths = import('@/generated/api/schema').paths
+
 interface SuccessResponse {
 	message: string
 }
@@ -6,35 +8,27 @@ interface ErrorResponse {
 	errors: string[]
 }
 
-type LoginResponse = {
-	token: string
-	user: User
-} & SuccessResponse
+type Profile = ProfileResponse['profile']
+type Post = PostResponse
 
-type RegisterResponse = {
-	userId: string
-} & SuccessResponse
+type UploadResponse = paths['/api/upload']['post']['responses']['200']['content']['aplication/json']
 
-interface PostsResponse {
-	posts: Post[]
-	offset: number
-	limit: number
-}
+type AuthRegisterResponse =
+	paths['/api/auth/register']['post']['responses']['201']['content']['aplication/json']
+type AuthLoginResponse =
+	paths['/api/auth/login']['post']['responses']['200']['content']['aplication/json']
+type AuthLogoutResponse =
+	paths['/api/auth/logout']['get']['responses']['200']['content']['aplication/json']
 
-type Post = import('@repo/db').Prisma.PostGetPayload<{
-	omit: {
-		password: true
-	}
-	include: {
-		creator: {
-			include: {
-				id: true
-				username: true
-				picture: true
-			}
-		}
-	}
-}>
+type ProfileResponse =
+	paths['/api/profile']['get']['responses']['200']['content']['aplication/json']
+type UsernameResponse =
+	paths['/api/user/{username}']['get']['responses']['200']['content']['aplication/json']
 
-type Profile = import('@repo/db').User
-type Twitt = Post
+type PostsResponse = paths['/api/posts']['get']['responses']['200']['content']['aplication/json']
+type CreatePostResponse =
+	paths['/api/posts']['post']['responses']['201']['content']['aplication/json']
+type PostsUserResponse =
+	paths['/api/posts/user/{username}']['get']['responses']['200']['content']['aplication/json']
+type PostResponse =
+	paths['/api/posts/{postId}']['get']['responses']['200']['content']['aplication/json']
