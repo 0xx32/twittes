@@ -1,10 +1,10 @@
 import { api } from '@/utils/api'
 
-export interface GetUserPostsParams {
+export interface GetPostsUserParams {
 	username: string
 }
 
-export type GetUserPostsRequestConfig = KyRequestConfig<GetUserPostsParams>
+export type GetPostsUserRequestConfig = KyRequestConfig<GetPostsUserParams>
 
-export const getUserPosts = ({ params, config }: GetUserPostsRequestConfig) =>
+export const getPostsUser = ({ params, config }: GetPostsUserRequestConfig) =>
 	api.get(`posts/user/${params.username}`, config).json<PostsResponse>()

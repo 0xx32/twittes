@@ -9,7 +9,7 @@ export const usePostAuthRegisterMutation = (
 	settings?: MutationSettings<PostAuthRegisterRequestConfig, typeof postAuthRegister>
 ) =>
 	useMutation({
-		mutationKey: [MUTATION_KEYS.POST_REGISTER],
+		mutationKey: [MUTATION_KEYS.POST_AUTH_REGISTER],
 		mutationFn: ({ params, config }) =>
 			postAuthRegister({ params, config: { ...config, ...settings?.config } }),
 		...settings?.options,

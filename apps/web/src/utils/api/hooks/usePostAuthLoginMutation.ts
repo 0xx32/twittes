@@ -9,7 +9,7 @@ export const usePostAuthLoginMutation = (
 	settings?: MutationSettings<PostAuthLoginRequestConfig, typeof postAuthLogin>
 ) =>
 	useMutation({
-		mutationKey: [MUTATION_KEYS.POST_LOGIN],
+		mutationKey: [MUTATION_KEYS.POST_AUTH_LOGIN],
 		mutationFn: ({ params, config }) =>
 			postAuthLogin({ params, config: { ...config, ...settings?.config } }),
 		...settings?.options,
