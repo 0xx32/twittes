@@ -1,28 +1,29 @@
-import { useGetPostsInfiniteQuery } from '@/utils/api/hooks'
+import { Loader2 } from 'lucide-react'
 
 import { Twitt } from '../-components'
 import { CreateNewPostForm } from './-components'
-
-const PAGINATION = {
-	OFFSET: 0,
-	LIMIT: 10,
-}
+import { useFeed } from './hooks'
 
 export const MainPage = () => {
-	const postsQuery = useGetPostsInfiniteQuery({
-		limit: PAGINATION.LIMIT,
-		offset: PAGINATION.OFFSET,
-	})
-	const posts = postsQuery.data?.pages.flatMap((page) => page.posts)
+	const { state } = useFeed()
 
 	return (
 		<div className="">
 			<div className="mb-6">
 				<CreateNewPostForm />
 			</div>
-			{posts?.map((post) => (
-				<Twitt key={post.id} twitt={post} className="mb-5 [&:last-child]:mb-0" />
-			))}
+			<div>
+				{state.isLoading && (
+					<div className="mt-10 flex justify-center">
+						<Loader2 className="animate-spin" size={44} />
+					</div>
+				)}
+
+				{!state.isLoading &&
+					state.posts?.map((post) => (
+						<Twitt key={post.id} twitt={post} className="mb-5 [&:last-child]:mb-0" />
+					))}
+			</div>
 		</div>
 	)
 }

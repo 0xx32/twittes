@@ -5,12 +5,12 @@ import React from 'react'
 import { Button } from '@/components/ui'
 import { useProfile } from '@/utils/contexts/profile'
 
-import { useCreateNewForm } from './useCreateNewForm'
+import { useCreateNewPostForm } from './useCreateNewPostForm'
 
 export const CreateNewPostForm = () => {
 	const { profile } = useProfile()
 
-	const { state, refs, functions } = useCreateNewForm()
+	const { state, refs, functions } = useCreateNewPostForm()
 
 	React.useLayoutEffect(() => {
 		functions.autoResize()
@@ -21,6 +21,7 @@ export const CreateNewPostForm = () => {
 			<div
 				className={clsx('rounded-board bg-white/70 p-4  dark:bg-board flex gap-3', {
 					'shadow-lg border transition-all': state.fieldFocus,
+					'opacity-50 select-none': state.isPending,
 				})}
 			>
 				<div>
@@ -37,9 +38,10 @@ export const CreateNewPostForm = () => {
 						onFocus={() => functions.setFieldFocus(true)}
 						onBlur={() => functions.setFieldFocus(false)}
 						onChange={functions.newPostOnChange}
-						className="w-full bg-transparent text-lg font-semibold focus:outline-none"
+						className="w-full bg-transparent text-lg font-semibold disabled:opacity-10 focus:outline-none"
 						placeholder="Что происходит?"
 						value={state.newPostValue}
+						disabled={state.isPending}
 					/>
 
 					<div>
@@ -64,7 +66,10 @@ export const CreateNewPostForm = () => {
 							<Smile size={20} />
 						</button>
 
-						<Button className="ml-a"> Отправить </Button>
+						<Button className="ml-a" disabled={state.isPending}>
+							{' '}
+							Отправить{' '}
+						</Button>
 					</div>
 				</form>
 			</div>

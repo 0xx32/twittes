@@ -43,7 +43,7 @@ export const Sidebar = () => {
 					<li key={link.href}>
 						<Link
 							to={link.href}
-							className="flex items-center gap-3 text-primary font-500 hover:text-accent [&.active]:font-600"
+							className="flex items-center gap-3 text-xl text-primary font-500 hover:text-accent [&.active]:font-600"
 						>
 							<DynamicIcon name={link.icon} size={18} />
 							<span>{link.name}</span>

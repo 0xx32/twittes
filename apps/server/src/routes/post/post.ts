@@ -31,6 +31,7 @@ postRoute.get(
 			include: { ...postSelectSchema },
 			skip: offset,
 			take: limit,
+			orderBy: { createdAt: 'desc' },
 		})
 		return ctx.json({ posts, offset, limit })
 	}

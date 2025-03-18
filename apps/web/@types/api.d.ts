@@ -8,9 +8,9 @@ interface ErrorResponse {
 	errors: string[]
 }
 
-type Profile = ProfileResponse['profile']
+type Profile = GetProfileResponse['profile']
 type User = GetUserResponse
-type Post = PostResponse
+type Post = GetPostResponse
 
 type PostUploadResponse =
 	paths['/api/upload']['post']['responses']['200']['content']['aplication/json']
