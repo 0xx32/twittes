@@ -1,7 +1,7 @@
 import { useNavigate } from '@tanstack/react-router'
 import { toast } from 'sonner'
 
-import { getLogout } from '../api/requests'
+import { getAuthLogout } from '../api/requests'
 import { useSession } from '../contexts/session'
 
 export const useLogout = () => {
@@ -9,7 +9,7 @@ export const useLogout = () => {
 	const navigate = useNavigate()
 
 	const logout = () => {
-		getLogout({})
+		getAuthLogout({})
 		setSession(false)
 		toast.success('Вы вышли из системы')
 		navigate({
