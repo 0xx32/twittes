@@ -1,6 +1,6 @@
 import { api } from '@/utils/api'
 
-export type GetLogoutRequestConfig = KyRequestConfig
+export type GetAuthLogoutRequestConfig = KyRequestConfig
 
-export const getLogout = ({ config }: GetLogoutRequestConfig) =>
+export const getAuthLogout = ({ config }: GetAuthLogoutRequestConfig) =>
 	api.get('auth/logout', config).json<SuccessResponse>()

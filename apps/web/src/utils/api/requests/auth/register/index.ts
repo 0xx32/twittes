@@ -1,14 +1,14 @@
 import { api } from '@/utils/api'
 
-export interface PostRegisterParams {
+export interface PostAuthRegisterParams {
 	username: string
 	password: string
 	displayName: string
 }
 
-export type PostRegisterRequestConfig = KyRequestConfig<PostRegisterParams>
+export type PostAuthRegisterRequestConfig = KyRequestConfig<PostAuthRegisterParams>
 
-export const postRegister = ({ params, config }: PostRegisterRequestConfig) =>
+export const postAuthRegister = ({ params, config }: PostAuthRegisterRequestConfig) =>
 	api
 		.post('auth/register', {
 			json: params,

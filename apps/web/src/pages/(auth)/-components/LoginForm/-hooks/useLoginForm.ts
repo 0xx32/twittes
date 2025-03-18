@@ -5,7 +5,7 @@ import { HTTPError } from 'ky'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { usePostLoginMutation } from '@/utils/api/hooks'
+import { usePostAuthLoginMutation } from '@/utils/api/hooks'
 import { AUTH_LOCAL_KEY } from '@/utils/constants/global'
 import { useProfile } from '@/utils/contexts/profile'
 import { useSession } from '@/utils/contexts/session'
@@ -25,7 +25,7 @@ export const useLoginForm = () => {
 		mode: 'onChange',
 	})
 
-	const postLoginMutation = usePostLoginMutation()
+	const postLoginMutation = usePostAuthLoginMutation()
 
 	const onSubmit = async (values: LoginFormSchema) => {
 		try {

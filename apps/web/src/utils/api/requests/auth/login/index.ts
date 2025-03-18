@@ -1,15 +1,15 @@
 import { api } from '@/utils/api'
 
-export interface PostLoginParams {
+export interface PostAuthLoginParams {
 	username: string
 	password: string
 }
 
-export type PostLoginRequestConfig = KyRequestConfig<PostLoginParams>
+export type PostAuthLoginRequestConfig = KyRequestConfig<PostAuthLoginParams>
 
-export const postLogin = ({ params, config }: PostLoginRequestConfig) =>
+export const postAuthLogin = ({ params, config }: PostAuthLoginRequestConfig) =>
 	api
-		.post('auth/login', {
+		.post('auth/AuthLogin', {
 			json: params,
 			...config,
 		})

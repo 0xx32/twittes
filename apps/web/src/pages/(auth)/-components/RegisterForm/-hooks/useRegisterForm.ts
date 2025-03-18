@@ -4,7 +4,7 @@ import { HTTPError } from 'ky'
 import { useForm } from 'react-hook-form'
 import { toast } from 'sonner'
 
-import { usePostRegisterMutation } from '@/utils/api/hooks'
+import { usePostAuthRegisterMutation } from '@/utils/api/hooks'
 
 import type { RegisterFormSchema } from '../-constants'
 
@@ -17,7 +17,7 @@ export const useRegisterForm = () => {
 	})
 	const navigate = useNavigate()
 
-	const postRegisterMutation = usePostRegisterMutation()
+	const postRegisterMutation = usePostAuthRegisterMutation()
 
 	const onSubmit = async (values: RegisterFormSchema) => {
 		try {
