@@ -14,8 +14,6 @@ import { generateStreamResponseString } from './utils/helpers'
 
 const app = new Hono<AppType>()
 
-app.use('/static/*', serveStatic({ root: './' }))
-
 app.use(
 	'*',
 	cors({
@@ -24,8 +22,10 @@ app.use(
 	})
 )
 app.use('*', authMiddleware)
+app.use('/static/*', serveStatic({ root: './' }))
 
-app.route('api/auth', routes.authRoute).basePath('/api')
+app.route('api/upload', routes.uploadRoute)
+app.route('api/auth', routes.authRoute)
 app.route('api/profile', routes.profileRoute)
 app.route('api/user', routes.userRoute)
 app.route('api/posts', routes.postRoute)
@@ -48,6 +48,6 @@ app.get(
 )
 
 export default {
-	port: Bun.env.BACKEND_PORT ?? 3000,
+	port: 4040,
 	fetch: app.fetch,
 }

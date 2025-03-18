@@ -1,5 +1,6 @@
 {
 	"name": "server",
+	"type": "module",
 	"version": "0.0.0",
 	"packageManager": "bun@1.2.4",
 	"scripts": {
@@ -23,7 +24,7 @@
 	"devDependencies": {
 		"@antfu/eslint-config": "^4.10.1",
 		"@types/bcrypt": "^5.0.2",
-		"@types/bun": "latest",
+		"@types/bun": "^1.2.5",
 		"eslint": "^9.22.0",
 		"eslint-plugin-perfectionist": "^4.10.1",
 		"prettier": "^3.5.3"
