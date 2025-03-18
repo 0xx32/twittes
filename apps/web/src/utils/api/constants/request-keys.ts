@@ -1,6 +1,7 @@
 export const MUTATION_KEYS = {
 	POST_REGISTER: 'POST_REGISTER',
 	POST_LOGIN: 'POST_LOGIN',
+	POST_POSTS: 'POST_POSTS',
 }
 
 export const QUERY_KEYS = {

@@ -30,7 +30,7 @@ export const CreateNewPostForm = () => {
 					{!profile.picture && <div className="h-10 w-10 rounded-full bg-accent"></div>}
 				</div>
 
-				<div className="flex-1 pt-[6px]">
+				<form className="flex-1 pt-[6px]" onSubmit={functions.handleSubmit}>
 					<textarea
 						ref={refs.fieldRef}
 						name="new-post"
@@ -44,7 +44,11 @@ export const CreateNewPostForm = () => {
 
 					<div>
 						{state.uploadedFile && (
-							<img src={state.uploadedFile.filePath} className="rounded-board" alt="" />
+							<img
+								src={`http://localhost:400/${state.uploadedFile.filePath}`}
+								className="rounded-board"
+								alt=""
+							/>
 						)}
 					</div>
 
@@ -62,7 +66,7 @@ export const CreateNewPostForm = () => {
 
 						<Button className="ml-a"> Отправить </Button>
 					</div>
-				</div>
+				</form>
 			</div>
 		</div>
 	)

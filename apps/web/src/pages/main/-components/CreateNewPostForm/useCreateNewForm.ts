@@ -1,8 +1,12 @@
+import { HTTPError } from 'ky'
 import React from 'react'
+import { toast } from 'sonner'
+
+import { api } from '@/utils/api'
+import { usePostPostsMutation } from '@/utils/api/hooks'
 
 interface UploadedFile {
 	filePath: string
-	name: string
 }
 
 export const useCreateNewForm = () => {
@@ -10,6 +14,8 @@ export const useCreateNewForm = () => {
 	const [fieldFocus, setFieldFocus] = React.useState(false)
 	const [uploadedFile, setUploadedFile] = React.useState<UploadedFile | null>(null)
 	const fieldRef = React.useRef<HTMLTextAreaElement>(null)
+
+	const createNewPostMutation = usePostPostsMutation()
 
 	const autoResize = () => {
 		if (!fieldRef.current) return
@@ -23,18 +29,51 @@ export const useCreateNewForm = () => {
 		autoResize()
 	}
 
-	const uploadFile = (file: File) => {
+	const uploadFile = async (file: File) => {
 		const formData = new FormData()
-		formData.append('file', file)
+		formData.append('image', file)
 
-		setUploadedFile(null)
+		const data = await api
+			.post('upload', {
+				json: formData,
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+				searchParams: {
+					// path: 'posts',
+					name: file.name,
+				},
+			})
+			.json<{ filePath: string }>()
+
+		setUploadedFile({ filePath: data.filePath })
 	}
 
 	const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const file = e.target.files?.[0]
+
 		if (!file) return
 
 		uploadFile(file)
+	}
+
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		if (!newPostValue.length) return
+
+		try {
+			await createNewPostMutation.mutateAsync({
+				params: {
+					content: newPostValue,
+				},
+			})
+		} catch (error) {
+			console.error(error)
+			if (error instanceof HTTPError) {
+				const errorData = await error.response.json<ErrorResponse>()
+				toast.error(errorData.message)
+			}
+		}
 	}
 
 	return {
@@ -51,6 +90,7 @@ export const useCreateNewForm = () => {
 			newPostOnChange,
 			setFieldFocus,
 			selectFile,
+			handleSubmit,
 		},
 	}
 }
