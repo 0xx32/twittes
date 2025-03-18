@@ -5,6 +5,8 @@
   "scripts": {
     "lint-staged": "lint-staged",
     "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "turbo format",
     "pretty": "cd apps/web && bun run pretty && cd ../server && bun run pretty"
   },
   "type": "module",

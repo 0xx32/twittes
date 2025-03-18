@@ -8,6 +8,7 @@ export const AVATARS = {
 	avatarUrl(gender: Gender) {
 		return `${this.url}?seed=${this.randomAvatar(gender).seed}`
 	},
+
 	mens: [
 		{ seed: 'Ryker', color: '#f0f' },
 		{ seed: 'Easton', color: '#f0f' },

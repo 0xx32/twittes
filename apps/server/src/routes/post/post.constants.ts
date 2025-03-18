@@ -29,4 +29,8 @@ export const postResponseSchema = v.object({
 	}),
 })
 
-export const postsResponseSchema = v.array(postResponseSchema)
+export const postsResponseSchema = v.object({
+	posts: v.array(postResponseSchema),
+	offset: v.number(),
+	limit: v.number(),
+})

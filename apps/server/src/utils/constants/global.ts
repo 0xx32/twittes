@@ -1,1 +1,1 @@
-export const PUBLIC_ROUTES = ['/auth', '/docs', '/openapi']
+export const PUBLIC_ROUTES = ['/auth', '/docs', '/openapi', 'swagger']

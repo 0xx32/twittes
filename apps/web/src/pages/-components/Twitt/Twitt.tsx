@@ -14,7 +14,7 @@ export const Twitt = ({ twitt, className, ref, ...props }: TwittProps) => {
 			)}
 			{...props}
 		>
-			<div>Creator</div>
+			<div>{twitt.creator.picture && <img src={twitt.creator.picture} alt="" />}</div>
 			<p>{twitt.content}</p>
 		</div>
 	)

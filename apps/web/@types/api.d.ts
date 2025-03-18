@@ -21,6 +21,20 @@ interface PostsResponse {
 	limit: number
 }
 
+type Post = import('@repo/db').Prisma.PostGetPayload<{
+	omit: {
+		password: true
+	}
+	include: {
+		creator: {
+			include: {
+				id: true
+				username: true
+				picture: true
+			}
+		}
+	}
+}>
+
 type Profile = import('@repo/db').User
-type Twitt = import('@repo/db').Post
-type Post = import('@repo/db').Post
+type Twitt = Post

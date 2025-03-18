@@ -11,6 +11,7 @@
 		"pretty": "bun format && bun lint --fix"
 	},
 	"dependencies": {
+		"@hono/swagger-ui": "^0.5.1",
 		"@hono/valibot-validator": "^0.5.2",
 		"@prisma/extension-accelerate": "^1.2.2",
 		"@repo/db": "workspace:*",

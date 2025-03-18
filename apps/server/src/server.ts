@@ -1,3 +1,4 @@
+import { swaggerUI } from '@hono/swagger-ui'
 import { apiReference } from '@scalar/hono-api-reference'
 import { Hono } from 'hono'
 import { openAPISpecs } from 'hono-openapi'
@@ -46,6 +47,7 @@ app.get(
 		url: '/api/openapi',
 	})
 )
+app.get('api/swagger', swaggerUI({ url: '/api/openapi' }))
 
 export default {
 	port: 4040,
