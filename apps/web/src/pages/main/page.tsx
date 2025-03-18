@@ -1,3 +1,9 @@
+import { CreateNewPostForm } from './-components'
+
 export const MainPage = () => {
-	return <div className=""></div>
+	return (
+		<div className="">
+			<CreateNewPostForm />
+		</div>
+	)
 }
