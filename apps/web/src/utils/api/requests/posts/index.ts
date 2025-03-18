@@ -17,4 +17,4 @@ export const postPosts = ({ params, config }: PostPostsRequestConfig) =>
 			json: params,
 			...config,
 		})
-		.json<Post>()
+		.json<Post[]>()
