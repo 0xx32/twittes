@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 
 interface TwittProps extends React.ComponentProps<'div'> {
-	twitt: Twitt
+	twitt: Post
 }
 
 export const Twitt = ({ twitt, className, ref, ...props }: TwittProps) => {

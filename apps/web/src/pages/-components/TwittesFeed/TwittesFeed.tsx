@@ -1,7 +1,7 @@
 import { Twitt } from '../Twitt'
 
 interface TwittesFeedProps {
-	twittes: Twitt[]
+	twittes: Post[]
 }
 
 export const TwittesFeed = ({ twittes }: TwittesFeedProps) => {

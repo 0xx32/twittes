@@ -14,4 +14,4 @@ export const postAuthRegister = ({ params, config }: PostAuthRegisterRequestConf
 			json: params,
 			...config,
 		})
-		.json<RegisterResponse>()
+		.json<PostAuthLoginResponse>()

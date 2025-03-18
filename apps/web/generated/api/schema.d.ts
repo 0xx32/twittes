@@ -406,10 +406,12 @@ export interface operations {
 					'aplication/json': {
 						profile: {
 							id: string
-							email: string
 							username: string
 							displayName: string
 							picture: string
+							age: number
+							city: string
+							country: string
 							isVerified: boolean
 							createdAt: string
 							updatedAt: string

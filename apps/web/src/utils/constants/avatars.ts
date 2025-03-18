@@ -6,7 +6,7 @@ export const AVATARS = {
 		return this[gender][Math.floor(Math.random() * this[gender].length)]
 	},
 	avatarUrl(gender: Gender) {
-		return `${this.url}?seed=${this.randomAvatar(gender).seed}`
+		return `${this.url}?seed=${this.randomAvatar(gender)?.seed}`
 	},
 
 	mens: [

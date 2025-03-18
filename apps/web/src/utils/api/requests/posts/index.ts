@@ -4,17 +4,15 @@ export interface GetPostsParams {
 	offset: number
 	limit: number
 }
-
 export type GetPostsRequestConfig = KyRequestConfig<GetPostsParams>
 
 export const getPosts = ({ config }: GetPostsRequestConfig) =>
-	api.get('posts', config).json<PostsResponse>()
+	api.get('posts', config).json<GetPostsResponse>()
 
 export interface PostPostsParams {
 	content: string
 	image?: string
 }
-
 export type PostPostsRequestConfig = KyRequestConfig<PostPostsParams>
 
 export const postPosts = ({ params, config }: PostPostsRequestConfig) =>
@@ -23,4 +21,4 @@ export const postPosts = ({ params, config }: PostPostsRequestConfig) =>
 			json: params,
 			...config,
 		})
-		.json<PostsResponse>()
+		.json<PostPostResponse>()

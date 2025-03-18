@@ -9,26 +9,28 @@ interface ErrorResponse {
 }
 
 type Profile = ProfileResponse['profile']
+type User = GetUserResponse
 type Post = PostResponse
 
-type UploadResponse = paths['/api/upload']['post']['responses']['200']['content']['aplication/json']
+type PostUploadResponse =
+	paths['/api/upload']['post']['responses']['200']['content']['aplication/json']
 
-type AuthRegisterResponse =
+type PostAuthRegisterResponse =
 	paths['/api/auth/register']['post']['responses']['201']['content']['aplication/json']
-type AuthLoginResponse =
+type PostAuthLoginResponse =
 	paths['/api/auth/login']['post']['responses']['200']['content']['aplication/json']
-type AuthLogoutResponse =
+type GetAuthLogoutResponse =
 	paths['/api/auth/logout']['get']['responses']['200']['content']['aplication/json']
 
-type ProfileResponse =
+type GetProfileResponse =
 	paths['/api/profile']['get']['responses']['200']['content']['aplication/json']
-type UsernameResponse =
+type GetUserResponse =
 	paths['/api/user/{username}']['get']['responses']['200']['content']['aplication/json']
 
-type PostsResponse = paths['/api/posts']['get']['responses']['200']['content']['aplication/json']
-type CreatePostResponse =
-	paths['/api/posts']['post']['responses']['201']['content']['aplication/json']
-type PostsUserResponse =
+type GetPostsResponse = paths['/api/posts']['get']['responses']['200']['content']['aplication/json']
+type GetPostsUserResponse =
 	paths['/api/posts/user/{username}']['get']['responses']['200']['content']['aplication/json']
-type PostResponse =
+type GetPostResponse =
 	paths['/api/posts/{postId}']['get']['responses']['200']['content']['aplication/json']
+type PostPostResponse =
+	paths['/api/posts']['post']['responses']['201']['content']['aplication/json']

@@ -13,4 +13,4 @@ export const postAuthLogin = ({ params, config }: PostAuthLoginRequestConfig) =>
 			json: params,
 			...config,
 		})
-		.json<LoginResponse>()
+		.json<PostAuthLoginResponse>()

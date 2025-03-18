@@ -7,4 +7,4 @@ export interface GetPostsUserParams {
 export type GetPostsUserRequestConfig = KyRequestConfig<GetPostsUserParams>
 
 export const getPostsUser = ({ params, config }: GetPostsUserRequestConfig) =>
-	api.get(`posts/user/${params.username}`, config).json<PostsResponse>()
+	api.get(`posts/user/${params.username}`, config).json<GetPostsUserResponse>()
