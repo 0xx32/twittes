@@ -8,6 +8,9 @@ export default antfu(
 		stylistic: false,
 	},
 	{
+		ignores: ['generated/**/*'],
+	},
+	{
 		rules: {
 			'style/no-tabs': 'off',
 			'ts/ban-ts-comment': 'warn',
