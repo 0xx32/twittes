@@ -12,8 +12,7 @@
   "type": "module",
   "workspaces": [
     "apps/web",
-    "apps/server",
-    "packages/*"
+    "apps/server"
   ],
   "dependencies": {
     "lint-staged": "^15.5.0",

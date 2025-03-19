@@ -19,7 +19,6 @@
         "@hono/swagger-ui": "^0.5.1",
         "@hono/valibot-validator": "^0.5.2",
         "@prisma/extension-accelerate": "^1.2.2",
-        "@repo/db": "workspace:*",
         "@scalar/hono-api-reference": "^0.7.0",
         "@valibot/to-json-schema": "^1.0.0-rc.0",
         "argon2": "^0.41.1",
@@ -83,14 +82,6 @@
         "typescript-eslint": "^8.24.1",
         "unocss": "^66.1.0-beta.5",
         "vite": "^6.2.0",
-      },
-    },
-    "packages/database": {
-      "name": "@repo/db",
-      "version": "0.0.1",
-      "dependencies": {
-        "@prisma/client": "^6.5.0",
-        "prisma": "^6.5.0",
       },
     },
   },
@@ -366,8 +357,6 @@
     "@redocly/config": ["@redocly/config@0.22.1", "", {}, "sha512-1CqQfiG456v9ZgYBG9xRQHnpXjt8WoSnDwdkX6gxktuK69v2037hTAR1eh0DGIqpZ1p4k82cGH8yTNwt7/pI9g=="],
 
     "@redocly/openapi-core": ["@redocly/openapi-core@1.33.1", "", { "dependencies": { "@redocly/ajv": "^8.11.2", "@redocly/config": "^0.22.0", "colorette": "^1.2.0", "https-proxy-agent": "^7.0.5", "js-levenshtein": "^1.1.6", "js-yaml": "^4.1.0", "minimatch": "^5.0.1", "pluralize": "^8.0.0", "yaml-ast-parser": "0.0.43" } }, "sha512-tL3v8FVwdcCAcruOZV77uxH2ZFtnY3DRPG+rgmlm9hsu5uoatofVSJIJHUroz54KJ8ryeo28wQHhOr8iReGGEQ=="],
-
-    "@repo/db": ["@repo/db@workspace:packages/database"],
 
     "@rollup/rollup-android-arm-eabi": ["@rollup/rollup-android-arm-eabi@4.35.0", "", { "os": "android", "cpu": "arm" }, "sha512-uYQ2WfPaqz5QtVgMxfN6NpLD+no0MYHDBywl7itPYd3K5TjjSghNKmX8ic9S8NU8w81NVhJv/XojcHptRly7qQ=="],
 

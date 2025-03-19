@@ -14,7 +14,6 @@
 		"@hono/swagger-ui": "^0.5.1",
 		"@hono/valibot-validator": "^0.5.2",
 		"@prisma/extension-accelerate": "^1.2.2",
-		"@repo/db": "workspace:*",
 		"@scalar/hono-api-reference": "^0.7.0",
 		"@valibot/to-json-schema": "^1.0.0-rc.0",
 		"argon2": "^0.41.1",
