@@ -20,6 +20,7 @@
 		"argon2": "^0.41.1",
 		"hono": "^4.7.4",
 		"hono-openapi": "^0.4.6",
+		"nanoid": "^5.1.5",
 		"valibot": "^1.0.0-rc.4"
 	},
 	"devDependencies": {

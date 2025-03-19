@@ -1,7 +1,10 @@
 import { Hono } from 'hono'
+import { nanoid } from 'nanoid'
 import { Buffer } from 'node:buffer'
-import { mkdir, writeFile } from 'node:fs/promises'
-import path, { join } from 'node:path'
+import { writeFile } from 'node:fs/promises'
+import { join, normalize } from 'node:path'
+
+import { fileExtension } from '@/utils/helpers'
 
 import { uploadRouteSpecs } from './upload.openapi'
 import { uploadSearchValidation } from './upload.validators'
@@ -11,40 +14,29 @@ export const uploadRoute = new Hono()
 uploadRoute.post('/', uploadSearchValidation, uploadRouteSpecs, async (ctx) => {
 	const search = ctx.req.valid('query')
 	const savePath = search.path ?? ''
-	const fileName = search.name ?? ''
 
-	const contentType = ctx.req.header('Content-Type')
+	const body = await ctx.req.parseBody<{ file: File }>()
+	const file = body.file
 
-	if (contentType !== 'multipart/form-data') {
-		return ctx.json({ message: 'Тип запроса не соответствует типу данных' }, 400)
-	}
+	const fileName = `${nanoid(20)}.${fileExtension(file.name)}`
+	const currentPath = normalize(join(import.meta.dirname, '../../../static', savePath))
 
-	const blob = await ctx.req.blob()
-	const buffer = await blob.arrayBuffer()
-
-	const currentPath = path.join(import.meta.dirname, '../../../static', savePath)
+	const path = join(currentPath, fileName)
+	const fileBuffer = await file.arrayBuffer()
 
 	try {
-		if (savePath) {
-			const dirPath = await mkdir(currentPath, { recursive: true })
-
-			if (!dirPath) {
-				return ctx.json({ message: 'Ошибка загрузки файла' }, 400)
-			}
-
-			await writeFile(path.join(dirPath, fileName), Buffer.from(buffer))
-		} else {
-			await writeFile(join(currentPath, fileName), Buffer.from(buffer))
-		}
+		await writeFile(path, Buffer.from(fileBuffer))
 	} catch (error) {
 		console.error(error)
-		return ctx.json({ message: 'Ошибка загрузки файла' }, 400)
-	}
 
-	const responseFilePath = `static${savePath.length > 0 ? `/${savePath}` : ''}/${fileName}`
+		ctx.status(500)
+		return ctx.json({
+			message: 'Ошибка записи файла',
+		})
+	}
 
 	return ctx.json({
 		message: 'Файл успешно загружен',
-		filePath: responseFilePath,
+		filePath: `static/${fileName}`,
 	})
 })
