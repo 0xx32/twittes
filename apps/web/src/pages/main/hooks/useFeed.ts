@@ -1,3 +1,5 @@
+import { useDidUpdate, useIntersectionObserver } from '@siberiacancode/reactuse'
+
 import { useGetPostsInfiniteQuery } from '@/utils/api/hooks'
 
 const PAGINATION = {
@@ -13,7 +15,20 @@ export const useFeed = () => {
 
 	const posts = getPostsInfinityQuery.data?.pages.flatMap((page) => page.posts)
 
+	const intersectionObserver = useIntersectionObserver<HTMLDivElement>({
+		rootMargin: '300px 0px 0px 0px',
+		threshold: 0.5,
+	})
+
+	useDidUpdate(() => {
+		if (getPostsInfinityQuery.isFetchingNextPage) return
+		getPostsInfinityQuery.fetchNextPage()
+	}, [intersectionObserver.inView])
+
 	return {
+		refs: {
+			trigger: intersectionObserver.ref,
+		},
 		state: {
 			posts,
 			isFetching: getPostsInfinityQuery.isFetching,

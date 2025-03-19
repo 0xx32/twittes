@@ -26,5 +26,11 @@ export const Twitt = ({ twitt, className, ref, ...props }: TwittProps) => (
 		<p className="whitespace-pre-line font-semibold capitalize dark:text-gray-300">
 			{twitt.content}
 		</p>
+
+		<div className="mt-4">
+			{twitt.image && (
+				<img src={`http://localhost:4040/${twitt.image}`} className="rounded-board" alt="" />
+			)}
+		</div>
 	</div>
 )

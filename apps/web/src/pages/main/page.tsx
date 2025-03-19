@@ -5,7 +5,7 @@ import { CreateNewPostForm } from './-components'
 import { useFeed } from './hooks'
 
 export const MainPage = () => {
-	const { state } = useFeed()
+	const { state, refs } = useFeed()
 
 	return (
 		<div className="">
@@ -23,6 +23,8 @@ export const MainPage = () => {
 					state.posts?.map((post) => (
 						<Twitt key={post.id} twitt={post} className="mb-5 [&:last-child]:mb-0" />
 					))}
+
+				<div ref={refs.trigger}></div>
 			</div>
 		</div>
 	)

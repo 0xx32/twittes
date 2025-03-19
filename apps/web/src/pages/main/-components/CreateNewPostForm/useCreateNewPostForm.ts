@@ -81,22 +81,14 @@ export const useCreateNewPostForm = () => {
 
 	const uploadFile = async (file: File) => {
 		const formData = new FormData()
-		formData.append('image', file)
+		formData.append('file', file)
 
-		const data = await api
-			.post('upload', {
-				json: formData,
-				headers: {
-					'Content-Type': 'multipart/form-data',
-				},
-				searchParams: {
-					// path: 'posts',
-					name: file.name,
-				},
-			})
-			.json<{ filePath: string }>()
-
-		setUploadedFile({ filePath: data.filePath })
+		const response = await api.post('upload', {
+			method: 'POST',
+			body: formData,
+		})
+		const json = await response.json<{ filePath: string }>()
+		setUploadedFile({ filePath: json.filePath })
 	}
 
 	const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -115,10 +107,12 @@ export const useCreateNewPostForm = () => {
 			await createNewPostMutation.mutateAsync({
 				params: {
 					content: newPostValue,
+					image: uploadedFile?.filePath,
 				},
 			})
 
 			setNewPostValue('')
+			setUploadedFile(null)
 
 			if (fieldRef.current) fieldRef.current.style.height = 'inherit'
 		} catch (error) {
@@ -129,6 +123,8 @@ export const useCreateNewPostForm = () => {
 			}
 		}
 	}
+
+	const removePicture = () => setUploadedFile(null)
 
 	return {
 		state: {
@@ -146,6 +142,7 @@ export const useCreateNewPostForm = () => {
 			setFieldFocus,
 			selectFile,
 			handleSubmit,
+			removePicture,
 		},
 	}
 }

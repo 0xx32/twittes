@@ -32,7 +32,7 @@ export const Sidebar = () => {
 	const logout = useLogout()
 
 	return (
-		<aside className="sticky h-[calc(100vh-12rem)] flex flex-col pb-6">
+		<aside className="sticky top-5 h-[calc(100vh-12rem)] flex flex-col pb-6">
 			<div className="mb-10 flex items-center justify-between pr-4">
 				<img src="/images/logo.svg" alt="logo" width={30} />
 				<ModeToggle />

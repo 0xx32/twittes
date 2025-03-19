@@ -44,15 +44,23 @@ export const CreateNewPostForm = () => {
 						disabled={state.isPending}
 					/>
 
-					<div>
-						{state.uploadedFile && (
+					{state.uploadedFile && (
+						<div className="relative">
 							<img
-								src={`http://localhost:400/${state.uploadedFile.filePath}`}
+								src={`http://localhost:4040/${state.uploadedFile.filePath}`}
 								className="rounded-board"
 								alt=""
 							/>
-						)}
-					</div>
+
+							<button
+								type="button"
+								className="absolute right-2 top-2 bg-red p-3"
+								onClick={functions.removePicture}
+							>
+								X
+							</button>
+						</div>
+					)}
 
 					<div className="mt-3 flex items-center gap-2 border-t pt-3">
 						<label className="cursor-pointer">
@@ -67,8 +75,7 @@ export const CreateNewPostForm = () => {
 						</button>
 
 						<Button className="ml-a" disabled={state.isPending}>
-							{' '}
-							Отправить{' '}
+							Отправить
 						</Button>
 					</div>
 				</form>
