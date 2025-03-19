@@ -9,7 +9,7 @@ export type PostAuthLoginRequestConfig = KyRequestConfig<PostAuthLoginParams>
 
 export const postAuthLogin = ({ params, config }: PostAuthLoginRequestConfig) =>
 	api
-		.post('auth/AuthLogin', {
+		.post('auth/login', {
 			json: params,
 			...config,
 		})
