@@ -16,7 +16,6 @@ interface UploadedFile {
 
 export const useCreateNewPostForm = () => {
 	const [newPostValue, setNewPostValue] = React.useState('')
-	const [fieldFocus, setFieldFocus] = React.useState(false)
 	const [uploadedFile, setUploadedFile] = React.useState<UploadedFile | null>(null)
 	const fieldRef = React.useRef<HTMLTextAreaElement>(null)
 
@@ -63,7 +62,9 @@ export const useCreateNewPostForm = () => {
 			onError: (_err, _modifiedPost, context) => {
 				queryClient.setQueryData([QUERY_KEYS.GET_POSTS], context?.previousInfiniteQueryData)
 			},
-			onSettled: () => queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] }),
+			onSuccess: () => {
+				queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] })
+			},
 		},
 	})
 
@@ -101,7 +102,6 @@ export const useCreateNewPostForm = () => {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		if (!newPostValue.length) return
 
 		try {
 			await createNewPostMutation.mutateAsync({
@@ -129,7 +129,7 @@ export const useCreateNewPostForm = () => {
 	return {
 		state: {
 			newPostValue,
-			fieldFocus,
+
 			uploadedFile,
 			isPending: createNewPostMutation.isPending,
 		},
@@ -139,7 +139,7 @@ export const useCreateNewPostForm = () => {
 		functions: {
 			autoResize,
 			newPostOnChange,
-			setFieldFocus,
+
 			selectFile,
 			handleSubmit,
 			removePicture,

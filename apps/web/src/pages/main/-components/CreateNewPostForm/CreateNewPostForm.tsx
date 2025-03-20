@@ -7,6 +7,9 @@ import { useProfile } from '@/utils/contexts/profile'
 
 import { useCreateNewPostForm } from './useCreateNewPostForm'
 
+const focusClass =
+	'group-has-[textarea:focus]:shadow-lg group-has-[textarea:focus]:border transition-all'
+
 export const CreateNewPostForm = () => {
 	const { profile } = useProfile()
 
@@ -17,10 +20,9 @@ export const CreateNewPostForm = () => {
 	}, [])
 
 	return (
-		<div>
+		<div className="group">
 			<div
-				className={clsx('rounded-board bg-white/70 p-4  dark:bg-board flex gap-3', {
-					'shadow-lg border transition-all': state.fieldFocus,
+				className={clsx('rounded-board bg-white/70 p-4  dark:bg-board flex gap-3', focusClass, {
 					'opacity-50 select-none': state.isPending,
 				})}
 			>
@@ -35,8 +37,6 @@ export const CreateNewPostForm = () => {
 					<textarea
 						ref={refs.fieldRef}
 						name="new-post"
-						onFocus={() => functions.setFieldFocus(true)}
-						onBlur={() => functions.setFieldFocus(false)}
 						onChange={functions.newPostOnChange}
 						className="w-full bg-transparent text-lg font-semibold disabled:opacity-10 focus:outline-none"
 						placeholder="Что происходит?"
@@ -54,7 +54,7 @@ export const CreateNewPostForm = () => {
 
 							<button
 								type="button"
-								className="absolute right-2 top-2 bg-red p-3"
+								className="absolute right-2 top-2 h-10 w-10 flex items-center justify-center rounded-full bg-black/40 p-3 text-white hover:opacity-80"
 								onClick={functions.removePicture}
 							>
 								X
@@ -64,7 +64,12 @@ export const CreateNewPostForm = () => {
 
 					<div className="mt-3 flex items-center gap-2 border-t pt-3">
 						<label className="cursor-pointer">
-							<input type="file" className="hidden" onChange={functions.selectFile} />
+							<input
+								type="file"
+								className="hidden"
+								onChange={functions.selectFile}
+								accept="image/*"
+							/>
 							<i className="block rounded-full p-2 transition-colors hover:bg-accent/30">
 								<Image size={20} />
 							</i>
