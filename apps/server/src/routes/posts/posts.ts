@@ -10,6 +10,8 @@ import { prisma } from '@/utils/prisma'
 import { postEditSchema, postSelectSchema } from './posts.constants'
 import {
 	createPostRouteSpecs,
+	deletePostRouteSpecs,
+	editPostRouteSpecs,
 	postRouteSpecs,
 	postsRouteSpecs,
 	userPostsRouteSpecs,
@@ -79,29 +81,34 @@ postsRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) 
 })
 
 //Редактирование поста
-postsRoute.patch('/:postId', vValidator('json', postEditSchema), async (ctx) => {
-	const postDto = ctx.req.valid('json')
-	const postId = ctx.req.param('postId')
+postsRoute.patch(
+	'/:postId',
+	vValidator('json', postEditSchema),
+	editPostRouteSpecs,
+	async (ctx) => {
+		const postDto = ctx.req.valid('json')
+		const postId = ctx.req.param('postId')
 
-	try {
-		const post = await prisma.post.update({
-			where: { id: postId },
-			data: postDto,
-		})
+		try {
+			const post = await prisma.post.update({
+				where: { id: postId },
+				data: postDto,
+			})
 
-		return ctx.json(post)
-	} catch (error) {
-		if (error instanceof Prisma.PrismaClientKnownRequestError) {
-			if (error.code === 'P2025') {
-				return ctx.json({ message: 'Публикация не найдена' }, 404)
+			return ctx.json(post)
+		} catch (error) {
+			if (error instanceof Prisma.PrismaClientKnownRequestError) {
+				if (error.code === 'P2025') {
+					return ctx.json({ message: 'Публикация не найдена' }, 404)
+				}
 			}
+			throw error
 		}
-		throw error
 	}
-})
+)
 
 //Удаление поста
-postsRoute.delete('/:postId', async (ctx) => {
+postsRoute.delete('/:postId', deletePostRouteSpecs, async (ctx) => {
 	const postId = ctx.req.param('postId')
 
 	try {
