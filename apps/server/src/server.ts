@@ -29,7 +29,7 @@ app.route('api/upload', routes.uploadRoute)
 app.route('api/auth', routes.authRoute)
 app.route('api/profile', routes.profileRoute)
 app.route('api/posts', routes.postsRoute)
-app.route('api/user', routes.usersRoute)
+app.route('api/users', routes.usersRoute)
 
 app.get('api/event/notification', (ctx) => {
 	ctx.header('Content-Type', 'text/event-stream')
