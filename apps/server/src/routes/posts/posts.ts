@@ -6,18 +6,19 @@ import type { AppType } from '@/utils/types/utils'
 import { paginationSearchQuerySchema } from '@/utils/constants/shemas'
 import { prisma } from '@/utils/prisma'
 
-import { postSelectSchema } from './post.constants'
+import { postSelectSchema } from './posts.constants'
 import {
 	createPostRouteSpecs,
 	postRouteSpecs,
 	postsRouteSpecs,
 	userPostsRouteSpecs,
-} from './post.openapi'
-import { createPostJsonValidator } from './post.validators'
+} from './posts.openapi'
+import { createPostJsonValidator } from './posts.validators'
 
-export const postRoute = new Hono<AppType>()
+export const postsRoute = new Hono<AppType>()
 
-postRoute.get(
+//Получение всех постов
+postsRoute.get(
 	'/',
 	vValidator('query', paginationSearchQuerySchema),
 	postsRouteSpecs,
@@ -36,8 +37,8 @@ postRoute.get(
 		return ctx.json({ posts, offset, limit })
 	}
 )
-
-postRoute.get('/:postId', postRouteSpecs, async (ctx) => {
+//Получение поста по id
+postsRoute.get('/:postId', postRouteSpecs, async (ctx) => {
 	const postId = ctx.req.param('postId')
 	const post = await prisma.post.findUnique({
 		where: { id: postId },
@@ -51,7 +52,8 @@ postRoute.get('/:postId', postRouteSpecs, async (ctx) => {
 	return ctx.json(post)
 })
 
-postRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) => {
+//Создание поста
+postsRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) => {
 	const postDto = ctx.req.valid('json')
 	const user = ctx.get('user')
 
@@ -67,8 +69,9 @@ postRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) =
 	return ctx.json(post, 201)
 })
 
-postRoute.get(
-	'/user/:username',
+//Получение постов пользователя
+postsRoute.get(
+	'/users/:username',
 	vValidator('query', paginationSearchQuerySchema),
 	userPostsRouteSpecs,
 	async (ctx) => {

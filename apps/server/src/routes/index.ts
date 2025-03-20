@@ -1,5 +1,5 @@
 export * from './auth/auth'
-export * from './post/post'
+export * from './posts/posts'
 export * from './profile/profile'
 export * from './upload/upload'
-export * from './user/user'
+export * from './users/users'

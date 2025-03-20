@@ -4,7 +4,7 @@ import { resolver } from 'hono-openapi/valibot'
 import { errorServerConfig } from '@/utils/constants/openapi'
 import { errorResponseSchema } from '@/utils/constants/shemas'
 
-import { userSchema } from './user.constants'
+import { userSchema } from './users.constants'
 
 export const getUserSpecs = describeRoute({
 	description: 'Получение пользователя',

@@ -4,7 +4,7 @@ import { resolver } from 'hono-openapi/valibot'
 import { errorServerConfig } from '@/utils/constants/openapi'
 import { errorResponseSchema } from '@/utils/constants/shemas'
 
-import { postResponseSchema, postsResponseSchema } from './post.constants'
+import { postResponseSchema, postsResponseSchema } from './posts.constants'
 
 export const postsRouteSpecs = describeRoute({
 	description: 'Получение постов',
