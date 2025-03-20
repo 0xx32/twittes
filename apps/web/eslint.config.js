@@ -16,7 +16,7 @@ export default antfu(
 			'style/no-mixed-spaces-and-tabs': 'off',
 			'ts/ban-ts-comment': 'warn',
 			'react/prefer-destructuring-assignment': 'off',
-			'react/no-array-index-key': 'warn',
+			'react/no-array-index-key': 'off',
 			'antfu/top-level-function': 'off',
 		},
 	},
