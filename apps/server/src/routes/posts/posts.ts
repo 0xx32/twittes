@@ -100,6 +100,26 @@ postsRoute.patch('/:postId', vValidator('json', postEditSchema), async (ctx) => 
 	}
 })
 
+//Удаление поста
+postsRoute.delete('/:postId', async (ctx) => {
+	const postId = ctx.req.param('postId')
+
+	try {
+		await prisma.post.delete({
+			where: { id: postId },
+		})
+
+		return ctx.json({ message: 'Публикация удалена' })
+	} catch (error) {
+		if (error instanceof Prisma.PrismaClientKnownRequestError) {
+			if (error.code === 'P2025') {
+				return ctx.json({ message: 'Публикация не найдена' }, 404)
+			}
+		}
+		throw error
+	}
+})
+
 //Получение постов пользователя
 postsRoute.get(
 	'/users/:username',
