@@ -2,7 +2,7 @@ import { describeRoute } from 'hono-openapi'
 import { resolver } from 'hono-openapi/valibot'
 
 import { errorServerConfig } from '@/utils/constants/openapi'
-import { errorResponseSchema } from '@/utils/constants/shemas'
+import { baseResponseSchema, errorResponseSchema } from '@/utils/constants/shemas'
 
 import { postResponseSchema, postsResponseSchema } from './posts.constants'
 
@@ -69,6 +69,7 @@ export const deletePostRouteSpecs = describeRoute({
 	responses: {
 		200: {
 			description: 'Успешно',
+			content: { 'aplication/json': { schema: resolver(baseResponseSchema) } },
 		},
 		500: errorServerConfig,
 	},

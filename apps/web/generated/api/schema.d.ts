@@ -89,23 +89,6 @@ export interface paths {
 		patch?: never
 		trace?: never
 	}
-	'/api/user/{username}': {
-		parameters: {
-			query?: never
-			header?: never
-			path?: never
-			cookie?: never
-		}
-		/** @description Получение пользователя */
-		get: operations['getApiUserByUsername']
-		put?: never
-		post?: never
-		delete?: never
-		options?: never
-		head?: never
-		patch?: never
-		trace?: never
-	}
 	'/api/posts': {
 		parameters: {
 			query?: never
@@ -135,13 +118,15 @@ export interface paths {
 		get: operations['getApiPostsByPostId']
 		put?: never
 		post?: never
-		delete?: never
+		/** @description Удаление поста */
+		delete: operations['deleteApiPostsByPostId']
 		options?: never
 		head?: never
-		patch?: never
+		/** @description Редактирование поста */
+		patch: operations['patchApiPostsByPostId']
 		trace?: never
 	}
-	'/api/posts/user/{username}': {
+	'/api/posts/users/{username}': {
 		parameters: {
 			query?: never
 			header?: never
@@ -149,7 +134,24 @@ export interface paths {
 			cookie?: never
 		}
 		/** @description Получение постов пользователя */
-		get: operations['getApiPostsUserByUsername']
+		get: operations['getApiPostsUsersByUsername']
+		put?: never
+		post?: never
+		delete?: never
+		options?: never
+		head?: never
+		patch?: never
+		trace?: never
+	}
+	'/api/users/{username}': {
+		parameters: {
+			query?: never
+			header?: never
+			path?: never
+			cookie?: never
+		}
+		/** @description Получение пользователя */
+		get: operations['getApiUsersByUsername']
 		put?: never
 		post?: never
 		delete?: never
@@ -172,9 +174,9 @@ export type $defs = Record<string, never>
 export interface operations {
 	postApiUpload: {
 		parameters: {
-			query: {
+			query?: {
 				path?: string
-				name: string
+				name?: string
 			}
 			header?: never
 			path?: never
@@ -444,62 +446,6 @@ export interface operations {
 			}
 		}
 	}
-	getApiUserByUsername: {
-		parameters: {
-			query?: never
-			header?: never
-			path: {
-				username: string
-			}
-			cookie?: never
-		}
-		requestBody?: never
-		responses: {
-			/** @description Успешно */
-			200: {
-				headers: {
-					[name: string]: unknown
-				}
-				content: {
-					'aplication/json': {
-						id: string
-						username: string
-						displayName: string
-						picture: string
-						age: number
-						city: string
-						country: string
-						isVerified: boolean
-						createdAt: string
-						updatedAt: string
-					}
-				}
-			}
-			/** @description Пользователь не найден */
-			404: {
-				headers: {
-					[name: string]: unknown
-				}
-				content: {
-					'aplication/json': {
-						message: string
-						errors: string[]
-					}
-				}
-			}
-			/** @description Ошибка сервера */
-			500: {
-				headers: {
-					[name: string]: unknown
-				}
-				content: {
-					'aplication/json': {
-						message: string
-					}
-				}
-			}
-		}
-	}
 	getApiPosts: {
 		parameters: {
 			query?: {
@@ -669,7 +615,94 @@ export interface operations {
 			}
 		}
 	}
-	getApiPostsUserByUsername: {
+	deleteApiPostsByPostId: {
+		parameters: {
+			query?: never
+			header?: never
+			path: {
+				postId: string
+			}
+			cookie?: never
+		}
+		requestBody?: never
+		responses: {
+			/** @description Успешно */
+			200: {
+				headers: {
+					[name: string]: unknown
+				}
+				content: {
+					'aplication/json': {
+						message: string
+					}
+				}
+			}
+			/** @description Ошибка сервера */
+			500: {
+				headers: {
+					[name: string]: unknown
+				}
+				content: {
+					'aplication/json': {
+						message: string
+					}
+				}
+			}
+		}
+	}
+	patchApiPostsByPostId: {
+		parameters: {
+			query?: never
+			header?: never
+			path: {
+				postId: string
+			}
+			cookie?: never
+		}
+		requestBody?: {
+			content: {
+				'application/json': {
+					content: string
+					image?: string
+				}
+			}
+		}
+		responses: {
+			/** @description Успешно */
+			200: {
+				headers: {
+					[name: string]: unknown
+				}
+				content: {
+					'aplication/json': {
+						id: string
+						content: string
+						image: string
+						createdAt: string
+						likes: string[]
+						updatedAt: string
+						creator: {
+							username: string
+							displayName: string
+							picture: string
+						}
+					}
+				}
+			}
+			/** @description Ошибка сервера */
+			500: {
+				headers: {
+					[name: string]: unknown
+				}
+				content: {
+					'aplication/json': {
+						message: string
+					}
+				}
+			}
+		}
+	}
+	getApiPostsUsersByUsername: {
 		parameters: {
 			query?: {
 				offset?: string
@@ -705,6 +738,62 @@ export interface operations {
 						}[]
 						offset: number
 						limit: number
+					}
+				}
+			}
+			/** @description Ошибка сервера */
+			500: {
+				headers: {
+					[name: string]: unknown
+				}
+				content: {
+					'aplication/json': {
+						message: string
+					}
+				}
+			}
+		}
+	}
+	getApiUsersByUsername: {
+		parameters: {
+			query?: never
+			header?: never
+			path: {
+				username: string
+			}
+			cookie?: never
+		}
+		requestBody?: never
+		responses: {
+			/** @description Успешно */
+			200: {
+				headers: {
+					[name: string]: unknown
+				}
+				content: {
+					'aplication/json': {
+						id: string
+						username: string
+						displayName: string
+						picture: string
+						age: number
+						city: string
+						country: string
+						isVerified: boolean
+						createdAt: string
+						updatedAt: string
+					}
+				}
+			}
+			/** @description Пользователь не найден */
+			404: {
+				headers: {
+					[name: string]: unknown
+				}
+				content: {
+					'aplication/json': {
+						message: string
+						errors: string[]
 					}
 				}
 			}

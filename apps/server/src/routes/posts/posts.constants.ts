@@ -36,6 +36,6 @@ export const postsResponseSchema = v.object({
 })
 
 export const postEditSchema = v.object({
-	content: v.optional(v.pipe(v.string(), v.minLength(1), v.maxLength(1000))),
+	content: v.pipe(v.string(), v.minLength(1), v.maxLength(1000)),
 	image: v.optional(v.string()),
 })

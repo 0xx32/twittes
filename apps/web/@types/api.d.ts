@@ -5,12 +5,14 @@ interface SuccessResponse {
 }
 interface ErrorResponse {
 	message: string
-	errors: string[]
+	errors?: string[]
 }
 
 type Profile = GetProfileResponse['profile']
 type User = GetUserResponse
 type Post = GetPostResponse
+
+type PatchPostsParameters = paths['/api/posts/{postId}']['patch']['parameters']['path']
 
 type PostUploadResponse =
 	paths['/api/upload']['post']['responses']['200']['content']['aplication/json']
@@ -34,3 +36,7 @@ type GetPostResponse =
 	paths['/api/posts/{postId}']['get']['responses']['200']['content']['aplication/json']
 type PostPostResponse =
 	paths['/api/posts']['post']['responses']['201']['content']['aplication/json']
+type DeletePostResponse =
+	paths['/api/posts/{postId}']['delete']['responses']['200']['content']['aplication/json']
+type PatchPostResponse =
+	paths['/api/posts/{postId}']['patch']['responses']['200']['content']['aplication/json']
