@@ -1,3 +1,4 @@
+import { Prisma } from 'generated/client'
 import { Hono } from 'hono'
 import { validator as vValidator } from 'hono-openapi/valibot'
 
@@ -6,7 +7,7 @@ import type { AppType } from '@/utils/types/utils'
 import { paginationSearchQuerySchema } from '@/utils/constants/shemas'
 import { prisma } from '@/utils/prisma'
 
-import { postSelectSchema } from './posts.constants'
+import { postEditSchema, postSelectSchema } from './posts.constants'
 import {
 	createPostRouteSpecs,
 	postRouteSpecs,
@@ -67,6 +68,28 @@ postsRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) 
 	})
 
 	return ctx.json(post, 201)
+})
+
+//Редактирование поста
+postsRoute.patch('/:postId', vValidator('json', postEditSchema), async (ctx) => {
+	const postDto = ctx.req.valid('json')
+	const postId = ctx.req.param('postId')
+
+	try {
+		const post = await prisma.post.update({
+			where: { id: postId },
+			data: postDto,
+		})
+
+		return ctx.json(post)
+	} catch (error) {
+		if (error instanceof Prisma.PrismaClientKnownRequestError) {
+			if (error.code === 'P2025') {
+				return ctx.json({ message: 'Публикация не найдена' }, 404)
+			}
+		}
+		throw error
+	}
 })
 
 //Получение постов пользователя
