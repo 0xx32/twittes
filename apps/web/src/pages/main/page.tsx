@@ -1,4 +1,4 @@
-import { Loader2 } from 'lucide-react'
+import { Skeleton } from '@/components/ui'
 
 import { Twitt } from '../-components'
 import { CreateNewPostForm } from './-components'
@@ -12,20 +12,25 @@ export const MainPage = () => {
 			<div className="mb-6">
 				<CreateNewPostForm />
 			</div>
-			<div>
-				{state.isLoading && (
-					<div className="mt-10 flex justify-center">
-						<Loader2 className="animate-spin" size={44} />
+			<>
+				{!state.isLoading && (
+					<div>
+						{state.posts?.map((post) => (
+							<Twitt key={post.id} twitt={post} className="mb-5 [&:last-child]:mb-0" />
+						))}
 					</div>
 				)}
 
-				{!state.isLoading &&
-					state.posts?.map((post) => (
-						<Twitt key={post.id} twitt={post} className="mb-5 [&:last-child]:mb-0" />
+				{(state.isLoading || state.isLoadMore) &&
+					Array.from({ length: 10 }).map((_, index) => (
+						<Skeleton
+							key={index}
+							className="mb-5 h-40 w-full rounded-xl bg-board [&:last-child]:mb-0"
+						/>
 					))}
 
 				<div ref={refs.trigger}></div>
-			</div>
+			</>
 		</div>
 	)
 }

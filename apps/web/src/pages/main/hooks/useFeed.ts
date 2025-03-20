@@ -4,7 +4,7 @@ import { useGetPostsInfiniteQuery } from '@/utils/api/hooks'
 
 const PAGINATION = {
 	OFFSET: 0,
-	LIMIT: 10,
+	LIMIT: 6,
 }
 
 export const useFeed = () => {
@@ -16,8 +16,8 @@ export const useFeed = () => {
 	const posts = getPostsInfinityQuery.data?.pages.flatMap((page) => page.posts)
 
 	const intersectionObserver = useIntersectionObserver<HTMLDivElement>({
-		rootMargin: '300px 0px 0px 0px',
-		threshold: 0.5,
+		rootMargin: '0px 0px 300px 0px',
+		threshold: 0,
 	})
 
 	useDidUpdate(() => {
