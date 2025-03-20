@@ -35,6 +35,7 @@ postsRoute.get(
 			take: limit,
 			orderBy: { createdAt: 'desc' },
 		})
+
 		return ctx.json({ posts, offset, limit })
 	}
 )
@@ -58,16 +59,23 @@ postsRoute.post('/', createPostJsonValidator, createPostRouteSpecs, async (ctx) 
 	const postDto = ctx.req.valid('json')
 	const user = ctx.get('user')
 
-	const post = await prisma.post.create({
-		data: {
-			creatorId: user.id,
-			title: 'user.id',
-			content: postDto.content,
-			image: postDto.image ?? null,
-		},
-	})
+	try {
+		const post = await prisma.post.create({
+			data: {
+				creatorId: user.id,
+				title: 'user.id',
+				content: postDto.content,
+				image: postDto.image ?? null,
+			},
+		})
 
-	return ctx.json(post, 201)
+		return ctx.json(post, 201)
+	} catch (error) {
+		if (error instanceof Prisma.PrismaClientKnownRequestError) {
+			return ctx.json({ message: 'Ошибка создания поста' }, 500)
+		}
+		throw error
+	}
 })
 
 //Редактирование поста
