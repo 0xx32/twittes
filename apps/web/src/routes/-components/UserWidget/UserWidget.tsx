@@ -1,4 +1,4 @@
-import { Ellipsis } from 'lucide-react'
+import { EllipsisVertical } from 'lucide-react'
 
 interface UserWidgetProps {
 	user: Profile
@@ -21,7 +21,7 @@ export const UserWidget = ({ user, onClick }: UserWidgetProps) => (
 		</div>
 
 		<div className="ml-a">
-			<Ellipsis className="rotate-90" />
+			<EllipsisVertical />
 		</div>
 	</div>
 )
