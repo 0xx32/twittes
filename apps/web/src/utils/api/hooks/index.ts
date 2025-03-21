@@ -1,3 +1,4 @@
+export * from './optimistic'
 export * from './useDeletePostsMutation'
 export * from './useGetPostsInfiniteQuery'
 export * from './useGetProfileQuery'
