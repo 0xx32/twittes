@@ -74,15 +74,3 @@ export const deletePostRouteSpecs = describeRoute({
 		500: errorServerConfig,
 	},
 })
-export const userPostsRouteSpecs = describeRoute({
-	description: 'Получение постов пользователя',
-	responses: {
-		200: {
-			description: 'Успешно',
-			content: {
-				'aplication/json': { schema: resolver(postsResponseSchema) },
-			},
-		},
-		500: errorServerConfig,
-	},
-})

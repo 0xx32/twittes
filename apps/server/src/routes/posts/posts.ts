@@ -14,7 +14,6 @@ import {
 	editPostRouteSpecs,
 	postRouteSpecs,
 	postsRouteSpecs,
-	userPostsRouteSpecs,
 } from './posts.openapi'
 import { createPostJsonValidator } from './posts.validators'
 
@@ -32,6 +31,7 @@ postsRoute.get(
 		const limit = search.limit ? Number(search.limit) : undefined
 
 		const posts = await prisma.post.findMany({
+			where: { creator: { username: search.user } },
 			include: { ...postSelectSchema },
 			skip: offset,
 			take: limit,
@@ -126,26 +126,3 @@ postsRoute.delete('/:postId', deletePostRouteSpecs, async (ctx) => {
 		throw error
 	}
 })
-
-//Получение постов пользователя
-postsRoute.get(
-	'/users/:username',
-	vValidator('query', paginationSearchQuerySchema),
-	userPostsRouteSpecs,
-	async (ctx) => {
-		const username = ctx.req.param('username')
-		const search = ctx.req.valid('query')
-
-		const offset = search.offset ? +search.offset : 0
-		const limit = search.limit ? +search.limit : undefined
-
-		const posts = await prisma.post.findMany({
-			where: { creator: { username } },
-			include: { ...postSelectSchema },
-			skip: offset,
-			take: limit,
-		})
-
-		return ctx.json({ posts, offset, limit })
-	}
-)

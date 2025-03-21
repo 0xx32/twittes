@@ -3,6 +3,7 @@ import * as v from 'valibot'
 export const paginationSearchQuerySchema = v.object({
 	offset: v.optional(v.string()),
 	limit: v.optional(v.string()),
+	user: v.optional(v.string()),
 })
 
 export const errorResponseSchema = v.object({
