@@ -303,6 +303,13 @@ export interface operations {
 							id: string
 							username: string
 							displayName: string
+							picture: string
+							age: number
+							city: string
+							country: string
+							isVerified: boolean
+							createdAt: string
+							updatedAt: string
 						}
 						message: string
 					}
