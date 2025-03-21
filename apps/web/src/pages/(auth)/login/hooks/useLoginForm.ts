@@ -20,14 +20,14 @@ export const useLoginForm = () => {
 	const navigate = useNavigate()
 
 	const authLocalStorage = useLocalStorage(AUTH_LOCAL_KEY)
-	const form = useForm({
-		resolver: valibotResolver(loginFormSchema),
+	const form = useForm<LoginFormSchema>({
+		resolver: valibotResolver<LoginFormSchema>(loginFormSchema),
 		mode: 'onChange',
 	})
 
 	const postLoginMutation = usePostAuthLoginMutation()
 
-	const onSubmit = async (values: LoginFormSchema) => {
+	const onSubmit = form.handleSubmit(async (values: LoginFormSchema) => {
 		try {
 			const response = await postLoginMutation.mutateAsync({
 				params: values,
@@ -49,7 +49,7 @@ export const useLoginForm = () => {
 				toast.error(message)
 			}
 		}
-	}
+	})
 
 	return {
 		form,

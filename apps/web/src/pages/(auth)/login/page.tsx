@@ -26,7 +26,7 @@ export const LoginPage = () => {
 				</div>
 
 				<Form {...form}>
-					<form onSubmit={form.handleSubmit(functions.onSubmit)}>
+					<form onSubmit={functions.onSubmit}>
 						<FormField
 							control={form.control}
 							name="username"

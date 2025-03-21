@@ -11,15 +11,15 @@ import type { RegisterFormSchema } from '../constants'
 import { registerFormSchema } from '../constants'
 
 export const useRegisterForm = () => {
-	const form = useForm({
-		resolver: valibotResolver(registerFormSchema),
+	const form = useForm<RegisterFormSchema>({
+		resolver: valibotResolver<RegisterFormSchema>(registerFormSchema),
 		mode: 'onChange',
 	})
 	const navigate = useNavigate()
 
 	const postRegisterMutation = usePostAuthRegisterMutation()
 
-	const onSubmit = async (values: RegisterFormSchema) => {
+	const onSubmit = form.handleSubmit(async (values: RegisterFormSchema) => {
 		try {
 			const response = await postRegisterMutation.mutateAsync({
 				params: values,
@@ -33,7 +33,7 @@ export const useRegisterForm = () => {
 				toast.error(message)
 			}
 		}
-	}
+	})
 
 	return {
 		form,
