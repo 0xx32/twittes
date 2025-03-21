@@ -16,8 +16,13 @@ export const useDeletePostsOptimisticMutation = (
 	return useDeletePostsMutation(params, {
 		options: {
 			...settings?.options,
-			async onMutate() {
+			onMutate: async () => {
 				await queryClient.cancelQueries({ queryKey: [QUERY_KEYS.GET_POSTS] })
+
+				const previousPosts = queryClient.getQueryData<InfiniteData<GetPostsResponse>>([
+					QUERY_KEYS.GET_POSTS,
+				])
+
 				queryClient.setQueryData<InfiniteData<GetPostsResponse>>(
 					[QUERY_KEYS.GET_POSTS],
 					(oldData) => {
@@ -33,12 +38,14 @@ export const useDeletePostsOptimisticMutation = (
 						}
 					}
 				)
+
+				return { previousPosts }
 			},
-			onError(previousInfiniteQueryData) {
-				queryClient.setQueryData([QUERY_KEYS.GET_POSTS], previousInfiniteQueryData)
+			onError: async (previousInfiniteQueryData) => {
+				await queryClient.setQueryData([QUERY_KEYS.GET_POSTS], previousInfiniteQueryData)
 			},
-			onSettled() {
-				queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] })
+			onSettled: async () => {
+				await queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] })
 			},
 		},
 	})

@@ -1,3 +1,4 @@
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createRootRouteWithContext, Outlet } from '@tanstack/react-router'
 
 import type { RouterContext } from '@/utils/globals/router'
@@ -8,6 +9,7 @@ const Root = () => (
 	<>
 		<Outlet />
 		<Toaster richColors />
+		<ReactQueryDevtools initialIsOpen={false} />
 	</>
 )
 

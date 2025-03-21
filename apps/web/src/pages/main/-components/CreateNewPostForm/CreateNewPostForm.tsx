@@ -7,8 +7,7 @@ import { useProfile } from '@/utils/contexts/profile'
 
 import { useCreateNewPostForm } from './useCreateNewPostForm'
 
-const focusClass =
-	'group-has-[textarea:focus]:shadow-lg group-has-[textarea:focus]:border transition-all'
+const focusClass = 'group-has-[textarea:focus]:shadow-lg transition-all'
 
 export const CreateNewPostForm = () => {
 	const { profile } = useProfile()
@@ -22,9 +21,13 @@ export const CreateNewPostForm = () => {
 	return (
 		<div className="group">
 			<div
-				className={clsx('rounded-board bg-white/70 p-4  dark:bg-board flex gap-3', focusClass, {
-					'opacity-50 select-none': state.isPending,
-				})}
+				className={clsx(
+					'rounded-board bg-white/70 p-4 border  dark:bg-board flex gap-3',
+					focusClass,
+					{
+						'opacity-50 select-none': state.isPending,
+					}
+				)}
 			>
 				<div>
 					{profile.picture && (
@@ -79,7 +82,7 @@ export const CreateNewPostForm = () => {
 							<Smile size={20} />
 						</button>
 
-						<Button className="ml-a" disabled={state.isPending}>
+						<Button className="ml-a" disabled={state.isPending || !state.formIsValid}>
 							Отправить
 						</Button>
 					</div>

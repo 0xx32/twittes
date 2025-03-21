@@ -1,13 +1,9 @@
-import type { InfiniteData } from '@tanstack/react-query'
-
-import { useQueryClient } from '@tanstack/react-query'
 import { HTTPError } from 'ky'
-import React from 'react'
+import React, { useState } from 'react'
 import { toast } from 'sonner'
 
 import { api } from '@/utils/api'
-import { QUERY_KEYS } from '@/utils/api/constants'
-import { usePostPostsMutation } from '@/utils/api/hooks'
+import { usePostPostsOptimisticMutation } from '@/utils/api/hooks'
 import { useProfile } from '@/utils/contexts/profile'
 
 interface UploadedFile {
@@ -18,55 +14,10 @@ export const useCreateNewPostForm = () => {
 	const [newPostValue, setNewPostValue] = React.useState('')
 	const [uploadedFile, setUploadedFile] = React.useState<UploadedFile | null>(null)
 	const fieldRef = React.useRef<HTMLTextAreaElement>(null)
+	const [formIsValid, setFormIsValid] = useState(false)
 
-	const queryClient = useQueryClient()
 	const { profile } = useProfile()
-
-	const createNewPostMutation = usePostPostsMutation({
-		options: {
-			onMutate: async ({ params: newPostData }) => {
-				await queryClient.cancelQueries({ queryKey: [QUERY_KEYS.GET_POSTS] })
-				const previousPost = queryClient.getQueryData<InfiniteData<Post[]>>([QUERY_KEYS.GET_POSTS])
-
-				const newPost: Post = {
-					content: newPostData.content,
-					id: 'wadawd12e123',
-					image: newPostData.image ?? '',
-					createdAt: new Date().toISOString(),
-					updatedAt: new Date().toISOString(),
-					likes: [],
-					creator: {
-						username: profile.username,
-						displayName: profile.displayName,
-						picture: profile.picture,
-					},
-				}
-
-				queryClient.setQueryData<InfiniteData<Post[]>>(
-					[QUERY_KEYS.GET_POSTS],
-					(previousInfiniteQueryData: any) => {
-						const newData = previousInfiniteQueryData?.pages.map((page: { posts: Post[] }) => ({
-							...page,
-							posts: [newPost, ...page.posts],
-						}))
-
-						return {
-							...previousInfiniteQueryData,
-							pages: newData,
-						}
-					}
-				)
-
-				return { previousPost, newPost }
-			},
-			onError: (_err, _modifiedPost, context) => {
-				queryClient.setQueryData([QUERY_KEYS.GET_POSTS], context?.previousInfiniteQueryData)
-			},
-			onSuccess: () => {
-				queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.GET_POSTS] })
-			},
-		},
-	})
+	const createNewPostMutation = usePostPostsOptimisticMutation({ profile })
 
 	const autoResize = () => {
 		if (!fieldRef.current) return
@@ -78,6 +29,12 @@ export const useCreateNewPostForm = () => {
 	const newPostOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 		setNewPostValue(e.target.value)
 		autoResize()
+
+		if (e.target.value.length > 0) {
+			setFormIsValid(true)
+		} else {
+			setFormIsValid(false)
+		}
 	}
 
 	const uploadFile = async (file: File) => {
@@ -90,6 +47,7 @@ export const useCreateNewPostForm = () => {
 		})
 		const json = await response.json<{ filePath: string }>()
 		setUploadedFile({ filePath: json.filePath })
+		setFormIsValid(true)
 	}
 
 	const selectFile = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,7 +60,6 @@ export const useCreateNewPostForm = () => {
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-
 		try {
 			await createNewPostMutation.mutateAsync({
 				params: {
@@ -113,10 +70,12 @@ export const useCreateNewPostForm = () => {
 
 			setNewPostValue('')
 			setUploadedFile(null)
+			setFormIsValid(false)
 
 			if (fieldRef.current) fieldRef.current.style.height = 'inherit'
 		} catch (error) {
 			console.error(error)
+
 			if (error instanceof HTTPError) {
 				const errorData = await error.response.json<ErrorResponse>()
 				toast.error(errorData.message)
@@ -124,12 +83,15 @@ export const useCreateNewPostForm = () => {
 		}
 	}
 
-	const removePicture = () => setUploadedFile(null)
+	const removePicture = () => {
+		setUploadedFile(null)
+		setFormIsValid(false)
+	}
 
 	return {
 		state: {
 			newPostValue,
-
+			formIsValid,
 			uploadedFile,
 			isPending: createNewPostMutation.isPending,
 		},
@@ -139,7 +101,6 @@ export const useCreateNewPostForm = () => {
 		functions: {
 			autoResize,
 			newPostOnChange,
-
 			selectFile,
 			handleSubmit,
 			removePicture,

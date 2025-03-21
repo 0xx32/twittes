@@ -11,7 +11,7 @@ export const useGetPostsInfiniteQuery = (
 ) =>
 	useInfiniteQuery({
 		initialPageParam: 0,
-		queryKey: [QUERY_KEYS.GET_POSTS, Object.values(params)],
+		queryKey: [QUERY_KEYS.GET_POSTS],
 		queryFn: ({ pageParam }) =>
 			getPosts({
 				params,
