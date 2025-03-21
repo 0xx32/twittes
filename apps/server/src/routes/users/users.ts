@@ -17,6 +17,5 @@ usersRoute.get('/:username', getUserSpecs, async (ctx) => {
 	if (!user) {
 		return ctx.json({ message: 'Пользователь не найден' }, 404)
 	}
-
 	return ctx.json(user)
 })
