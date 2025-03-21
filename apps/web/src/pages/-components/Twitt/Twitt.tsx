@@ -7,6 +7,7 @@ import {
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '@/components/ui'
+import { formatDistance as formatDistanceDate } from '@/utils/helpers/date'
 
 import { useTwitt } from './useTwitt'
 
@@ -16,6 +17,7 @@ interface TwittProps extends React.ComponentProps<'div'> {
 
 export const Twitt = ({ twitt, className, ref, ...props }: TwittProps) => {
 	const { functions } = useTwitt({ postId: twitt.id })
+
 	return (
 		<div
 			ref={ref}
@@ -25,15 +27,16 @@ export const Twitt = ({ twitt, className, ref, ...props }: TwittProps) => {
 			)}
 			{...props}
 		>
-			<div className="mb-4 flex items-center gap-3">
+			<div className="mb-4 flex items-center gap-3 text-gray-400">
 				<div>
 					{twitt.creator.picture && (
 						<img src={twitt.creator.picture} className="h-10 w-10 rounded-full" alt="аватар" />
 					)}
 					{!twitt.creator.picture && <div className="h-10 w-10 rounded-full bg-accent"></div>}
 				</div>
-				<span className="font-semibold">{twitt.creator.displayName}</span>
+				<span className="text-white font-semibold">{twitt.creator.displayName}</span>
 				<span className="darl:text-gray-600">@{twitt.creator.username}</span>
+				<span> {formatDistanceDate(new Date(twitt.createdAt), new Date())}</span>
 
 				<DropdownMenu>
 					<DropdownMenuTrigger className="ml-auto p-2">
