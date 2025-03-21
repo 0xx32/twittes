@@ -3,6 +3,7 @@ import { api } from '@/utils/api'
 export interface GetPostsParams {
 	offset: number
 	limit: number
+	user?: string
 }
 export type GetPostsRequestConfig = KyRequestConfig<GetPostsParams>
 

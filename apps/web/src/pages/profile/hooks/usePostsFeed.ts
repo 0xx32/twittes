@@ -1,6 +1,6 @@
 import { useDidUpdate, useIntersectionObserver } from '@siberiacancode/reactuse'
 
-import { useGetPostsUserInfiniteQuery } from '@/utils/api/hooks'
+import { useGetPostsInfiniteQuery } from '@/utils/api/hooks'
 
 const PAGINATION = {
 	OFFSET: 0,
@@ -12,8 +12,8 @@ interface UsePostFeedParams {
 }
 
 export const usePostsFeed = ({ username }: UsePostFeedParams) => {
-	const userPostsInfinityQuery = useGetPostsUserInfiniteQuery({
-		username,
+	const userPostsInfinityQuery = useGetPostsInfiniteQuery({
+		user: username,
 		limit: PAGINATION.LIMIT,
 		offset: PAGINATION.OFFSET,
 	})

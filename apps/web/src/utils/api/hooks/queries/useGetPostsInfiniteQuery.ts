@@ -11,13 +11,14 @@ export const useGetPostsInfiniteQuery = (
 ) =>
 	useInfiniteQuery({
 		initialPageParam: 0,
-		queryKey: [QUERY_KEYS.GET_POSTS],
+		queryKey: [QUERY_KEYS.GET_POSTS, Object.values(params)],
 		queryFn: ({ pageParam }) =>
 			getPosts({
 				params,
 				config: {
 					...settings?.config,
 					searchParams: {
+						...params,
 						limit: params.limit,
 						offset: params.offset + pageParam * params.limit,
 					},
