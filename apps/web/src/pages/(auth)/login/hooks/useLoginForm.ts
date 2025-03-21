@@ -10,9 +10,9 @@ import { AUTH_LOCAL_KEY } from '@/utils/constants/global'
 import { useProfile } from '@/utils/contexts/profile'
 import { useSession } from '@/utils/contexts/session'
 
-import type { LoginFormSchema } from '../-constants'
+import type { LoginFormSchema } from '../constants'
 
-import { loginFormSchema } from '../-constants'
+import { loginFormSchema } from '../constants'
 
 export const useLoginForm = () => {
 	const { setSession } = useSession()

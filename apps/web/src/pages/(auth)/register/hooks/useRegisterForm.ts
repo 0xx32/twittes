@@ -6,9 +6,9 @@ import { toast } from 'sonner'
 
 import { usePostAuthRegisterMutation } from '@/utils/api/hooks'
 
-import type { RegisterFormSchema } from '../-constants'
+import type { RegisterFormSchema } from '../constants'
 
-import { registerFormSchema } from '../-constants'
+import { registerFormSchema } from '../constants'
 
 export const useRegisterForm = () => {
 	const form = useForm({
