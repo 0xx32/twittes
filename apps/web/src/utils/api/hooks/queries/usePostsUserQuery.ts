@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query'
 
-import type { GetPostsUserParams } from '../requests'
+import type { GetPostsUserParams } from '../../requests'
 
-import { QUERY_KEYS } from '../constants'
-import { getPostsUser } from '../requests'
+import { QUERY_KEYS } from '../../constants'
+import { getPostsUser } from '../../requests'
 
 export const useGetPostsUserQuery = (
 	params: GetPostsUserParams,

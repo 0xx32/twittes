@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query'
 
-import type { DeletePostsParams, DeletePostsRequestConfig } from '../requests'
+import type { DeletePostsParams, DeletePostsRequestConfig } from '../../requests'
 
-import { MUTATION_KEYS } from '../constants'
-import { deletePosts } from '../requests'
+import { MUTATION_KEYS } from '../../constants'
+import { deletePosts } from '../../requests'
 
 export const useDeletePostsMutation = (
 	params: DeletePostsParams,

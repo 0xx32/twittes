@@ -1,9 +1,9 @@
 import { useMutation } from '@tanstack/react-query'
 
-import type { PatchPostsParams, PatchPostsRequestConfig } from '../requests'
+import type { PatchPostsParams, PatchPostsRequestConfig } from '../../requests'
 
-import { MUTATION_KEYS } from '../constants'
-import { patchPosts } from '../requests'
+import { MUTATION_KEYS } from '../../constants'
+import { patchPosts } from '../../requests'
 
 export const usePatchPostsMutation = (
 	params: Pick<PatchPostsParams, 'postId'>,

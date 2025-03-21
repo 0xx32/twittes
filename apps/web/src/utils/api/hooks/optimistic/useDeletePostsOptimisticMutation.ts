@@ -5,7 +5,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import type { deletePosts, DeletePostsParams, DeletePostsRequestConfig } from '../../requests'
 
 import { QUERY_KEYS } from '../../constants'
-import { useDeletePostsMutation } from '../useDeletePostsMutation'
+import { useDeletePostsMutation } from '../mutations'
 
 export const useDeletePostsOptimisticMutation = (
 	params: DeletePostsParams,

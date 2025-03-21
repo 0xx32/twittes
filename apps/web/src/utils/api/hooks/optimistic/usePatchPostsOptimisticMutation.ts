@@ -5,7 +5,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import type { patchPosts, PatchPostsParams, PatchPostsRequestConfig } from '../../requests'
 
 import { QUERY_KEYS } from '../../constants'
-import { usePatchPostsMutation } from '../usePatchPostsMutation'
+import { usePatchPostsMutation } from '../mutations'
 
 export const usePatchPostsOptimisticMutation = (
 	params: Pick<PatchPostsParams, 'postId'>,

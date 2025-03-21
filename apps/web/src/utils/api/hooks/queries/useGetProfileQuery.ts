@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { QUERY_KEYS } from '../constants'
-import { getProfile } from '../requests'
+import { QUERY_KEYS } from '../../constants'
+import { getProfile } from '../../requests'
 
 export const useGetProfileQuery = (settings?: QuerySettings<typeof getProfile>) =>
 	useQuery({
