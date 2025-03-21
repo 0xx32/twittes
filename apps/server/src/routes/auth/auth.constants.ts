@@ -1,5 +1,7 @@
 import * as v from 'valibot'
 
+import { userSchema } from '@/utils/constants/shemas'
+
 export const loginSchema = v.object({
 	username: v.pipe(v.string(), v.minLength(3), v.maxLength(20)),
 	password: v.pipe(v.string(), v.minLength(3), v.maxLength(20)),
@@ -17,18 +19,7 @@ export const registerResponseSchema = v.object({
 })
 export const loginResponseSchema = v.object({
 	token: v.string(),
-	user: v.object({
-		id: v.string(),
-		username: v.string(),
-		displayName: v.string(),
-		picture: v.string(),
-		age: v.number(),
-		city: v.string(),
-		country: v.string(),
-		isVerified: v.boolean(),
-		createdAt: v.string(),
-		updatedAt: v.string(),
-	}),
+	user: userSchema,
 	message: v.string(),
 })
 

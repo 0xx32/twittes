@@ -17,3 +17,18 @@ export const errorServerResponseSchema = v.object({
 export const baseResponseSchema = v.object({
 	message: v.string(),
 })
+
+export const userSchema = v.object({
+	id: v.string(),
+	username: v.string(),
+	displayName: v.string(),
+	picture: v.string(),
+	age: v.number(),
+	city: v.string(),
+	country: v.string(),
+	isVerified: v.boolean(),
+	subscriptions: v.array(v.string()),
+	followers: v.array(v.string()),
+	createdAt: v.string(),
+	updatedAt: v.string(),
+})
